@@ -1,60 +1,61 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
- <meta chargeset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> PANNI ACADEMY OF WATER SPORTS </title>
-<center>
-<img src=".\Water droplet.png" Height="100px" Width="80px"> </img>
-<div class="container"><h1> PANNI ACADEMY OF WATER SPORTS </h1></div>
- 
-</center>
-<hr>
- <style>
-  body {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PANNI ACADEMY OF WATER SPORTS</title>
+
+  <style>
+    body {
       margin: 0;
       padding: 0;
-      background-image: url('https://raw.githubusercontent.com/SreehariAjesh/PANNI-ACADEMY-OF-WATER-SPORTS/main/Water%20pool.jpg'); /* Replace 'your-image-url.jpg' with the actual URL or path to your image */
-      background-size: cover; /* Adjust as needed */
-      background-position: center; /* Adjust as needed */
-  }
-  button {
-    background-color: #333333;
-    color: white;
-    border-radius: 5px;
-  }
-  .container {
-      background-color: lightblue; /* Black background color */
-      color: #333333 ; /* White text color */
-      padding: 20px; /* Adjust padding as needed */
-      text-align: center; /* Center-align text */
-   border-radius: 10px;
-  }
-  nav {
-      background-color: #333; /* Dark background color for the navigation bar */
+      background-image: url('https://raw.githubusercontent.com/SreehariAjesh/PANNI-ACADEMY-OF-WATER-SPORTS/main/Water%20pool.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #66FFFF;
+    }
+
+    button {
+      background-color: #333333;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .container {
+      background-color: lightblue;
+      color: #333333;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    nav {
+      background-color: #333;
       padding: 15px;
       text-align: center;
     }
 
     nav button {
-      background-color: #4CAF50; /* Green button color */
-      color: #fff; /* White text color */
-      padding: 10px 20px; /* Adjust padding as needed */
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin: 0 10px; /* Adjust margin as needed */
+      margin: 0 10px;
     }
 
     nav button:hover {
-      background-color: #45a049; /* Darker green color on hover */
+      background-color: #45a049;
     }
-  sidebar {
+
+    .sidebar {
       height: 100%;
       width: 0;
       position: fixed;
       top: 0;
       left: 0;
-      background-color: #111; /* Dark background color for the sidebar */
+      background-color: #111;
       overflow-x: hidden;
       transition: 0.5s;
       padding-top: 60px;
@@ -81,37 +82,37 @@
       margin-right: 50px;
     }
 
-    /* Style the page content */
     .content {
       transition: margin-left 0.5s;
       padding: 16px;
-   }
-</style>
-
+    }
+  </style>
 </head>
-<body>
- <body BGcolor= #333333 text= #66FFFF >
+<body bgcolor="#333333" text="#66FFFF">
+
   <div class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href=".\Admission.HTML">Admission </a>
+    <a href=".\Admission.HTML">Admission</a>
     <a href=".\About Academy.HTML">About Academy</a>
-    <a href=".\images of academy.HTML"> Images of Academy</a>
+    <a href=".\images of academy.HTML">Images of Academy</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   </div>
-<center>
-<H1><b> "DIVE INTO EXELENCE:WHERE WAVES MEET MASTERY!"</b> </H1>
-</center>
-<h2> Welcome to the one and only Water Sports Academy that opens at Rajasthan <b> THE PANNI ACADEMY OF WATER SPORTS </b> where every ripple tells a story of passion and expertise. Our academy is more than an academic adventure: it's a journey where water enthusiasts find a heaven to refine therir skills and embrace the thrill of water sports. From begenniers seeking the first spalsh of exitment to seasoned athelethes aming for precision like our MR.PANNI. </h2>
-<center>
-<h3> SO WHAT ARE YOU WAITING FOR; TAKE THE EXITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
-</center>
-<div class="content">
+
+  <center>
+    <h1><b>"DIVE INTO EXCELLENCE: WHERE WAVES MEET MASTERY!"</b></h1>
+  </center>
+
+  <h2>Welcome to the one and only Water Sports Academy that opens at Rajasthan <b>THE PANNI ACADEMY OF WATER SPORTS</b> where every ripple tells a story of passion and expertise. Our academy is more than an academic adventure: it's a journey where water enthusiasts find a heaven to refine their skills and embrace the thrill of water sports. From beginners seeking the first splash of excitement to seasoned athletes aiming for precision like our MR.PANNI.</h2>
+
+  <center>
+    <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
+  </center>
+
+  <div class="content">
     <nav>
       <button onclick="openNav()">☰ Open Sidebar</button>
     </nav>
-</div>
- 
+  </div>
 
- 
   <script>
     function openNav() {
       document.querySelector('.sidebar').style.width = '250px';
@@ -123,6 +124,6 @@
       document.querySelector('.content').style.marginLeft= '0';
     }
   </script>
+
 </body>
 </html>
-
