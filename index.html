@@ -60,21 +60,80 @@
     nav button:hover {
       background-color: #45a049; /* Darker green color on hover */
     }
+  sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #111; /* Dark background color for the sidebar */
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      left: 20px;
+      font-size: 36px;
+      margin-right: 50px;
+    }
+
+    /* Style the page content */
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+   }
 </style>
 
 </head>
 <body>
  <body BGcolor= #333333 text= #66FFFF >
+  <div class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
 <center>
 <H1><b> "DIVE INTO EXELENCE:WHERE WAVES MEET MASTERY!"</b> </H1>
 </center>
 <h2> Welcome to the one and only Water Sports Academy that opens at Rajasthan <b> THE PANNI ACADEMY OF WATER SPORTS </b> where every ripple tells a story of passion and expertise. Our academy is more than an academic adventure: it's a journey where water enthusiasts find a heaven to refine therir skills and embrace the thrill of water sports. From begenniers seeking the first spalsh of exitment to seasoned athelethes aming for precision like our MR.PANNI. </h2>
 <center>
 <h3> SO WHAT ARE YOU WAITING FOR; TAKE THE EXITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
-
+<div class="content">
+    <nav>
+      <button onclick="openNav()">☰ Open Sidebar</button>
+    </nav>
+</div>
  
 
  </center>
+  <script>
+    function openNav() {
+      document.querySelector('.sidebar').style.width = '250px';
+      document.querySelector('.content').style.marginLeft = '250px';
+    }
+
+    function closeNav() {
+      document.querySelector('.sidebar').style.width = '0';
+      document.querySelector('.content').style.marginLeft= '0';
+    }
+  </script>
 </body>
 </html>
 
