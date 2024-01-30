@@ -5,16 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PANNI ACADEMY OF WATER SPORTS</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-  <div class="content">
-    <nav>
-      <button onclick="openNav()">☰ </button>
-    </nav>
-  </div>
-<div class="container"><h1> Panni Academy Of Water Sports </h1> </div>
-  
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
     body {
       margin: 0;
@@ -97,12 +90,16 @@
   </style>
 </head>
 <body bgcolor="#333333" text="#66FFFF">
-<div id="loading-screen">
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
     <img src="Water droplet.png" alt="Loading Logo" width="100" height="100">
     <p>PANNI ACADEMY OF WATER SPORTS</p>
-</div>
+  </div>
+
+  <!-- Rest of your content -->
   <div class="sidebar">
-    <a href=".\Admission.HTML">Admission</a>
+      <a href=".\Admission.HTML">Admission</a>
     <a href=".\About Academy.HTML">About Academy</a>
     <a href=".\images of academy.HTML">Images of Academy</a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -118,8 +115,6 @@
     <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
   </center>
 
-  
-
   <script>
     function openNav() {
       document.querySelector('.sidebar').style.width = '250px';
@@ -130,9 +125,11 @@
       document.querySelector('.sidebar').style.width = '0';
       document.querySelector('.content').style.marginLeft= '0';
     }
+
+    // Simulate loading time (you can replace this with actual loading logic)
     setTimeout(function() {
       document.getElementById('loading-screen').style.display = 'none';
-    }, 3000);
+    }, 3000); // Adjust the time as needed
   </script>
 
 </body>
