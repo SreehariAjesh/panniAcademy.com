@@ -4,21 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PANNI ACADEMY OF WATER SPORTS</title>
-  
+
   <!-- Alert Script -->
   <script>
     window.alert('This site is under construction so do not give any personal information!');
   </script>
 
+  <!-- Loading Screen Styles -->
+  <style>
+    .loadingScreen {
+      height: 100%;
+      width: 100%;
+      background-color: darkblue;
+      color: white;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-x: hidden;
+      transition: 0.5s;
+      z-index: 1;
+    }
+
+    .loadingScreen a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .loadingScreen a:hover {
+      color: #f1f1f1;
+      text-align: center; 
+    }
+  </style>
+
   <!-- Loading Screen -->
-  <div id="loading-screen">
-    <div class="loadingScreen">
-      <img src="Water droplet.png" alt="Loading Logo" width="100" height="200">
-      <center>
-        <h2>PANNI ACADEMY OF WATER SPORTS</h2>
-        <h6>Loading...</h6>
-      </center>
-    </div>
+  <div id="loading-screen" class="loadingScreen">
+    <img src="Water droplet.png" alt="Loading Logo" width="100" height="200">
+    <center>
+      <h2>PANNI ACADEMY OF WATER SPORTS</h2>
+      <h6>Loading...</h6>
+    </center>
   </div>
 
   <!-- Styles -->
@@ -26,7 +56,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-
+  
+  <!-- Your existing styles -->
   <style>
     body {
       margin: 0;
@@ -147,6 +178,7 @@
     <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
   </center>
 
+  <!-- Sidebar -->
   <div class="sidebar">
     <a href=".\Admission.HTML">Admission</a>
     <a href=".\About Academy.HTML">About Academy</a>
@@ -154,6 +186,7 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   </div>
 
+  <!-- Your existing script -->
   <script>
     function openNav() {
       document.querySelector('.sidebar').style.width = '250px';
