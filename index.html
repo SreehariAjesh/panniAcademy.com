@@ -6,32 +6,151 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PANNI ACADEMY OF WATER SPORTS</title>
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <!-- Alert Script -->
   <script>
     window.onload = function() {
-      window.alert('This site is under construction!');
+    window.alert('This site is under construction!');
     };
   </script>
 
+  <!-- Loading Screen Styles -->
   <style>
-    </style>
+    .loadingScreen {
+      height: 100%;
+      width: 100%;
+      background-color: darkblue;
+      color: white;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: hidden;
+      transition: 0.5s;
+      z-index: 1;
+    }
 
+    .loadingScreen b {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .loadingScreen b:hover {
+      color: #f1f1f1;
+      text-align: center; 
+    }
+  </style>
+
+  <!-- Loading Screen -->
   <div id="loading-screen" class="loadingScreen">
-    </div>
+    <img src="Water droplet.png" alt="Loading Logo" width="100" height="200">
+    <center>
+      <h2>PANNI ACADEMY OF WATER SPORTS</h2>
+      <h6>Loading...</h6>
+    </center>
+  </div>
 
+  <!-- Styles -->
+  
+  <!-- Your existing styles -->
   <style>
-    </style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
+    button {
+      background-color: #333333;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .container {
+      background-color: aquamarine;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 30px;
+      border-color: black;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 15px;
+      text-align: left;
+    }
+
+    nav button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    nav button:hover {
+      background-color: #45a049;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-size: 36px;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+      margin-left: 0;
+    }
+
+  </style>
 </head>
 <body bgcolor="iceblue" text="white">
 
+  <!-- Rest of your content -->
   <center>
     <div class="container">
-      <h1> PANNI ACADEMY OF WATER SPORTS </h1><br> <br>
+    <h1> PANNI ACADEMY OF WATER SPORTS </h1><br> <br>
     </div>
      <h1> <b>"DIVE INTO EXCELLENCE: WHERE WAVES MEET MASTERY!"</b></h1>
   </center>
@@ -42,6 +161,7 @@
     <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
   </center>
 
+  <!-- Sidebar -->
   <div class="sidebar">
     <a href=".\Admission.HTML">Admission</a>
     <a href=".\About Academy.HTML">About Academy</a>
@@ -49,10 +169,11 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   </div>
 
+  <!-- Your existing script -->
   <script>
     function openNav() {
-      // **Corrected typo:** document.querySelector('.sidebar').style.width = '250px';
-      document.querySelector('.content').style.marginLeft = '250px'; // No changes here
+      document.querySelector('.sidebar').style.width = '250px';
+      document.querySelector('.content').style.marginLeft = '250px';
     }
 
     function closeNav() {
