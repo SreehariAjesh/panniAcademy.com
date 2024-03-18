@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PANNI ACADEMY OF WATER SPORTS</title>
 
-
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <!-- Alert Script -->
   <script>
     window.onload = function() {
-    window.alert('This site is under construction!');
+      window.alert('This site is under construction!');
     };
   </script>
 
   <!-- Loading Screen Styles -->
   <style>
+    /* Loading Screen Styles */
     .loadingScreen {
       height: 100%;
       width: 100%;
@@ -50,17 +50,6 @@
     }
   </style>
 
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="loadingScreen">
-    <img src="Water droplet.png" alt="Loading Logo" width="100" height="200">
-    <center>
-      <h2>PANNI ACADEMY OF WATER SPORTS</h2>
-      <h6>Loading...</h6>
-    </center>
-  </div>
-
-  <!-- Styles -->
-  
   <!-- Your existing styles -->
   <style>
     body {
@@ -105,10 +94,10 @@
 
     .sidebar {
       height: 100%;
-      width: 0;
+      width: 250px; /* Adjust width as needed */
       position: fixed;
       top: 0;
-      left: 0;
+      left: -250px; /* Hide sidebar by default */
       background-color: #111;
       overflow-x: hidden;
       transition: 0.5s;
@@ -140,52 +129,64 @@
     .content {
       transition: margin-left 0.5s;
       padding: 16px;
-      margin-left: 0;
     }
 
+    /* Adjust content margin when sidebar opens */
+    .content.opened {
+      margin-left: 250px;
+    }
   </style>
 </head>
 <body bgcolor="iceblue" text="white">
 
-  <!-- Rest of your content -->
+<!-- Loading Screen -->
+<div id="loading-screen" class="loadingScreen">
+  <img src="Water droplet.png" alt="Loading Logo" width="100" height="200">
   <center>
-    <div class="container">
+    <h2>PANNI ACADEMY OF WATER SPORTS</h2>
+    <h6>Loading...</h6>
+  </center>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="mySidebar">
+  <a href=".\Admission.HTML">Admission</a>
+  <a href=".\About Academy.HTML">About Academy</a>
+  <a href=".\images of academy.HTML">Images of Academy</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+</div>
+
+<!-- Rest of your content -->
+<center>
+  <div class="container">
     <h1> PANNI ACADEMY OF WATER SPORTS </h1><br> <br>
-    </div>
-     <h1> <b>"DIVE INTO EXCELLENCE: WHERE WAVES MEET MASTERY!"</b></h1>
-  </center>
-
-  <h2>Welcome to the one and only Water Sports Academy that opens at Rajasthan <b>THE PANNI ACADEMY OF WATER SPORTS</b> where every ripple tells a story of passion and expertise. Our academy is more than an academic adventure: it's a journey where water enthusiasts find a heaven to refine their skills and embrace the thrill of water sports. From beginners seeking the first splash of excitement to seasoned athletes aiming for precision like our MR.PANNI.</h2>
-
-  <center>
-    <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
-  </center>
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <a href=".\Admission.HTML">Admission</a>
-    <a href=".\About Academy.HTML">About Academy</a>
-    <a href=".\images of academy.HTML">Images of Academy</a>
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   </div>
+  <h1> <b>"DIVE INTO EXCELLENCE: WHERE WAVES MEET MASTERY!"</b></h1>
+</center>
 
-  <!-- Your existing script -->
-  <script>
-    function openNav() {
-      document.querySelector('.sidebar').style.width = '250px';
-      document.querySelector('.content').style.marginLeft = '250px';
-    }
+<h2>Welcome to the one and only Water Sports Academy that opens at Rajasthan <b>THE PANNI ACADEMY OF WATER SPORTS</b> where every ripple tells a story of passion and expertise. Our academy is more than an academic adventure: it's a journey where water enthusiasts find a heaven to refine their skills and embrace the thrill of water sports. From beginners seeking the first splash of excitement to seasoned athletes aiming for precision like our MR.PANNI.</h2>
 
-    function closeNav() {
-      document.querySelector('.sidebar').style.width = '0';
-      document.querySelector('.content').style.marginLeft= '0';
-    }
+<center>
+  <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
+</center>
 
-    // Simulate loading time (you can replace this with actual loading logic)
-    setTimeout(function() {
-      document.getElementById('loading-screen').style.display = 'none';
-    }, 3000); // Adjust the time as needed
-  </script>
+<!-- Your existing script -->
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+    document.querySelector('.content').classList.add('opened');
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.left = "-250px";
+    document.querySelector('.content').classList.remove('opened');
+  }
+
+  // Simulate loading time (you can replace this with actual loading logic)
+  setTimeout(function() {
+    document.getElementById('loading-screen').style.display = 'none';
+  }, 3000); // Adjust the time as needed
+</script>
 
 </body>
 </html>
