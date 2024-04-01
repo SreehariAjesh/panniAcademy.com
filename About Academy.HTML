@@ -12,64 +12,92 @@
     }
     
     /* Sidebar styles */
-    .sidebar {
+    .sidebar-container {
       height: 100%;
-      width: 200px;
+      width: 0;
       position: fixed;
       top: 0;
       left: 0;
       background-color: #333;
-      padding-top: 20px;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
     }
     
-    .sidebar a {
-      padding: 10px;
+    .sidebar-content {
+      padding: 20px;
       text-decoration: none;
+      font-size: 18px;
       color: white;
       display: block;
     }
     
-    .sidebar a:hover {
-      background-color: #555;
-    }
-    
-    /* Main content */
-    .content {
-      margin-left: 220px; /* Adjusted to give space for the sidebar */
-      padding: 20px;
-    }
-    
     /* Button style */
-    button {
+    .sidebar-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
       background-color: #333333;
       color: white;
       border-radius: 5px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
     }
+
+    /* Close button style */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body bgcolor="#000033" text="#33FFCC">
 
-<!-- Sidebar -->
-<div class="sidebar">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  <a href="#">Link 4</a>
+<!-- Sidebar Button -->
+<button class="sidebar-btn" onclick="openSidebar()">Open Sidebar</button>
+
+<!-- Sidebar Container -->
+<div id="sidebarContainer" class="sidebar-container">
+  <a href="#" class="close-btn" onclick="closeSidebar()">&times;</a>
+  <div class="sidebar-content">
+    <a href="#">Address 1</a>
+    <a href="#">Address 2</a>
+    <a href="#">Address 3</a>
+    <a href="#">Address 4</a>
+  </div>
 </div>
 
 <!-- Main content -->
 <div class="content">
   <center> <img src=".\Water droplet.png" Height="100px" Width="80px"></center>
-  <h2> Our academy is situated in Rajasthan. That why we built our school in this area so that the students can breathe fresh air and study and play happily WITH  THE PRECIOUS WATER AND CAMELS. There is only 1 staff that is MR.PANNI who is also our principal and vice-principal. </h2>
-  <h4> If you want to get more information about PANNI ACADEMY OF WATER SPORTS you can call us on the following number-<br>
+  <h2>Our academy is situated in Rajasthan. That's why we built our school in this area so that the students can breathe fresh air and study and play happily WITH THE PRECIOUS WATER AND CAMELS. There is only 1 staff that is MR.PANNI who is also our principal and vice-principal.</h2>
+  <h4>If you want to get more information about PANNI ACADEMY OF WATER SPORTS you can call us on the following number-<br>
     197321654321 to contact the principal<br>
     197321654321 to contact the vice-principal
   </h4>
 
   <a href=".\index.html">
-    <button> Back </button>
+    <button>Back</button> 
   </a>
 </div>
+
+<script>
+  function openSidebar() {
+    document.getElementById("sidebarContainer").style.width = "250px";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebarContainer").style.width = "0";
+  }
+</script>
 
 </body>
 </html>
