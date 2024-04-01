@@ -1,55 +1,105 @@
-
-<HTML>
-<HEAD>
+<!DOCTYPE html>
+<html>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<center> <img src=".\Water droplet.png" Height="100px" Width="80px"></img> </center>
-<TITLE> Registeraton From </TITLE>
- <style>
-  button {
-    background-color: "lightblue" ;
-    color: "black";
-    border-radius: 5px;
-  }
-</style>
-</HEAD>
-<body BGcolor= #000066 text="white">
-<H2> <mark>If you want to admit your pupil in PANNI ACADEMY OF WATER SPORTS kindly fill the below form and please take a screen shot of it when comming to school.</mark> </H2>
-<h4> Our academy is situated in Rajasthan. That why we built our school in this area so that the students can breathe fresh air and study and play happyily WITH  THE PRECIOUS WATER AND CAMELS.</h4>
-<HR>
-<CENTER>
-<H1> Registration Form </H1>
-</CENTER>
-<HR>
-<FORM>
-Name : <INPUT TYPE="TEXT"> <BR><BR>
-Father's Name :  <INPUT TYPE="TEXT"> <BR><BR>
-Mother's Name :  <INPUT TYPE="TEXT"> <BR><BR>
-Age in years :  <INPUT TYPE="TEXT"> <BR><BR>
-Gender :  <INPUT TYPE="RADIO" NAME="gender"> Male <INPUT TYPE="RADIO" NAME="gender"> Female <BR> <BR>
-Adress : <INPUT TYPE="TEXTAREA"> <BR><BR>
-Hobies: <INPUT TYPE="TEXT"> <BR><BR>
-<BR> <BR>
-Enroll for class :
-<SELECT>
-<OPTION> Play group
-<OPTION> Class 1
-<OPTION> Class 2
-<OPTION> Class 3
-<OPTION> Class 4
-<OPTION> Class 5
-<OPTION> Class 6
-<OPTION> Class 7
-<OPTION> Class 8
-<OPTION> Class 9
-<OPTION> Class 10
-<OPTION> Above than class 10
-</SELECT>
-<BR>
-<BR>
-<INPUT TYPE="SUBMIT" VALUE="SUBMIT"> <INPUT TYPE="RESET" VALUE="RESET"> <BR>
-<BR>
-<a href=".\index.html">
-<button> Back </button> 
-</a>
+  <title>Registration Form</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Sidebar styles */
+    .sidebar {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      padding-top: 20px;
+    }
+    
+    .sidebar a {
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+    
+    .sidebar a:hover {
+      background-color: #555;
+    }
+    
+    /* Main content */
+    .content {
+      margin-left: 220px; /* Adjusted to give space for the sidebar */
+      padding: 20px;
+    }
+    
+    /* Button style */
+    button {
+      background-color: lightblue;
+      color: black;
+      border-radius: 5px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body bgcolor="#000066" text="white">
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  <a href="#">Link 4</a>
+</div>
+
+<!-- Main content -->
+<div class="content">
+  <center> <img src=".\Water droplet.png" Height="100px" Width="80px"></center>
+  <h2><mark>If you want to admit your pupil in PANNI ACADEMY OF WATER SPORTS kindly fill the below form and please take a screenshot of it when coming to school.</mark></h2>
+  <h4>Our academy is situated in Rajasthan. That's why we built our school in this area so that the students can breathe fresh air and study and play happily WITH THE PRECIOUS WATER AND CAMELS.</h4>
+  <hr>
+  <center><h1>Registration Form</h1></center>
+  <hr>
+  <form>
+    Name: <input type="text"><br><br>
+    Father's Name: <input type="text"><br><br>
+    Mother's Name: <input type="text"><br><br>
+    Age in years: <input type="text"><br><br>
+    Gender: <input type="radio" name="gender"> Male 
+            <input type="radio" name="gender"> Female <br><br>
+    Address: <textarea></textarea><br><br>
+    Hobbies: <input type="text"><br><br>
+    <br><br>
+    Enroll for class:
+    <select>
+      <option>Play group</option>
+      <option>Class 1</option>
+      <option>Class 2</option>
+      <option>Class 3</option>
+      <option>Class 4</option>
+      <option>Class 5</option>
+      <option>Class 6</option>
+      <option>Class 7</option>
+      <option>Class 8</option>
+      <option>Class 9</option>
+      <option>Class 10</option>
+      <option>Above than class 10</option>
+    </select><br><br>
+    <input type="submit" value="Submit"> 
+    <input type="reset" value="Reset"><br><br>
+    <a href=".\index.html">
+      <button>Back</button> 
+    </a>
+  </form>
+</div>
+
+</body>
 </html>
