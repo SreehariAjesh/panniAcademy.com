@@ -12,66 +12,91 @@
     }
     
     /* Sidebar styles */
-    .sidebar {
+    .sidebar-container {
       height: 100%;
-      width: 200px;
+      width: 0;
       position: fixed;
       top: 0;
       left: 0;
       background-color: #333;
-      padding-top: 20px;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
     }
     
-    .sidebar a {
-      padding: 10px;
+    .sidebar-content {
+      padding: 20px;
       text-decoration: none;
+      font-size: 18px;
       color: white;
       display: block;
     }
     
-    .sidebar a:hover {
-      background-color: #555;
-    }
-    
-    /* Main content */
-    .content {
-      margin-left: 200px;
-      padding: 20px;
-    }
-    
     /* Button style */
-    button {
+    .sidebar-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
       background-color: #333333;
       color: white;
       border-radius: 5px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
     }
+
+    /* Close button style */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body bgcolor="#333333" text="#00CCFF">
 
-<!-- Sidebar -->
-<div class="sidebar">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  <a href="#">Link 4</a>
+<!-- Sidebar Button -->
+<button class="sidebar-btn" onclick="openSidebar()">Open Sidebar</button>
+
+<!-- Sidebar Container -->
+<div id="sidebarContainer" class="sidebar-container">
+  <a href="#" class="close-btn" onclick="closeSidebar()">&times;</a>
+  <div class="sidebar-content">
+    <a href="#">Address 1</a>
+    <a href="#">Address 2</a>
+    <a href="#">Address 3</a>
+    <a href="#">Address 4</a>
+  </div>
 </div>
 
 <!-- Main content -->
-<div class="content">
-  <center> <img src=".\Water droplet.png" Height="100px" Width="80px"></img> </center><br>
-  <center> <img src=".\camel2.jpg" Height="500px" Width="500px"></img> </center><br>
-  <center> <img src=".\drought image.jpg" Height="500px" Width="500px"></img> </center><br>
-  <center> <img src=".\Camel image.jpg" Height="500px" Width="500px"></img> </center><br>
-  <center> <img src=".\drought2.jpg" Height="500px" Width="500px"></img> </center><br>
-  <center> <img src=".\Water pool.jpg" Height="500px" Width="500px"></img> </center><br>
-  <center>
-    <a href=".\index.html"> 
-      <h2><button> Back </button></h2>
-    </a> 
-    <BR>
-  </center>
-</div>
+<center>
+  <img src=".\camel2.jpg" Height="500px" Width="500px"><br>
+  <img src=".\drought image.jpg" Height="500px" Width="500px"><br>
+  <img src=".\Camel image.jpg" Height="500px" Width="500px"><br>
+  <img src=".\drought2.jpg" Height="500px" Width="500px"><br>
+  <img src=".\Water pool.jpg" Height="500px" Width="500px"><br>
+  <br>
+  <a href=".\index.html">
+    <h2><button> Back </button></h2>
+  </a>
+</center>
+
+<script>
+  function openSidebar() {
+    document.getElementById("sidebarContainer").style.width = "250px";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebarContainer").style.width = "0";
+  }
+</script>
 
 </body>
 </html>
