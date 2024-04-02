@@ -13,48 +13,68 @@
     
     /* Sidebar styles */
     .sidebar-container {
+    nav {
+      background-color: iceblue;
+      padding: 15px;
+      text-align: left;
+    }
+
+    nav button {
+      background-color: #00ffd0;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    nav button:hover {
+      background-color: #45a049;
+    }
+
+    .sidebar {
       height: 100%;
-      width: 0;
+      width: 250px; /* Adjust width as needed */
       position: fixed;
       top: 0;
-      left: 0;
-      background-color: #333;
+      left: -250px; /* Hide sidebar by default */
+      background-color: #111;
       overflow-x: hidden;
       transition: 0.5s;
       padding-top: 60px;
       z-index: 1;
     }
-    
-    .sidebar-content {
-      padding: 20px;
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
       text-decoration: none;
       font-size: 18px;
-      color: white;
+      color: #818181;
       display: block;
-    }
-    
-    /* Button style */
-    .sidebar-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: #333333;
-      color: white;
-      border-radius: 5px;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
+      transition: 0.3s;
     }
 
-    /* Close button style */
-    .close-btn {
+    .sidebar a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
       position: absolute;
-      top: 10px;
-      right: 25px;
+      top: 0;
+      right: 20px;
       font-size: 36px;
-      margin-left: 50px;
-      color: white;
-      cursor: pointer;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    /* Adjust content margin when sidebar opens */
+    .content.opened {
+      margin-left: 250px;
     }
 
   </style>
