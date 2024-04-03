@@ -74,69 +74,20 @@ nav {
     .content.opened {
       margin-left: 250px;
     }
-------------------------------------
-    /* Sidebar styles */
-    .sidebar-container {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #333;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-      z-index: 1
-    
-    .sidebar-content {
-      padding: 20px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
-      display: block;
-    }
-    
-    /* Button style */
-    .sidebar-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: #333333;
-      color: white;
-      border-radius: 5px;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-
-    /* Close button style */
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
-      color: white;
-      cursor: pointer;
-    }
-
-  </style>
+ </style>
 </head>
 <body bgcolor="#333333" text="#00CCFF">
+<div class="sidebar" id="mySidebar">
+  <a href=".\Admission.HTML">Admission</a>
+  <a href=".\About Academy.HTML">About Academy</a>
+  <a href=".\images of academy.HTML">Images of Academy</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+</div>
+<nav>
+  <button onclick="openNav()"> ☰ </button>
+</nav>
 
 <!-- Sidebar Button -->
-<button class="sidebar-btn" onclick="openSidebar()"> ☰</button>
-
-<!-- Sidebar Container -->
-<div id="sidebarContainer" class="sidebar-container">
-  <a href="#" class="close-btn" onclick="closeSidebar()">&times;</a>
-  <div class="sidebar-content">
-    <a href="./index.html">Home</a><br>
-    <a href="Admission.HTML">Admission</a><br>
-    <a href="About Academy.HTML">About Academy</a><br>
-    <a href="#">Comming Soon</a><br>
-  </div>
-</div>
 
 <!-- Main content -->
 <center>
