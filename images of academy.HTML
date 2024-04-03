@@ -11,7 +11,7 @@
       padding: 0;
     }
 
-nav {
+    nav {
       background-color: iceblue;
       padding: 15px;
       text-align: left;
@@ -74,20 +74,18 @@ nav {
     .content.opened {
       margin-left: 250px;
     }
- </style>
+  </style>
 </head>
 <body bgcolor="#333333" text="#00CCFF">
 <div class="sidebar" id="mySidebar">
   <a href=".\Admission.HTML">Admission</a>
   <a href=".\About Academy.HTML">About Academy</a>
   <a href=".\images of academy.HTML">Images of Academy</a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
 </div>
 <nav>
-  <button onclick="openNav()"> ☰ </button>
+  <button onclick="openSidebar()"> ☰ </button>
 </nav>
-
-<!-- Sidebar Button -->
 
 <!-- Main content -->
 <center>
@@ -105,12 +103,12 @@ nav {
 <script>
   function openSidebar() {
     document.getElementById("mySidebar").style.width = "250px";
-document.querySelector('.content').classList.add('opened');
+    document.querySelector('.content').classList.add('opened');
   }
 
   function closeSidebar() {
     document.getElementById("mySidebar").style.width = "0";
-document.querySelector('.content').classList.remove('opened');
+    document.querySelector('.content').classList.remove('opened');
   }
 </script>
 
