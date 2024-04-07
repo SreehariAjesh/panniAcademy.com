@@ -81,10 +81,10 @@
   <a href=".\Admission.HTML">Admission</a>
   <a href=".\About Academy.HTML">About Academy</a>
   <a href=".\images of academy.HTML">Images of Academy</a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 </div>
 <nav>
-  <button onclick="openSidebar()"> ☰ </button>
+  <button onclick="openNav()"> ☰ </button>
 </nav>
 
 <!-- Main content -->
@@ -101,13 +101,12 @@
 </center>
 
 <script>
-  function openSidebar() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.querySelector('.content').classList.add('opened');
+  function openNav() {
+    document.getElementById("mySidebar").style.left = "0"; document.querySelector('.content').classList.add('opened');
   }
 
   function closeSidebar() {
-    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("mySidebar").style.left = "-250px";
     document.querySelector('.content').classList.remove('opened');
   }
 </script>
