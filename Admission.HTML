@@ -6,55 +6,73 @@
   <title>Registration Form</title>
   
   <style>
-    body {
+body {
       margin: 0;
       padding: 0;
     }
-    
-    /* Sidebar styles */
-    .sidebar-container {
+
+    nav {
+      background-color: iceblue;
+      padding: 15px;
+      text-align: left;
+    }
+
+    nav button {
+      background-color: #00ffd0;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    nav button:hover {
+      background-color: #45a049;
+    }
+
+    .sidebar {
       height: 100%;
-      width: 0;
+      width: 250px; /* Adjust width as needed */
       position: fixed;
       top: 0;
-      left: 0;
-      background-color: #333;
+      left: -250px; /* Hide sidebar by default */
+      background-color: #111;
       overflow-x: hidden;
       transition: 0.5s;
       padding-top: 60px;
       z-index: 1;
     }
-    
-    .sidebar-content {
-      padding: 20px;
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
       text-decoration: none;
       font-size: 18px;
-      color: white;
+      color: #818181;
       display: block;
-    }
-    
-    /* Button style */
-    .sidebar-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: lightblue;
-      color: black;
-      border-radius: 5px;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
+      transition: 0.3s;
     }
 
-    /* Close button style */
-    .close-btn {
+    .sidebar a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
       position: absolute;
-      top: 10px;
-      right: 25px;
+      top: 0;
+      right: 20px;
       font-size: 36px;
-      margin-left: 50px;
-      color: white;
-      cursor: pointer;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    /* Adjust content margin when sidebar opens */
+    .content.opened {
+      margin-left: 250px;
     }
 
   </style>
@@ -65,16 +83,16 @@
 <button class="sidebar-btn" onclick="openSidebar()">☰</button>
 
 <!-- Sidebar Container -->
-<div id="sidebarContainer" class="sidebar-container">
-  <a href="#" class="close-btn" onclick="closeSidebar()">&times;</a>
-  <div class="sidebar-content">
+<div id="mySidebar" class="sidebar">
     <a href=".\index.html"> Home</a><br>
-    <a href="About Academy.HTML"> About </a><br>
-    <a href="images of academy"> Images of Academy</a><br>
+    <a href=".\About Academy.HTML"> About </a><br>
+    <a href=".\images of academy"> Images of Academy</a><br>
     <a href="#"> Comming Soon </a><br>
-  </div>
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 </div>
-
+<nav>
+  <button onclick="openNav()"> ☰ </button>
+</nav>
 <!-- Main content -->
 <div class="content">
   <center> <img src=".\Water droplet.png" Height="100px" Width="80px"></center>
@@ -115,12 +133,14 @@
 </div>
 
 <script>
-  function openSidebar() {
-    document.getElementById("sidebarContainer").style.width = "250px";
+  function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+document.querySelector('.content').classList.add('opened');
   }
 
   function closeSidebar() {
-    document.getElementById("sidebarContainer").style.width = "0";
+    document.getElementById("mySidebar").style.width = "-250px";
+document.querySelector('.content').classList.remove('opened');
   }
 </script>
 
