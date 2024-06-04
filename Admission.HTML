@@ -79,17 +79,17 @@ body {
 </head>
 <body bgcolor="#8AAAE5" text="#FFFFFF">
 
-<!-- Sidebar Button -->
-<button class="sidebar-btn" onclick="openSidebar()">☰</button>
 
 <!-- Sidebar Container -->
-<div id="mySidebar" class="sidebar">
-    <a href=".\index.html"> Home</a><br>
-    <a href=".\About Academy.HTML"> About </a><br>
-    <a href=".\images of academy"> Images of Academy</a><br>
-    <a href=".\Achievements.html"> Achievements </a><br>
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+<div class="sidebar" id="mySidebar">
+  <a href=".\imdex.html">Home</a>
+  <a href=".\About Academy.HTML">About Academy</a>
+  <a href=".\images of academy.HTML">Images of Academy</a>
+  <a href=".\Achievements.html"> Achievements </a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 </div>
+
+<!-- Rest of your content -->
 <nav>
   <button onclick="openNav()"> ☰ </button>
 </nav>
@@ -106,12 +106,12 @@ body {
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.left = "0";
-document.querySelector('.content').classList.add('opened');
+    document.querySelector('.content').classList.add('opened');
   }
 
   function closeNav() {
     document.getElementById("mySidebar").style.left = "-250px";
-document.querySelector('.content').classList.remove('opened');
+    document.querySelector('.content').classList.remove('opened');
   }
 </script>
 
