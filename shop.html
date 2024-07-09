@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Sports Academy Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative;
+        }
+        .cart-button {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background-color: #fff;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-button:hover {
+            background-color: #004d99;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .product-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+        }
+        .product-item img {
+            max-width: 100%;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .product-item h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .product-item p {
+            color: #666;
+            margin: 10px 0;
+        }
+        .product-item .price {
+            color: #0066cc;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product-item button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product-item button:hover {
+            background-color: #004d99;
+        }
+        .cart {
+            display: none;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Water Sports Academy Shop</h1>
+        <button class="cart-button" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+        <div class="cart" id="cart">
+            <h3>Cart Items</h3>
+            <div id="cart-items"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product">
+            <div class="product-item">
+                <img src="path/to/image1.jpg" alt="Swimming Goggles">
+                <h3>Swimming Goggles</h3>
+                <p>High-quality swimming goggles for all levels.</p>
+                <p class="price">$25.00</p>
+                <button onclick="addToCart('Swimming Goggles', 25)">Add to Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="path/to/image2.jpg" alt="Surfboard">
+                <h3>Surfboard</h3>
+                <p>Durable and lightweight surfboard for beginners.</p>
+                <p class="price">$150.00</p>
+                <button onclick="addToCart('Surfboard', 150)">Add to Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="path/to/image3.jpg" alt="Life Jacket">
+                <h3>Life Jacket</h3>
+                <p>Comfortable and secure life jacket for water safety.</p>
+                <p class="price">$45.00</p>
+                <button onclick="addToCart('Life Jacket', 45)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cart.length;
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = '';
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItemsDiv.appendChild(div);
+            });
+        }
+
+        function toggleCart() {
+            const cartDiv = document.getElementById('cart');
+            cartDiv.style.display = cartDiv.style.display === 'none' || cartDiv.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+
+</body>
+</html>
