@@ -97,6 +97,20 @@
         .cart-item {
             margin: 10px 0;
         }
+        .checkout-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .checkout-button:hover {
+            background-color: #004d99;
+        }
     </style>
 </head>
 <body>
@@ -107,13 +121,15 @@
         <div class="cart" id="cart">
             <h3>Cart Items</h3>
             <div id="cart-items"></div>
+            <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
         </div>
     </div>
 
     <div class="container">
         <div class="product">
             <div class="product-item">
-                <img src="IMG_20240709_120033.jpg" alt="Swimming Goggles">
+                <img src="p
+IMG_20240709_120033.jpg" alt="Swimming Goggles">
                 <h3>Swimming Goggles</h3>
                 <p>High-quality swimming goggles for all levels.</p>
                 <p class="price">$25.00</p>
@@ -162,7 +178,13 @@
             const cartDiv = document.getElementById('cart');
             cartDiv.style.display = cartDiv.style.display === 'none' || cartDiv.style.display === '' ? 'block' : 'none';
         }
+
+        function proceedToCheckout() {
+            alert('Proceeding to checkout with items: ' + cart.map(item => item.name).join(', '));
+        }
     </script>
 
 </body>
 </html>
+        
+ 
