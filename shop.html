@@ -128,8 +128,7 @@
     <div class="container">
         <div class="product">
             <div class="product-item">
-                <img src="p
-IMG_20240709_120033.jpg" alt="Swimming Goggles">
+                <img src="IMG_20240709_120033.jpg" alt="Swimming Goggles">
                 <h3>Swimming Goggles</h3>
                 <p>High-quality swimming goggles for all levels.</p>
                 <p class="price">$25.00</p>
@@ -176,7 +175,12 @@ IMG_20240709_120033.jpg" alt="Swimming Goggles">
 
         function toggleCart() {
             const cartDiv = document.getElementById('cart');
-            cartDiv.style.display = cartDiv.style.display === 'none' || cartDiv.style.display === '' ? 'block' : 'none';
+            if (cartDiv.style.display === 'none' || cartDiv.style.display === '') {
+                cartDiv.style.display = 'block';
+                updateCart();
+            } else {
+                cartDiv.style.display = 'none';
+            }
         }
 
         function proceedToCheckout() {
