@@ -122,6 +122,7 @@
         <div class="cart" id="cart">
             <h3>Cart Items</h3>
             <div id="cart-items"></div>
+            <div id="cart-total"></div>
             <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
         </div>
     </div>
@@ -166,12 +167,15 @@
             document.getElementById('cart-count').textContent = cart.length;
             const cartItemsDiv = document.getElementById('cart-items');
             cartItemsDiv.innerHTML = '';
+            let totalAmount = 0;
             cart.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'cart-item';
                 div.textContent = `${item.name} - $${item.price.toFixed(2)}`;
                 cartItemsDiv.appendChild(div);
+                totalAmount += item.price;
             });
+            document.getElementById('cart-total').textContent = `Total: $${totalAmount.toFixed(2)}`
         }
 
         function toggleCart() {
