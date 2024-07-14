@@ -112,6 +112,38 @@
         .checkout-button:hover {
             background-color: #004d99;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -197,6 +229,14 @@
             </div>
         </div>
     </div>
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            <h2>Checkout Form</h2>
+            <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </div>
 
     <script>
         let cart = [];
@@ -231,8 +271,16 @@
             }
         }
 
-        function proceedToCheckout() {
-            alert('Proceeding to checkout with items: ' + cart.map(item => item.name).join(', '));
+        function openCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'block';
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+        function submitForm() {
+            alert('Your order will be delivered soon!');
+            closeCheckoutModal();
         }
     </script>
 
