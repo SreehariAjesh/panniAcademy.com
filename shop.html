@@ -210,7 +210,19 @@
     </style>
 </head>
 <body>
+<div class="sidebar" id="mySidebar">
+  <a href=".\index.html">Home</a>
+  <a href=".\About Academy.HTML">About Academy</a>
+  <a href=".\images of academy.HTML">Images of Academy</a>
+  <a href=".\Achievements.html"> Achievements </a>
+    <a href=". Admission.HTML"> Admission </a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+</div>
 
+<!-- Rest of your content -->
+<nav>
+  <button onclick="openNav()"> ☰ </button>
+</nav>
     <div class="header">
         <h1>Water Sports Academy Shop</h1>
         <button class="cart-button" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
@@ -345,6 +357,15 @@
             alert('Your order will be delivered soon!');
             closeCheckoutModal();
         }
+        function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+    document.querySelector('.content').classList.add('opened');
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.left = "-250px";
+    document.querySelector('.content').classList.remove('opened');
+  }
     </script>
 
 </body>
