@@ -61,16 +61,17 @@
             background-color: #004d99;
         }
        .heading {
+           font-family: Arial, sans-serif;
            color: #0066cc;
        }
     </style>
 </head>
 <body>
+    <centre>
     <div class="heading">
-        <centre>
     <h1> Panni AI ᵇᵉᵗᵃ </h1>
-        </centre>
     </div>
+    </centre>
     <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
         <div class="input-container">
@@ -78,19 +79,67 @@
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-
+<h6> Don't use punctuation marks while questioning! </h6>
     <script>
         const responses = {
             "hi": "Hello! How can I assist you today?",
             "hello": "Hi there! How can I help?",
             "how are you": "I'm just a bunch of code, but I'm here to help you!",
             "bye": "Goodbye! Have a great day!",
-            "what is your name?": "I'm Panni AI, your virtual assistant!",
-            "what can you do?": "I can answer simple questions based on predefined responses.",
-            "how can i get admission?": "You can get admission by filling out the online form available on our website.",
+            "what is your name": "I'm Panni AI, your virtual assistant!",
+            "what can you do": "I can answer simple questions based on predefined responses.",
+            "how can i get admission": "You can get admission by filling out the online form available on our website.",
             "what are the courses offered?": "We offer a variety of courses including Kayaking, Swimming etc",
-            "where are you located?": "We are located at 123 Main Street, Anytown",
-            "how can i contact support?": "You can contact support by emailing support@example.com or calling (123) 456-7890.",
+            "where are you located": "We are located at 123 Main Street, Anytown",
+            "how can i contact support": "You can contact support by emailing support@example.com or calling (123) 456-7890.",
+    "how can i get admission": "You can get admission by filling out the online form available on our website.",
+    "what are the courses offered": "We offer a variety of courses including web development, data science, and artificial intelligence.",
+    "where are you located": "We are located at 123 Main Street, Anytown, USA.",
+    "how can i contact support": "You can contact support by emailing support@example.com or calling (123) 456-7890.",
+    "what are your business hours": "Our business hours are Monday to Friday, 9 AM to 5 PM.",
+    "do you offer online courses": "Yes, we offer a variety of online courses that you can take at your own pace.",
+    "can i get a refund": "Refunds are handled on a case-by-case basis. Please contact support for assistance.",
+    "what is your refund policy": "Our refund policy allows for refunds within 30 days of purchase with valid reason.",
+    "how much does the course cost": "The cost of each course varies. Please check the course details on our website.",
+    "do you offer any discounts": "Yes, we offer discounts for early registrations and group enrollments.",
+    "is there a trial period": "We offer a 7-day trial period for most of our courses.",
+    "how do i reset my password": "You can reset your password by clicking on the 'Forgot Password' link on the login page.",
+    "what is the duration of the courses": "The duration of each course varies. Please check the course details for more information.",
+    "do you provide certificates": "Yes, we provide certificates upon successful completion of our courses.",
+    "can i access the course materials after completion": "Yes, you will have lifetime access to the course materials after completion.",
+    "how do i enroll in a course": "You can enroll in a course by visiting our website and selecting the course you are interested in.",
+    "what payment methods do you accept": "We accept credit cards, debit cards, and PayPal.",
+    "is there a mobile app": "Yes, we have a mobile app available for both iOS and Android devices.",
+    "can i take multiple courses at once": "Yes, you can enroll in multiple courses at the same time.",
+    "do you offer internships": "Yes, we offer internships for students who have completed certain courses.",
+    "what is your privacy policy": "You can read our privacy policy on our website under the 'Privacy Policy' section.",
+    "do you have any free resources": "Yes, we offer a variety of free resources including blog posts, tutorials, and webinars.",
+    "what languages are the courses offered in": "Our courses are primarily offered in English.",
+    "how do i update my profile information": "You can update your profile information by logging into your account and going to the 'Profile' section.",
+    "what is your cancellation policy": "You can cancel your enrollment within 7 days for a full refund.",
+    "can i transfer my course to someone else": "Course transfers are not allowed. Each enrollment is unique to the individual.",
+    "do you offer live classes": "Yes, we offer live classes for certain courses.",
+    "how do i access the course materials": "Once enrolled, you can access the course materials through your account on our website.",
+    "can i download the course materials": "Yes, you can download certain course materials for offline use.",
+    "what is the grading system": "Our courses use a pass/fail grading system based on assessments and assignments.",
+    "do you offer career counseling": "Yes, we offer career counseling services to help you with your career goals.",
+    "how can i provide feedback": "You can provide feedback through the feedback form available on our website.",
+    "what is the course schedule": "The course schedule varies. Please check the course details for specific schedules.",
+    "can i take a break from the course": "Yes, you can take a break and resume the course at your convenience.",
+    "how do i contact the instructor": "You can contact the instructor through the messaging system on our platform.",
+    "what is the class size": "The class size varies for each course. Please check the course details for more information.",
+    "do you offer scholarships": "Yes, we offer scholarships for deserving students. Please check our website for more details.",
+    "what are the prerequisites for the courses": "The prerequisites vary for each course. Please check the course details for specific prerequisites.",
+    "how do i access the live classes": "You can access live classes through the link provided in your course dashboard.",
+    "do you offer job placement assistance": "Yes, we offer job placement assistance for students who successfully complete our courses.",
+    "how do i submit assignments": "You can submit assignments through the course portal on our website.",
+    "what if i have technical issues": "If you encounter technical issues, please contact our support team for assistance.",
+    "can i get a demo of the course": "Yes, we offer demo sessions for some of our courses. Please check the course details for availability.",
+    "do you have a newsletter": "Yes, you can subscribe to our newsletter on our website to stay updated on the latest news and offers.",
+    "what is the course content": "The course content varies. Please check the course details for a detailed outline.",
+    "how do i participate in forums": "You can participate in forums through the discussion boards available in your course dashboard.",
+    "do you offer any group activities": "Yes, we offer group activities and projects as part of our courses.",
+    "how can i network with other students": "You can network with other students through our online forums and social media groups."
             "default": "I'm sorry, I don't understand that. Can you please rephrase?"
         };
 
