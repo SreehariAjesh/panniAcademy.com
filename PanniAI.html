@@ -214,6 +214,20 @@ function getResponse(input) {
     }
     return perms;
         }
+        document.getElementById('send-btn').addEventListener('click', () => {
+            const userInput = document.getElementById('user-input').value;
+            const response = getResponse(userInput);
+            const chatLog = document.getElementById('chat-log');
+            chatLog.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            chatLog.innerHTML += `<p><strong>Panni AI:</strong> ${response}</p>`;
+            document.getElementById('user-input').value = '';
+        });
+        // Event listener for pressing enter key in input field
+        document.getElementById('user-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('send-btn').click();
+            }
+        });
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.toLowerCase();
             if (userInput.trim() === "") return;
