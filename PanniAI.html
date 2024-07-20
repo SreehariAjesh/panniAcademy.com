@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -175,8 +175,18 @@
         }
 
         function respondToUser(userInput) {
-            const response = responses[userInput] || "I'm sorry, I didn't understand that. Can you please rephrase?";
-            addMessage(response, "bot");
+            const keywords = userInput.split(" ");
+            let responseFound = false;
+            for (let keyword of keywords) {
+                if (responses[keyword]) {
+                    addMessage(responses[keyword], "bot");
+                    responseFound = true;
+                    break;
+                }
+            }
+            if (!responseFound) {
+                addMessage("I'm sorry, I didn't understand that. Can you please rephrase?", "bot");
+            }
         }
     </script>
 </body>
