@@ -142,10 +142,77 @@
     "what is the course content": "The course content varies. Please check the course details for a detailed outline.",
     "how do i participate in forums": "You can participate in forums through the discussion boards available in your course dashboard.",
     "do you offer any group activities": "Yes, we offer group activities and projects as part of our courses.",
-            "how can i network with other students": "You can network with other students through our online forums and social media groups.",
+    "how can i network with other students": "You can network with other students through our online forums and social media groups.",
+     "what if i forgot my password": "Click on 'Forgot Password' on the login page to reset your password.",
+    "how do i deactivate my account": "Please contact support if you wish to deactivate your account.",
+    "can i reactivate my account": "Yes, you can reactivate your account by contacting support.",
+    "how do i update my payment information": "You can update your payment information in the 'Billing' section of your account.",
+    "what if i have accessibility needs": "Please contact us to discuss any accessibility needs you may have.",
+    "can i suggest new activities": "Yes, we welcome suggestions. Please contact us with your ideas.",
+    "do you offer gift packages": "Yes, we offer special gift packages that include multiple activities.",
+    "how do i use a promo code": "Enter the promo code during checkout to apply the discount.",
+    "are there seasonal discounts": "Yes, we offer seasonal discounts. Check our website for current offers.",
+    "what is the minimum age for participation": "The minimum age for participation is 8 years old.",
+    "do you have a lost and found": "Yes, we have a lost and found. Please contact support if you lost something.",
+    "can i reschedule my booking": "Yes, you can reschedule your booking by contacting support.",
+    "do you offer language support": "Yes, we offer support in multiple languages. Please contact us for details.",
+    "what if i have dietary restrictions": "Please inform us of any dietary restrictions when booking.",
+    "how do i apply for sponsorship": "You can apply for sponsorship by contacting our sponsorship department.",
+    "do you have partnerships": "Yes, we have partnerships with various organizations. Check our website for details.",
+    "can i get a personalized package": "Yes, we offer personalized packages to suit your needs.",
+    "do you offer first aid": "Yes, we have first aid facilities on-site.",
+    "how do i access my account": "You can access your account by logging in on our website.",
+    "can i bring a camera": "Yes, you are welcome to bring a camera to capture your experience.",
+    "do you have Wi-Fi": "Yes, we offer free Wi-Fi for all our guests.",
+    "what is the best time to visit": "The best time to visit is during the summer months when the weather is ideal.",
+    "how do i get there": "You can find directions on our website under the 'Contact Us' section.",
+    "do you offer transport services": "Yes, we offer shuttle services from major locations.",
+    "can i book a private session": "Yes, private sessions can be booked through our website.",
+    "do you offer equipment repair": "Yes, we offer repair services for your own equipment.",
+    "how do i report an issue": "You can report an issue by contacting our support team.",
+    "what if i have a special request": "Please contact us with your special request and we will do our best to accommodate.",
+    "are there group activities": "Yes, we offer group activities and team-building exercises.",
+    "can i bring food and drinks": "Yes, you can bring your own food and drinks.",
+    "what is the best way to prepare": "Wear comfortable clothing, stay hydrated, and follow our guidelines.",
+    "do you have themed events": "Yes, we host themed events throughout the year.",
+    "how do i stay updated": "Follow us on social media and subscribe to our newsletter for updates.",
+"what if i lost my booking confirmation": "Please contact support with your details to retrieve your booking information.",
+    "do you have an app": "Yes, our mobile app is available for download on iOS and Android.",
+    "can i make changes to my booking": "Yes, you can make changes to your booking by contacting support.",
+    "what payment methods are accepted": "We accept credit/debit cards, PayPal, and bank transfers.",
+    "do you offer payment plans": "Yes, we offer flexible payment plans for certain services.",
+    "how do i leave a review": "You can leave a review on our website or on our social media pages.",
+    "are there any hidden fees": "No, all fees are transparent and listed during the booking process.",
+    "how do i apply for a job": "You can apply for a job through the careers section on our website.",
+    "do you have internships": "Yes, we offer internships for students and recent graduates.",
             "default": "I'm sorry, I don't understand that. Can you please rephrase?"
         };
-
+function getResponse(input) {
+    input = input.toLowerCase().replace(/[^\w\s]/gi, '');
+    let response = responses[input];
+    if (!response) {
+        const words = input.split(' ');
+        const permutations = generatePermutations(words);
+        for (let perm of permutations) {
+            response = responses[perm];
+            if (response) break;
+        }
+        }
+    return response || "I'm sorry, I don't understand that. Can you please rephrase?";
+}
+        function generatePermutations(words) {
+    if (words.length === 1) return words;
+    let perms = [];
+            for (let i = 0; i < words.length; i++) {
+        const firstWord = words[i];
+        const remainingWords = words.slice(0, i).concat(words.slice(i + 1));
+        const innerPermutations = generatePermutations(remainingWords);
+        for (let perm of innerPermutations) {
+            perms.push(firstWord + ' ' + perm);
+        }
+    }
+    return perms;
+        }
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.toLowerCase();
             if (userInput.trim() === "") return;
