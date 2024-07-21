@@ -11,6 +11,69 @@
             padding: 0;
             background-color: #f5f5f5;
         }
+        nav {
+      background-color: iceblue;
+      padding: 15px;
+      text-align: left;
+    }
+
+    nav button {
+      background-color: #00ffd0;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    nav button:hover {
+      background-color: #45a049;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 250px; /* Adjust width as needed */
+      position: fixed;
+      top: 0;
+      left: -250px; /* Hide sidebar by default */
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-size: 36px;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    /* Adjust content margin when sidebar opens */
+    .content.opened {
+      margin-left: 250px;
+    }
         .chat-container {
             max-width: 600px;
             margin: 50px auto;
@@ -68,11 +131,24 @@
        .footer {
            color: black;
            text-align: center;
-           margin-top: -20px;
+           margin-top: -90%;
        }
     </style>
 </head>
-<body>
+<body><div class="sidebar" id="mySidebar">
+  <a href=".\index.html">Home</a>
+  <a href=".\About Academy.HTML">About Academy</a>
+  <a href=".\images of academy.HTML">Images of Academy</a>
+  <a href=".\Achievements.html"> Achievements </a>
+    <a href=".\Admission.HTML"> Admission </a>
+    <a href=".\shop.html"> Shop.com </a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+</div>
+
+<!-- Rest of your content -->
+<nav>
+  <button onclick="openNav()"> ☰ </button>
+</nav>
     <div class="heading">
         <h1>Panni AI ᵇᵉᵗᵃ</h1>
     </div>
@@ -84,10 +160,11 @@
         </div>
     </div>
     <div class="footer">
-        <h6>Don't use punctuation marks while questioning!</h6>
+        <h6>Don't use punctuation marks while questioning! It is recommended to start the conversation with what/how/do.</h6>
     </div>
     <script>
         const responses = {
+            "what can you do": "I can answer simple questions related this website",
             "tell me about this website": "This website highlights the well known wayer sports academy -Panni Academy of Water sports",
             "who is your creator": "I was made by Mr. Panni.",
             "what functions do you provide": "I am Panni AI your personal assistant which will help you to guide through our website",
