@@ -133,6 +133,31 @@
            text-align: center;
            margin-top: 90%;
        }
+        .search-container {
+            text-align: right;
+            margin: 10px;
+        }
+        .search-container input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-results {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-results p {
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .search-results p:hover {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body><div class="sidebar" id="mySidebar">
@@ -151,6 +176,10 @@
 </nav>
     <div class="heading">
         <h1>Panni AI ᵇᵉᵗᵃ</h1>
+    </div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search questions...">
+        <div id="search-results" class="search-results"></div>
     </div>
     <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
@@ -309,6 +338,28 @@
     document.getElementById("mySidebar").style.left = "-250px";
     document.querySelector('.content').classList.remove('opened');
   }
+        document.getElementById('search-input').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const searchResults = document.getElementById('search-results');
+            searchResults.innerHTML = '';
+
+            if (query) {
+                for (const question in responses) {
+                    if (question.includes(query)) {
+                        if (query) {
+                for (const question in responses) {
+                    if (question.includes(query)) {
+                        const resultItem = document.createElement('p');
+                        resultItem.innerText = question;
+                        resultItem.onclick = function() {
+                            document.getElementById('user-input').value = this.innerText;
+                            searchResults.innerHTML = '';
+                        };
+                        searchResults.appendChild(resultItem);
+                    }
+                }
+                        }
+                    });
     </script>
 </body>
 </html>
