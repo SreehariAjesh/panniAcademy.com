@@ -142,7 +142,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .search-results {
+        #search-results {
             max-height: 150px;
             overflow-y: auto;
             margin-top: 10px;
@@ -150,12 +150,12 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .search-results p {
+        #search-results p {
             margin: 0;
             padding: 10px;
             cursor: pointer;
         }
-        .search-results p:hover {
+        #search-results p:hover {
             background-color: #f0f0f0;
         }
     </style>
@@ -179,13 +179,13 @@
     </div>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search questions...">
-        <div id="search-results" class="search-results"></div>
+        <div id="search-results"></div>
     </div>
     <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
         <div class="input-container">
             <input type="text" id="user-input" placeholder="Ask anything about this website...">
-            <button id="send-button">Send</button>
+            <button onclick="sendMessage()">Send</button>
         </div>
     </div>
     <div class="footer">
@@ -293,10 +293,22 @@
             "how do i appeal a grade": "You can appeal a grade by contacting the instructor through the course portal."
         };
 
-        function getResponse(userInput) {
-            userInput = userInput.toLowerCase().replace(/[^\w\s]/gi, '').trim();
-            const words = userInput.split(" ");
-            for (let key in responses) {
+        function getResponse(input) {
+            input = input.toLowerCase().replace(/[^\w\s]/gi, '');
+            let response = response[input];
+            if (!response) {
+            const words = input.split(' ');
+                const permutations = generatePermutations(words);
+            for (let perm of permutations) {
+                response = responses[perm];
+                    if (response) break;
+            }
+            }
+            return response || "I'm sorry, I don't understand that. Can you please rephrase?";
+        }
+        function generatePermutations(words) {
+            if (words.length === 1) return words;
+            let perms = [];
                 const keyWords = key.split(" ");
                 if (keyWords.every(word => words.includes(word))) {
                     return responses[key];
