@@ -12,68 +12,68 @@
             background-color: #f5f5f5;
         }
         nav {
-      background-color: iceblue;
-      padding: 15px;
-      text-align: left;
-    }
+            background-color: iceblue;
+            padding: 15px;
+            text-align: left;
+        }
 
-    nav button {
-      background-color: #00ffd0;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 0 10px;
-    }
+        nav button {
+            background-color: #00ffd0;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
 
-    nav button:hover {
-      background-color: #45a049;
-    }
+        nav button:hover {
+            background-color: #45a049;
+        }
 
-    .sidebar {
-      height: 100%;
-      width: 250px; /* Adjust width as needed */
-      position: fixed;
-      top: 0;
-      left: -250px; /* Hide sidebar by default */
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-      z-index: 1;
-    }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1;
+        }
 
-    .sidebar a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 18px;
-      color: #818181;
-      display: block;
-      transition: 0.3s;
-    }
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
 
-    .sidebar a:hover {
-      color: #f1f1f1;
-    }
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
 
-    .sidebar .closebtn {
-      position: absolute;
-      top: 0;
-      right: 20px;
-      font-size: 36px;
-      margin-right: 80px;
-    }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 36px;
+            margin-right: 80px;
+        }
 
-    .content {
-      transition: margin-left 0.5s;
-      padding: 16px;
-    }
+        .content {
+            transition: margin-left 0.5s;
+            padding: 16px;
+        }
 
-    /* Adjust content margin when sidebar opens */
-    .content.opened {
-      margin-left: 250px;
-    }
+        .content.opened {
+            margin-left: 250px;
+        }
+
         .chat-container {
             max-width: 600px;
             margin: 50px auto;
@@ -123,16 +123,16 @@
         .input-container button:hover {
             background-color: #004d99;
         }
-       .heading {
-           font-family: Arial, sans-serif;
-           color: #0066cc;
-           text-align: center;
-       }
-       .footer {
-           color: black;
-           text-align: center;
-           margin-top: 90%;
-       }
+        .heading {
+            font-family: Arial, sans-serif;
+            color: #0066cc;
+            text-align: center;
+        }
+        .footer {
+            color: black;
+            text-align: center;
+            margin-top: 90%;
+        }
         .search-container {
             text-align: right;
             margin: 10px;
@@ -160,27 +160,30 @@
         }
     </style>
 </head>
-<body><div class="sidebar" id="mySidebar">
-  <a href=".\index.html">Home</a>
-  <a href=".\About Academy.HTML">About Academy</a>
-  <a href=".\images of academy.HTML">Images of Academy</a>
-  <a href=".\Achievements.html"> Achievements </a>
-    <a href=".\Admission.HTML"> Admission </a>
-    <a href=".\shop.html"> Shop.com </a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-</div>
+<body>
+    <div class="sidebar" id="mySidebar">
+        <a href="./index.html">Home</a>
+        <a href="./About Academy.HTML">About Academy</a>
+        <a href="./images of academy.HTML">Images of Academy</a>
+        <a href="./Achievements.html">Achievements</a>
+        <a href="./Admission.HTML">Admission</a>
+        <a href="./shop.html">Shop.com</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    </div>
 
-<!-- Rest of your content -->
-<nav>
-  <button onclick="openNav()"> ☰ </button>
-</nav>
+    <nav>
+        <button onclick="openNav()">☰</button>
+    </nav>
+
     <div class="heading">
         <h1>Panni AI ᵇᵉᵗᵃ</h1>
     </div>
+
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search questions...">
         <div id="search-results"></div>
     </div>
+
     <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
         <div class="input-container">
@@ -188,14 +191,16 @@
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
+
     <div class="footer">
         <h6>It is recommended to start the conversation with what/how/do.</h6>
     </div>
+
     <script>
         const responses = {
             "what is the size of the pool": "We have the largest pool in the whole desert of about 2.5 cm in depth.",
             "what can you do": "I can answer simple questions related this website",
-            "tell me about this website": "This website highlights the well known wayer sports academy -Panni Academy of Water sports",
+            "tell me about this website": "This website highlights the well known water sports academy - Panni Academy of Water sports",
             "who is your creator": "I was made by Mr. Panni.",
             "what functions do you provide": "I am Panni AI your personal assistant which will help you to guide through our website",
             "hi": "Hello! How can I assist you today?",
@@ -203,7 +208,6 @@
             "how are you": "I'm just a bunch of code, but I'm here to help you!",
             "bye": "Goodbye! Have a great day!",
             "what is your name": "I'm Panni AI, your virtual assistant!",
-            "what can you do": "I can answer simple questions such as- do you offer online courses, what are your business hours, etc based on predefined responses.",
             "how can i get admission": "You can get admission by filling out the online form available on our website.",
             "what are the courses offered?": "We offer a variety of courses including Kayaking, Swimming etc",
             "where are you located": "We are located at 123 Main Street, Anytown",
@@ -225,162 +229,69 @@
             "can i take multiple courses at once": "Yes, you can enroll in multiple courses at the same time.",
             "do you offer internships": "Yes, we offer internships for students who have completed certain courses.",
             "what is your privacy policy": "You can read our privacy policy on our website under the 'Privacy Policy' section.",
-            "do you have any free resources": "Yes, we offer a variety of free resources including blog posts, tutorials, and webinars.",
-            "what languages are the courses offered in": "Our courses are primarily offered in English.",
-            "how do i update my profile information": "You can update your profile information by logging into your account and going to the 'Profile' section.",
-            "what is your cancellation policy": "You can cancel your enrollment within 7 days for a full refund.",
-            "can i transfer my course to someone else": "Course transfers are not allowed. Each enrollment is unique to the individual.",
-            "do you offer live classes": "Yes, we offer live classes for certain courses.",
-            "how do i access the course materials": "Once enrolled, you can access the course materials through your account on our website.",
-            "can i download the course materials": "Yes, you can download certain course materials for offline use.",
-            "what is the grading system": "Our courses use a pass/fail grading system based on assessments and assignments.",
-            "do you offer career counseling": "Yes, we offer career counseling services to help you with your career goals.",
-            "how can i provide feedback": "You can provide feedback through the feedback form available on our website.",
-            "what is the course schedule": "The course schedule varies. Please check the course details for specific schedules.",
-            "can i take a break from the course": "Yes, you can take a break and resume the course at your convenience.",
-            "how do i contact the instructor": "You can contact the instructor through the messaging system on our platform.",
-            "what is the class size": "The class size varies for each course. Please check the course details for more information.",
-            "do you offer scholarships": "Yes, we offer scholarships for deserving students. Please check our website for more details.",
-            "what are the prerequisites for the courses": "The prerequisites vary for each course. Please check the course details for specific prerequisites.",
-            "how do i access the live classes": "You can access live classes through the link provided in your course dashboard.",
-            "do you offer job placement assistance": "Yes, we offer job placement assistance for students who successfully complete our courses.",
-            "how do i submit assignments": "You can submit assignments through the course portal on our website.",
-            "what if i have technical issues": "If you encounter technical issues, please contact our support team for assistance.",
-            "can i get a demo of the course": "Yes, we offer demo sessions for some of our courses. Please check the course details for availability.",
-            "do you have a newsletter": "Yes, you can subscribe to our newsletter on our website to stay updated on the latest news and offers.",
-            "what is the course content": "The course content varies. Please check the course details for a detailed outline.",
-            "how do i participate in forums": "You can participate in forums through the discussion boards available in your course dashboard.",
-            "do you offer any group activities": "Yes, we offer group activities and projects as part of our courses.",
-            "how can i network with other students": "You can network with other students through our online forums and social media groups.",
-            "what if i forgot my password": "Click on 'Forgot Password' on the login page to reset your password.",
-            "how do i deactivate my account": "Please contact support if you wish to deactivate your account.",
-            "can i reactivate my account": "Yes, you can reactivate your account by contacting support.",
-            "how do i update my payment information": "You can update your payment information in the 'Billing' section of your account.",
-            "is there a community for alumni": "Yes, we have a community for alumni where you can connect and network with other graduates.",
-            "do you offer corporate training": "Yes, we offer corporate training solutions. Please contact our sales team for more information.",
-            "how do i access additional resources": "Additional resources are available in the 'Resources' section of your course dashboard.",
-            "can i get a transcript": "Yes, you can request a transcript by contacting our support team.",
-            "what is the format of the courses": "Our courses include video lectures, readings, and assignments.",
-            "how do i ask a question during the live class": "You can ask questions during live classes using the chat feature.",
-            "do you offer peer reviews": "Yes, some of our courses include peer review assignments.",
-            "can i see my peers' profiles": "No, we maintain privacy by not sharing profile details with peers.",
-            "do you offer 1-on-1 tutoring": "Yes, we offer 1-on-1 tutoring for an additional fee.",
-            "what equipment do i need": "You will need a computer and internet connection. Some courses may have additional requirements.",
-            "can i access the courses on my phone": "Yes, our platform is mobile-friendly.",
-            "what if i miss a live class": "Live classes are recorded and available for you to watch later.",
-            "how do i give a course review": "You can review the course in the 'Reviews' section of your course dashboard.",
-            "can i share my certificate on social media": "Yes, you can share your certificate on social media.",
-            "how do i change my email address": "You can change your email address in the 'Profile' section of your account.",
-            "what are the terms and conditions": "The terms and conditions are available on our website under the 'Terms and Conditions' section.",
-            "do you offer language support": "Currently, our courses are offered only in English.",
-            "how do i join a study group": "You can join a study group through the 'Groups' section of your course dashboard.",
-            "what is your mission": "Our mission is to provide quality education accessible to everyone.",
-            "how can i become an instructor": "You can apply to become an instructor through the 'Careers' section on our website.",
-            "do you have partnerships with companies": "Yes, we have partnerships with various companies to provide job placement assistance.",
-            "how do i report an issue": "You can report an issue through the 'Support' section of your account.",
-            "can i suggest a course topic": "Yes, you can suggest a course topic through the 'Feedback' section of our website.",
-            "what is the pass mark": "The pass mark varies by course. Please check the course details for specific information.",
-            "how do i request a tutor": "You can request a tutor through the 'Tutoring' section of your course dashboard.",
-            "do you offer group discounts": "Yes, we offer group discounts for organizations and schools.",
-            "can i audit a course": "Yes, you can audit a course, but you will not receive a certificate.",
-            "do you offer family plans": "Yes, we offer family plans. Please check our website for more details.",
-            "how do i upgrade my plan": "You can upgrade your plan through the 'Billing' section of your account.",
-            "what happens if i fail": "If you fail a course, you can retake it or contact support for further assistance.",
-            "how do i change my password": "You can change your password in the 'Profile' section of your account.",
-            "do you have a referral program": "Yes, we have a referral program. You can find more details in the 'Referral' section of our website.",
-            "can i preview a course": "Yes, we offer previews for some of our courses. Please check the course details for availability.",
-            "what is the format for assignments": "The format for assignments varies by course. Please check the course details for specific information.",
-            "how do i appeal a grade": "You can appeal a grade by contacting the instructor through the course portal."
+            "do you have any free courses": "Yes, we offer some free courses. Check our website for more details.",
+            "how do i apply for a scholarship": "You can apply for a scholarship by filling out the scholarship application form on our website.",
+            "what is the eligibility criteria for admission": "The eligibility criteria varies for each course. Please check the course details for more information.",
+            "can i get a tour of the campus": "Yes, we offer campus tours. Please contact us to schedule a tour.",
+            "how do i join the alumni network": "You can join the alumni network by signing up on our alumni page.",
+            "do you have a blog": "Yes, we have a blog where we post updates and articles. Check it out on our website.",
+            "how do i subscribe to the newsletter": "You can subscribe to our newsletter by entering your email in the subscription box on our website.",
+            "do you have any partnerships": "Yes, we have partnerships with various organizations. Check our website for more details.",
+            "can i volunteer at your organization": "Yes, we welcome volunteers. Please contact us for more information.",
+            "what events do you host": "We host a variety of events including workshops, webinars, and networking events.",
+            "can i book a consultation": "Yes, you can book a consultation by visiting our website and selecting the 'Book a Consultation' option."
         };
 
-        function getResponse(input) {
-            input = input.toLowerCase().replace(/[^\w\s]/gi, '');
-            let response = response[input];
-            if (!response) {
-            const words = input.split(' ');
-                const permutations = generatePermutations(words);
-            for (let perm of permutations) {
-                response = responses[perm];
-                    if (response) break;
-            }
-            }
-            return response || "I'm sorry, I don't understand that. Can you please rephrase?";
-        }
-        function generatePermutations(words) {
-            if (words.length === 1) return words;
-            let perms = [];
-            for (let i = 0; i < words.length; i++) {
-                const firstWord = words[i];
-                const remainingWords = words.slice(0, i).concat(words.slice(i + 1));
-                const innerPermutations = generatePermutations(remainingWords);
-                for (let perm of innerPermutations) {
-                    perms.push(firstWord + ' ' + perm);
-                }
-                }
-            return perms;
-        }
-                const keyWords = key.split(" ");
-                if (keyWords.every(word => words.includes(word))) {
-                    return responses[key];
-                }
-            }
-            return "Sorry, I didn't understand that. Can you please rephrase?";
+        function openNav() {
+            document.getElementById("mySidebar").style.left = "0";
+            document.querySelector(".content").classList.add("opened");
         }
 
-        document.getElementById("send-btn").addEventListener("click", () => {
-            const userInput = document.getElementById("user-input").value;
-            const response = getResponse(userInput);
-            const chatLog = document.getElementById('chat-log');
-            chatLog.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
-            chatLog.innerHTML += `<p><strong>Panni AI:</strong> ${response}</p>`;
-            document.getElementById('user-input').value = '';
-        });
+        function closeNav() {
+            document.getElementById("mySidebar").style.left = "-250px";
+            document.querySelector(".content").classList.remove("opened");
+        }
+
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.toLowerCase();
-            if (userInput.trim() === "") return;
-
+            const chatBox = document.getElementById("chat-box");
             const userMessageDiv = document.createElement("div");
             userMessageDiv.className = "message user-message";
             userMessageDiv.textContent = userInput;
-            document.getElementById("chat-box").appendChild(userMessageDiv);
+            chatBox.appendChild(userMessageDiv);
+            document.getElementById("user-input").value = "";
 
-            const botResponse = getResponse(userInput);
             const botMessageDiv = document.createElement("div");
             botMessageDiv.className = "message bot-message";
-            botMessageDiv.className = botResponse;
-            document.getElementById("chat-box").appendChild(botMessageDiv);
-            document.getElementById("user-input").value = " ";
-            document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+
+            if (responses[userInput]) {
+                botMessageDiv.textContent = responses[userInput];
+            } else {
+                botMessageDiv.textContent = "I'm sorry, I don't understand that question.";
+            }
+            chatBox.appendChild(botMessageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
-        document.getElementById('search-input').addEventListener('input', function() {
+
+        document.getElementById("search-input").addEventListener("input", function () {
             const query = this.value.toLowerCase();
-            const searchResults = document.getElementById('search-results');
-            searchResults.innerHTML = '';
-            const keywords = query.split(' ');
-                for (const question in responses) {
-                    if (keywords.some(keyword => question.includes(keyword))) {
-                        const resultItem = document.createElement('p');
-                        resultItem.innerText = question;
-                        resultItem.onclick = function() {
-                            document.getElementById('user-input').value = this.innerText;
-                            searchResults.innerHTML = '';
+            const resultsContainer = document.getElementById("search-results");
+            resultsContainer.innerHTML = "";
+
+            if (query.length > 2) {
+                for (let key in responses) {
+                    if (key.includes(query)) {
+                        const result = document.createElement("p");
+                        result.textContent = key;
+                        result.onclick = function () {
+                            document.getElementById("user-input").value = key;
+                            resultsContainer.innerHTML = "";
                         };
-                        searchResults.appendChild(resultItem);
+                        resultsContainer.appendChild(result);
                     }
                 }
-                }
+            }
         });
-            
-        function openNav() {
-    document.getElementById("mySidebar").style.left = "0";
-    document.querySelector('.content').classList.add('opened');
-  }
-
-  function closeNav() {
-    document.getElementById("mySidebar").style.left = "-250px";
-    document.querySelector('.content').classList.remove('opened');
-  }
-        
     </script>
 </body>
 </html>
