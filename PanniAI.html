@@ -309,6 +309,16 @@
         function generatePermutations(words) {
             if (words.length === 1) return words;
             let perms = [];
+            for (let i = 0; i < words.length; i++) {
+                const firstWord = words[i];
+                const remainingWords = words.slice(0, i).concat(words.slice(i + 1));
+                const innerPermutations = generatePermutations(remainingWords);
+                for (let perm of innerPermutations) {
+                    perms.push(firstWord + ' ' + perm);
+                }
+                }
+            return perms;
+        }
                 const keyWords = key.split(" ");
                 if (keyWords.every(word => words.includes(word))) {
                     return responses[key];
@@ -317,50 +327,38 @@
             return "Sorry, I didn't understand that. Can you please rephrase?";
         }
 
-        document.getElementById("send-button").addEventListener("click", function() {
+        document.getElementById("send-btn").addEventListener("click", () => {
             const userInput = document.getElementById("user-input").value;
-            if (userInput.trim() !== "") {
-                const userMessage = document.createElement("div");
-                userMessage.className = "message user-message";
-                userMessage.textContent = userInput;
-                document.getElementById("chat-box").appendChild(userMessage);
-
-                const botResponse = getResponse(userInput);
-                const botMessage = document.createElement("div");
-                botMessage.className = "message bot-message";
-                botMessage.textContent = botResponse;
-                document.getElementById("chat-box").appendChild(botMessage);
-
-                document.getElementById("user-input").value = "";
-                document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
-            }
+            const response = getResponse(userInput);
+            const chatLog = document.getElementById('chat-log');
+            chatLog.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            chatLog.innerHTML += `<p><strong>Panni AI:</strong> ${response}</p>`;
+            document.getElementById('user-input').value = '';
         });
+        function sendMessage() {
+            const userInput = document.getElementById("user-input").value.toLowerCase();
+            if (userInput.trim() === "") return;
 
-        document.getElementById("user-input").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                document.getElementById("send-button").click();
-            }
-        });
-        function openNav() {
-    document.getElementById("mySidebar").style.left = "0";
-    document.querySelector('.content').classList.add('opened');
-  }
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.className = "message user-message";
+            userMessageDiv.textContent = userInput;
+            document.getElementById("chat-box").appendChild(userMessageDiv);
 
-  function closeNav() {
-    document.getElementById("mySidebar").style.left = "-250px";
-    document.querySelector('.content').classList.remove('opened');
-  }
+            const botResponse = getResponse(userInput);
+            const botMessageDiv = document.createElement("div");
+            botMessageDiv.className = "message bot-message";
+            botMessageDiv.className = botResponse;
+            document.getElementById("chat-box").appendChild(botMessageDiv);
+            document.getElementById("user-input").value = " ";
+            document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+        }
         document.getElementById('search-input').addEventListener('input', function() {
             const query = this.value.toLowerCase();
             const searchResults = document.getElementById('search-results');
             searchResults.innerHTML = '';
-
-            if (query) {
+            const keywords = query.split(' ');
                 for (const question in responses) {
-                    if (question.includes(query)) {
-                        if (query) {
-                for (const question in responses) {
-                    if (question.includes(query)) {
+                    if (keywords.some(keyword => question.includes(keyword))) {
                         const resultItem = document.createElement('p');
                         resultItem.innerText = question;
                         resultItem.onclick = function() {
@@ -370,8 +368,19 @@
                         searchResults.appendChild(resultItem);
                     }
                 }
-                        }
-                    });
+                }
+        });
+            
+        function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+    document.querySelector('.content').classList.add('opened');
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.left = "-250px";
+    document.querySelector('.content').classList.remove('opened');
+  }
+        
     </script>
 </body>
 </html>
