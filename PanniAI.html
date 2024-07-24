@@ -239,17 +239,20 @@
             chatBox.appendChild(userMessageDiv);
             document.getElementById("user-input").value = "";
 
-            const botMessageDiv = document.createElement("div");
-            botMessageDiv.className = "message bot-message";
+            const questions = userInput.split(/[?.!]\s*/).filter(Boolean);
+            questions.forEach(question => {
+                const botMessageDiv = document.createElement("div");
+                botMessageDiv.className = "message bot-message";
 
-            if (responses[userInput]) {
-                botMessageDiv.textContent = responses[userInput];
-            } else {
-                botMessageDiv.textContent = getBestResponse(userInput);
-            }
-            chatBox.appendChild(botMessageDiv);
+                if (responses[question]) {
+                    botMessageDiv.textContent = responses[question];
+                } else {
+                    botMessageDiv.textContent = getBestResponse(question);
+                }
+                chatBox.appendChild(botMessageDiv);
+            });
+
             chatBox.scrollTop = chatBox.scrollHeight;
-
             previousUserInput = userInput;
         }
 
