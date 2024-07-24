@@ -104,13 +104,14 @@
         }
         .input-container {
             display: flex;
+            flex-direction: column;
         }
         .input-container input {
             flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-right: 10px;
+            margin-bottom: 10px;
         }
         .input-container button {
             padding: 10px 15px;
@@ -132,15 +133,6 @@
             color: black;
             text-align: center;
             margin-top: 80%;
-        }
-        .search-container {
-            text-align: right;
-            margin: 10px;
-        }
-        .search-container input {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
         }
         #search-results {
             max-height: 150px;
@@ -174,43 +166,39 @@
     <nav>
         <button onclick="openNav()">☰</button>
     </nav>
-
+<div class="footer">
+        <h6>It is recommended to use the provided search results.</h6>
+</div>
     <div class="heading">
         <h1>Panni AI ᵇᵉᵗᵃ</h1>
-    </div>
-
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search questions...">
-        <div id="search-results"></div>
     </div>
 
     <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
         <div class="input-container">
             <input type="text" id="user-input" placeholder="Ask anything about this website...">
+            <div id="search-results"></div>
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
 
-    <div class="footer">
-        <h6>It is recommended to use the address bar for starting the conversation.</h6>
-    </div>
+
 
     <script>
         const responses = {
             "what is the size of the pool": "We have the largest pool in the whole desert of about 2.5 cm in depth.",
-            "what can you do": "I can answer simple questions related this website",
-            "tell me about this website": "This website highlights the well known water sports academy - Panni Academy of Water sports",
+            "what can you do": "I can answer simple questions related to this website.",
+            "tell me about this website": "This website highlights the well known water sports academy - Panni Academy of Water sports.",
             "who is your creator": "I was made by Mr. Panni.",
-            "what functions do you provide": "I am Panni AI your personal assistant which will help you to guide through our website",
+            "what functions do you provide": "I am Panni AI, your personal assistant which will help you to guide through our website.",
             "hi": "Hello! How can I assist you today?",
             "hello": "Hi there! How can I help you?",
             "how are you": "I'm just a bunch of code, but I'm here to help you!",
             "bye": "Goodbye! Have a great day!",
             "what is your name": "I'm Panni AI, your virtual assistant!",
             "how can i get admission": "You can get admission by filling out the online form available on our website.",
-            "what are the courses offered?": "We offer a variety of courses including Kayaking, Swimming etc",
-            "where are you located": "We are located at 123 Main Street, Anytown",
+            "what are the courses offered?": "We offer a variety of courses including Kayaking, Swimming etc.",
+            "where are you located": "We are located at 123 Main Street, Anytown.",
             "how can i contact support": "You can contact support by emailing support@example.com or calling (123) 456-7890.",
             "what are your business hours": "Our business hours are Monday to Friday, 9 AM to 5 PM.",
             "do you offer online courses": "Yes, we offer a variety of online courses that you can take at your own pace.",
@@ -273,7 +261,7 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        document.getElementById("search-input").addEventListener("input", function () {
+        document.getElementById("user-input").addEventListener("input", function () {
             const query = this.value.toLowerCase();
             const resultsContainer = document.getElementById("search-results");
             resultsContainer.innerHTML = "";
