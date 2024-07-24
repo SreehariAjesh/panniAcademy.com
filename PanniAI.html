@@ -132,7 +132,7 @@
         .footer {
             color: black;
             text-align: center;
-            margin-top: 80%;
+            margin-top: 90%;
         }
         #search-results {
             max-height: 150px;
@@ -180,9 +180,9 @@
         </div>
     </div>
 
-<div class="footer">
-        <h6>It is recommended to use the provided search results.</h6>
-</div>
+    <div class="footer">
+        <h6>It is recommended to start the conversation with what/how/do.</h6>
+    </div>
 
     <script>
         const responses = {
@@ -203,24 +203,9 @@
             "what are your business hours": "Our business hours are Monday to Friday, 9 AM to 5 PM.",
             "do you offer online courses": "Yes, we offer a variety of online courses that you can take at your own pace.",
             "can i get a refund": "Refunds are handled on a case-by-case basis. Please contact support for assistance.",
-            "what is your refund policy": "Our refund policy allows for refunds within 30 days of purchase with valid reason.",
-            "how much does the course cost": "The cost of each course varies. Please check the course details on our website.",
-            "do you offer any discounts": "Yes, we offer discounts for early registrations and group enrollments.",
-            "is there a trial period": "We offer a 7-day trial period for most of our courses.",
-            "how do i reset my password": "You can reset your password by clicking on the 'Forgot Password' link on the login page.",
-            "what is the duration of the courses": "The duration of each course varies. Please check the course details for more information.",
-            "do you provide certificates": "Yes, we provide certificates upon successful completion of our courses.",
-            "can i access the course materials after completion": "Yes, you will have lifetime access to the course materials after completion.",
-            "how do i enroll in a course": "You can enroll in a course by visiting our website and selecting the course you are interested in.",
-            "what payment methods do you accept": "We accept credit cards, debit cards, and PayPal.",
-            "is there a mobile app": "Yes, we have a mobile app available for both iOS and Android devices.",
-            "can i take multiple courses at once": "Yes, you can enroll in multiple courses at the same time.",
-            "do you offer internships": "Yes, we offer internships for students who have completed certain courses.",
-            "what is your privacy policy": "You can read our privacy policy on our website under the 'Privacy Policy' section.",
-            "do you have any free courses": "Yes, we offer some free courses. Check our website for more details.",
-            "how do i apply for a scholarship": "You can apply for a scholarship by filling out the scholarship application form on our website.",
-            "what is the eligibility criteria for admission": "The eligibility criteria varies for each course. Please check the course details for more information.",
-            "can i get a tour of the campus": "Yes, we offer campus tours. Please contact us to schedule a tour.",
+            "what is your refund policy": "Our refund policy can be found on our website under 'Terms and Conditions.'",
+            "do you have any job openings": "You can check our current job openings on our careers page.",
+            "can i book a tour": "Yes, we offer campus tours. Please contact us to schedule a tour.",
             "how do i join the alumni network": "You can join the alumni network by signing up on our alumni page.",
             "do you have a blog": "Yes, we have a blog where we post updates and articles. Check it out on our website.",
             "how do i subscribe to the newsletter": "You can subscribe to our newsletter by entering your email in the subscription box on our website.",
@@ -229,6 +214,8 @@
             "what events do you host": "We host a variety of events including workshops, webinars, and networking events.",
             "can i book a consultation": "Yes, you can book a consultation by visiting our website and selecting the 'Book a Consultation' option."
         };
+
+        let previousUserInput = "";
 
         function openNav() {
             document.getElementById("mySidebar").style.left = "0";
@@ -241,8 +228,11 @@
         }
 
         function sendMessage() {
-            const userInput = document.getElementById("user-input").value.toLowerCase();
+            const userInput = document.getElementById("user-input").value.toLowerCase().trim();
             const chatBox = document.getElementById("chat-box");
+
+            if (userInput === "") return;
+
             const userMessageDiv = document.createElement("div");
             userMessageDiv.className = "message user-message";
             userMessageDiv.textContent = userInput;
@@ -255,10 +245,34 @@
             if (responses[userInput]) {
                 botMessageDiv.textContent = responses[userInput];
             } else {
-                botMessageDiv.textContent = "I'm sorry, I don't understand that question.";
+                botMessageDiv.textContent = getBestResponse(userInput);
             }
             chatBox.appendChild(botMessageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
+
+            previousUserInput = userInput;
+        }
+
+        function getBestResponse(userInput) {
+            let bestMatch = "";
+            let highestScore = 0;
+
+            for (let key in responses) {
+                let score = 0;
+                const words = key.split(" ");
+                words.forEach(word => {
+                    if (userInput.includes(word)) {
+                        score++;
+                    }
+                });
+
+                if (score > highestScore) {
+                    highestScore = score;
+                    bestMatch = key;
+                }
+            }
+
+            return highestScore > 0 ? responses[bestMatch] : "I'm sorry, I don't understand that question.";
         }
 
         document.getElementById("user-input").addEventListener("input", function () {
@@ -278,6 +292,12 @@
                         resultsContainer.appendChild(result);
                     }
                 }
+            }
+        });
+
+        document.getElementById("user-input").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                sendMessage();
             }
         });
     </script>
