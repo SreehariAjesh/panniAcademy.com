@@ -131,4 +131,15 @@
         </div>
     </div>
 </body>
+    <script>
+  function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+    document.querySelector('.content').classList.add('opened');
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.left = "-250px";
+    document.querySelector('.content').classList.remove('opened');
+  }
+    </script>
 </html>
