@@ -20,52 +20,47 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #2F3C7E;
+      background: linear-gradient(135deg, #1E3C72, #2A5298);
       color: #FBEAEB;
       font-family: 'Arial', sans-serif;
-      overflow-x: hidden;
     }
 
     .container {
-      background-color: #00246B;
-      color: #CADCFC;
+      background-color: #ff6347;
+      color: #fff;
       padding: 20px;
       text-align: center;
-      border-color: black;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       margin-top: 20px;
-      animation: glow 1.5s infinite alternate;
-    }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px #CADCFC;
-      }
-      100% {
-        box-shadow: 0 0 20px #CADCFC, 0 0 30px #CADCFC, 0 0 40px #CADCFC;
-      }
     }
 
     nav {
-      background-color: #00ffd0;
+      background-color: #2F3C7E;
       padding: 15px;
       text-align: left;
     }
 
     nav button {
-      background-color: #333333;
-      color: #fff;
+      background-color: #00ffd0;
+      color: #333;
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       margin: 0 10px;
-      transition: background-color 0.3s ease;
+      animation: shiver 0.5s infinite;
     }
 
     nav button:hover {
       background-color: #45a049;
+    }
+
+    @keyframes shiver {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
+      100% { transform: translateX(0); }
     }
 
     .sidebar {
@@ -76,10 +71,9 @@
       left: -250px;
       background-color: #111;
       overflow-x: hidden;
-      transition: 0.5s ease;
+      transition: 0.5s;
       padding-top: 60px;
       z-index: 1;
-      animation: shiver 0.1s infinite alternate;
     }
 
     .sidebar a {
@@ -88,7 +82,7 @@
       font-size: 18px;
       color: #818181;
       display: block;
-      transition: color 0.3s ease;
+      transition: 0.3s;
     }
 
     .sidebar a:hover {
@@ -104,7 +98,7 @@
     }
 
     .content {
-      transition: margin-left 0.5s ease;
+      transition: margin-left 0.5s;
       padding: 16px;
     }
 
@@ -112,23 +106,20 @@
       margin-left: 250px;
     }
 
-    @keyframes shiver {
-      0% {
-        transform: translateX(-2px);
-      }
-      100% {
-        transform: translateX(2px);
-      }
-    }
-
     h1 {
       color: #FFD700;
-      text-shadow: 2px 2px #FF4500;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6em;
     }
 
     h3 {
-      color: #FFDEAD;
-      text-shadow: 1px 1px #008B8B;
+      background-color: #ff6347;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
     }
   </style>
 </head>
@@ -146,26 +137,28 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 </div>
 
-<!-- Rest of your content -->
+<!-- Navigation -->
 <nav>
   <button onclick="openNav()"> ☰ </button>
 </nav>
 
+<!-- Main Content -->
 <center>
   <div class="container">
-    <h1>PANNI ACADEMY OF WATER SPORTS</h1><br> <br>
+    <h1>PANNI ACADEMY OF WATER SPORTS</h1>
+    <br><br>
   </div>
   <h1><b>"DIVE INTO EXCELLENCE: WHERE WAVES MEET MASTERY!"</b></h1>
 
   <p>Welcome to the one and only Water Sports Academy that opens at Rajasthan <b>THE PANNI ACADEMY OF WATER SPORTS</b> where every ripple tells a story of passion and expertise. Our academy is more than an academic adventure: it's a journey where water enthusiasts find a heaven to refine their skills and embrace the thrill of water sports. From beginners seeking the first splash of excitement to seasoned athletes aiming for precision like our MR.PANNI.</p>
-  <p> Welcome to Panni Academy of Water Sports, your premier destination for aquatic adventure and expertise! Nestled in an oasis of excitement amidst a tranquil desert, our academy offers world-class training and facilities for a variety of water sports. Whether you're a beginner looking to learn the basics or an experienced athlete aiming to hone your skills, our dedicated team of certified instructors is here to guide you every step of the way. Dive into our comprehensive programs, which include swimming, kayaking, windsurfing, and more, all designed to foster confidence, safety, and a love for water sports. Join us at Panni Academy and make a splash in your journey towards mastering the waves!</p>
+  <p>Welcome to Panni Academy of Water Sports, your premier destination for aquatic adventure and expertise! Nestled in an oasis of excitement amidst a tranquil desert, our academy offers world-class training and facilities for a variety of water sports. Whether you're a beginner looking to learn the basics or an experienced athlete aiming to hone your skills, our dedicated team of certified instructors is here to guide you every step of the way. Dive into our comprehensive programs, which include swimming, kayaking, windsurfing, and more, all designed to foster confidence, safety, and a love for water sports. Join us at Panni Academy and make a splash in your journey towards mastering the waves!</p>
 </center>
-
+  
 <center>
-  <h3>SO WHAT ARE YOU WAITING FOR; TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW TO THE BEST WATER SPORTS ACADEMY</h3>
+  <h3>SO WHAT ARE YOU WAITING FOR? TAKE THE EXCITING JOY OF WATER WITH CAMELS; JOIN NOW AT THE BEST WATER SPORTS ACADEMY!</h3>
 </center>
 
-<!-- Your existing script -->
+<!-- Scripts -->
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.left = "0";
