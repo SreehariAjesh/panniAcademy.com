@@ -9,13 +9,13 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(120deg, #84fab0, #8fd3f4);
+      background: linear-gradient(120deg, #e0c3fc, #8ec5fc);
       color: #333;
       font-family: 'Arial', sans-serif;
     }
 
     nav {
-      background-color: linear-gradient(120deg, #84fab0, #8fd3f4);;
+      background-color: #023e8a;
       padding: 15px;
       text-align: left;
     }
@@ -41,7 +41,7 @@
       position: fixed;
       top: 0;
       left: -250px;
-      background-color: #03045e;
+      background-color: #023e8a;
       overflow-x: hidden;
       transition: 0.5s;
       padding-top: 60px;
@@ -78,38 +78,56 @@
       margin-left: 250px;
     }
 
-    h2, h4, h1 {
+    h1, h2, h4, h3 {
       text-align: center;
       color: #023e8a;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     h2 {
-      margin-top: 20px;
-    }
-
-    h4 {
-      margin: 20px 0;
+      margin-top: 30px;
     }
 
     mark {
       background-color: #ffcc00;
       color: #000;
-      padding: 0 10px;
+      padding: 5px 10px;
       border-radius: 5px;
     }
 
     hr {
-      border: 0;
-      height: 2px;
-      background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+      border: none;
+      height: 3px;
+      background-image: linear-gradient(to right, #023e8a, #00b4d8);
+      margin: 20px 0;
     }
 
     p {
-      font-size: 1.2em;
-      line-height: 1.6em;
+      font-size: 1.1em;
+      line-height: 1.8em;
       color: #03045e;
-      padding: 0 20px;
+      padding: 0 30px;
       text-align: justify;
+    }
+
+    iframe {
+      border: 3px solid #00b4d8;
+      border-radius: 10px;
+    }
+
+    /* Form styling */
+    .form-container {
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-container h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -127,26 +145,27 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 </div>
 
-<!-- Rest of your content -->
+<!-- Navigation -->
 <nav>
   <button onclick="openNav()"> ☰ </button>
 </nav>
 
-<!-- Main content -->
-<h2>ADMISSION RULES</h2>
-<p>1. Only students who complete 6 years (and born between 1st July 2017 and December 2018) of this year of admission can be admitted progressively to other standards. (This rule is subject to change as per the latest government guidelines).<br>
-2. Pupils cannot be admitted without a Leaving Certificate from the last school attended, and for States other than Sand Nagar, the Leaving Certificate should be duly counter-signed by the Head of the Camel Division in which that school is situated.<br>
-3. Any pupil who desires to join the school fresh from home or from an unrecognized school must produce the official Birth Certificate in support of the date of birth entered in the admission form. Such pupils are subjected to an entrance examination held at the beginning of the academic year and admitted subject to the approval of Mr. Panni.<br>
-4. Information regarding admissions for the Academic Year 2025-26 will be displayed on the display board (ground floor), prior to the distribution of admission forms.</p>
+<!-- Main Content -->
+<div class="content">
+  <h2>ADMISSION RULES</h2>
+  <p>1. Only students who complete 6 years (and born between 1st July 2017 and December 2018) of this year of admission can be admitted progressively to other standards. (This rule is subject to change as per the latest government guidelines).<br><br>
+  2. Pupils cannot be admitted without a Leaving Certificate from the last school attended, and for States other than Sand Nagar, the Leaving Certificate should be duly counter-signed by the Head of the Camel Division in which that school is situated.<br><br>
+  3. Any pupil who desires to join the school fresh from home or from an unrecognized school must produce the official Birth Certificate in support of the date of birth entered in the admission form. Such pupils are subjected to an entrance examination held at the beginning of the academic year and admitted subject to the approval of Mr. Panni.<br><br>
+  4. Information regarding admissions for the Academic Year 2025-26 will be displayed on the display board (ground floor), prior to the distribution of admission forms.</p>
 
-<h2><mark>If you want to admit your pupil in PANNI ACADEMY OF WATER SPORTS kindly fill the form below.</mark></h2>
-<h4>Our academy is situated in Rajasthan. That's why we built our school in this area so that the students can breathe fresh air and study and play happily WITH THE PRECIOUS WATER AND CAMELS.</h4>
-<hr>
-<center><h1>Registration Form</h1></center>
-<hr>
+  <h2><mark>If you want to admit your pupil in PANNI ACADEMY OF WATER SPORTS kindly fill the form below.</mark></h2>
+  <h4>Our academy is situated in Rajasthan. That's why we built our school in this area so that the students can breathe fresh air and study and play happily WITH THE PRECIOUS WATER AND CAMELS.</h4>
+  <hr>
 
-<div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScVLyxSzzAxhVX_bk6cbgcQ4_KeP4AXgqDNPO-6jo_bf4Tzcg/viewform?embedded=true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
+  <div class="form-container">
+    <h1>Registration Form</h1>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScVLyxSzzAxhVX_bk6cbgcQ4_KeP4AXgqDNPO-6jo_bf4Tzcg/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
 </div>
 
 <script>
