@@ -210,6 +210,9 @@
     </style>
 </head>
 <body>
+    <nav>
+  <button onclick="openNav()"> ☰ Menu</button>
+    </nav>
     <div class="header">
         <h1>Water Sports Academy Shop</h1>
         <div class="sidebar" id="mySidebar">
@@ -223,15 +226,13 @@
 </div>
 
 <!-- Rest of your content -->
-<nav>
-  <button onclick="openNav()"> ☰ </button>
-</nav>
+
         <button class="cart-button" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
         <div class="cart" id="cart">
             <h3>Cart Items</h3>
             <div id="cart-items"></div>
             <div id="cart-total"></div>
-            <button class="checkout-button" onclick="https://forms.gle/hoFEvi96oxNgMVKA8">Proceed to Checkout</button>
+            <button class="checkout-button" onclick="window.location.href='https://forms.gle/hoFEvi96oxNgMVKA8'">Proceed to Checkout</button>
         </div>
     </div>
 
