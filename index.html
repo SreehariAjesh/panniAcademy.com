@@ -13,7 +13,124 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
-    /* Your existing CSS */
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #007991, #78ffd6);
+      color: #333;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .container {
+      background-color: #005f73;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    nav button {
+      background-color: #ffb703;
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    nav button:hover {
+      background-color: #ff8800;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: #011627;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #f0f0f0;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #00a8e8;
+      color: #fff;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-size: 36px;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    .content.opened {
+      margin-left: 250px;
+    }
+
+    h1 {
+      color: #ffdd57;
+      font-size: 2.5em;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #f0f0f0;
+      max-width: 900px;
+      padding: 0 15px;
+      text-align: justify;
+    }
+
+    h3 {
+      background-color: #fb8500;
+      padding: 15px;
+      border-radius: 5px;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 1.5em;
+    }
+
+    /* Style for installation instructions box */
+    .install-instructions {
+      display: none;
+      background-color: #ffeb3b;
+      color: #333;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 20px auto;
+      max-width: 600px;
+    }
+ );
+
+
   </style>
 </head>
 <body>
