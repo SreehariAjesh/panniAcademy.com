@@ -99,7 +99,6 @@
     h1 {
       color: #ffdd57;
       font-size: 2.5em;
-
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     }
 
@@ -108,7 +107,6 @@
       line-height: 1.8;
       color: #f0f0f0;
       max-width: 900px;
-
       padding: 0 15px;
       text-align: justify;
     }
@@ -120,10 +118,19 @@
       color: white;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       font-size: 1.5em;
-
     }
 
-
+    /* Style for installation instructions box */
+    .install-instructions {
+      display: none;
+      background-color: #ffeb3b;
+      color: #333;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 20px auto;
+      max-width: 600px;
+    }
   </style>
 </head>
 <body>
@@ -146,7 +153,7 @@
 </nav>
 
 <!-- Main Content -->
-<div class=".content">
+<div class="content">
   <center>
     <div class="container">
       <h1>PANNI ACADEMY OF WATER SPORTS</h1>
@@ -163,6 +170,16 @@
   </center>
 </div>
 
+<!-- Install Instructions Box -->
+<div id="install-instructions" class="install-instructions">
+  <h2>Install the Panni Academy App</h2>
+  <p>To install the Panni Academy app on your device, follow these steps:</p>
+  <ul>
+    <li>On Android: Tap the menu button (three dots) in the top right corner of your browser, then select "Add to Home Screen."</li>
+    <li>On iOS: Tap the Share button at the bottom of the screen, then choose "Add to Home Screen."</li>
+  </ul>
+  <button onclick="closeInstallInstructions()">Close</button>
+</div>
 
 <!-- Scripts -->
 <script>
@@ -175,6 +192,24 @@
     document.getElementById("mySidebar").style.left = "-250px";
     document.querySelector('.content').classList.remove('opened');
   }
+
+  function closeInstallInstructions() {
+    document.getElementById('install-instructions').style.display = 'none';
+  }
+
+  // Add to Home Screen Prompt Handling
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById('install-instructions').style.display = 'block';
+  });
+
+  window.addEventListener('appinstalled', () => {
+    console.log('PWA was installed');
+    document.getElementById('install-instructions').style.display = 'none';
+  });
 </script>
 
 </body>
