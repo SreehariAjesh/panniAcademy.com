@@ -4,22 +4,22 @@
   "description": "An academy for water sports located in Rajasthan",
   "icons": [
     {
-      "src": "Images/favicon-192x192.png",
+      "src": "Images/192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "Images/apple-touch-icon.png",
+      "src": "Images/180x180.png",
       "type": "image/png",
       "sizes": "180x180"
     },
     {
-      "src": "Images/favicon-32x32.png",
+      "src": "Images/32x32.png",
       "type": "image/png",
       "sizes": "32x32"
     },
     {
-      "src": "Images/favicon-16x16.png",
+      "src": "Images/16x16.png",
       "type": "image/png",
       "sizes": "16x16"
     }
