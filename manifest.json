@@ -1,21 +1,31 @@
 {
-  "name": "Panni Academy",
+  "name": "Panni Academy of Water Sports",
   "short_name": "Panni Academy",
-  "description": "The Best Water Sports Academy",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#007bff",
+  "description": "An academy for water sports located in Rajasthan",
   "icons": [
     {
-      "src": "images/6262d795-9c1a-4c99-9423-cd1499fce84c.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "Images/favicon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
-      "src": "images/6262d795-9c1a-4c99-9423-cd1499fce84c (1).png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "Images/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "Images/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "Images/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
     }
-  ]
+  ],
+  "start_url": "index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "theme_color": "#007991"
 }
