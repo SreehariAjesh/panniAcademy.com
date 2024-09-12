@@ -21,6 +21,7 @@ function closeInstallInstructions() {
 }
 
 // Open and close sidebar navigation
+// Open and close sidebar navigation (same as before)
 function openNav() {
   document.getElementById("mySidebar").style.left = "0";
   document.querySelector('.content').classList.add('opened');
@@ -31,9 +32,25 @@ function closeNav() {
   document.querySelector('.content').classList.remove('opened');
 }
 
-// Check if the app is already installed
+// Detect if app is running as a PWA
 if (window.matchMedia('(display-mode: standalone)').matches) {
+  // App-specific content
+  document.getElementById('app-content').style.display = 'block';
+  document.getElementById('web-content').style.display = 'none';
   console.log('App is running in standalone mode');
 } else {
-  console.log('App is running in browser');
+  // Website-specific content
+  document.getElementById('app-content').style.display = 'none';
+  document.getElementById('web-content').style.display = 'block';
+  console.log('App is running in a web browser');
+}
+
+// Register service worker for offline capabilities
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+      console.log('Service Worker Registered!', registration);
+    }).catch(function(error) {
+      console.log('Service Worker registration failed:', error);
+    });
 }
