@@ -174,7 +174,15 @@
   </ul>
   <button onclick="closeInstallInstructions()">Close</button>
 </div>
-
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    console.log('Service Worker Registered!', reg);
+  }).catch(function(err) {
+    console.log('Service Worker registration failed: ', err);
+  });
+}
+</script>
 <script src="app.js"></script>
 </body>
 </html>
