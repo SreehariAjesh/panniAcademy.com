@@ -54,3 +54,37 @@ if ('serviceWorker' in navigator) {
       console.log('Service Worker registration failed:', error);
     });
 }
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Success! Redirect to profile page
+      alert('User Logged In Successfully!');
+      window.location.href = 'profile.html';
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+});
+const registerForm = document.getElementById('registerForm');
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Success! Redirect to profile page
+      alert('User Registered Successfully!');
+      window.location.href = 'profile.html';
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+});
