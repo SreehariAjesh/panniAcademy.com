@@ -13,7 +13,6 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
-    
     body {
       margin: 0;
       padding: 0;
@@ -117,6 +116,58 @@
       font-size: 1.5em;
     }
 
+    /* App-specific styles */
+    .app-header {
+      background-color: #004d61;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .app-banner {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button {
+      background-color: #ffb703;
+      color: #333;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .cta-button:hover {
+      background-color: #ff8800;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #011627;
+      color: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
     /* Style for installation instructions box */
     .install-instructions {
       display: none;
@@ -128,13 +179,11 @@
       margin: 20px auto;
       max-width: 600px;
     }
- );
-
 
   </style>
 </head>
 <body>
-  <div id="web-content">
+    <div id="web-content">
 <!-- Sidebar -->
 <div class="sidebar" id="mySidebar">
   <a href="Admission.html">Admission</a>
@@ -169,15 +218,19 @@
     <h3>WHAT ARE YOU WAITING FOR? EMBARK ON AN AQUATIC ADVENTURE TODAY!</h3>
   </center>
 </div>
-<div id="app-content" style="display: none;">
-  <center>
-    <div class="container">
-      <h1>PANNI ACADEMY OF WATER SPORTS (App)</h1>
-    </div>
-    <h1><b>"DIVE INTO EXCELLENCE IN THE APP VERSION!"</b></h1>
-    <p>Thank you for installing the Panni Academy of Water Sports app! Enjoy an exclusive in-app experience!</p>
-  </center>
+<!-- PWA Content -->
+<div id="app-content">
+  <header class="app-header">
+    <h1>PANNI ACADEMY OF WATER SPORTS (App)</h1>
+  </header>
+  <div class="app-content">
+    <img src="Images/water_sports.jpg" alt="Water Sports Banner" class="app-banner">
+    <h2>"DIVE INTO EXCELLENCE IN THE APP VERSION!"</h2>
+    <p>Thank you for installing the Panni Academy of Water Sports app! Enjoy an exclusive in-app experience, including live updates, exclusive content, and the latest news from the academy.</p>
+    <button class="cta-button">Start Your Journey</button>
+  </div>
 </div>
+
 <!-- Install Instructions Box -->
 <div id="install-instructions" class="install-instructions">
   <h2>Install the Panni Academy App</h2>
@@ -188,15 +241,7 @@
   </ul>
   <button onclick="closeInstallInstructions()">Close</button>
 </div>
-  <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-    console.log('Service Worker Registered!', reg);
-  }).catch(function(err) {
-    console.log('Service Worker registration failed: ', err);
-  });
-}
-</script>
+
 <script src="app.js"></script>
 </body>
 </html>
