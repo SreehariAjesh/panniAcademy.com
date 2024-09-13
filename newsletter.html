@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe to Our Newsletter | PANNI ACADEMY OF WATER SPORTS</title>
+  
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1, h2 {
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #007991;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    /* Container for form */
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.8;
+      font-size: 1.1em;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    input[type="email"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1.1em;
+    }
+
+    button {
+      background-color: #007991;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #005f73;
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #007991;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 10px;
+      }
+
+      input[type="email"] {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Newsletter Subscription Form -->
+  <div class="container">
+    <h1>Subscribe to Our Newsletter</h1>
+    <p>Stay updated with the latest news, courses, and events from <b>PANNI ACADEMY OF WATER SPORTS</b>. Subscribe now and dive into our exclusive content delivered straight to your inbox!</p>
+
+    <form id="newsletterForm">
+      <input type="email" id="email" placeholder="Enter your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p>Follow us on social media for more updates! 
+      <br><a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+
+      if (email) {
+        alert('Thank you for subscribing with ' + email + '!');
+        // You can integrate this part with your backend or Firebase to store the email
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    });
+  </script>
+
+</body>
+</html>
