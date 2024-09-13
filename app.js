@@ -88,3 +88,19 @@ registerForm.addEventListener('submit', (e) => {
       console.error(error.message);
     });
 });
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    const userProfile = document.getElementById('userProfile');
+    userProfile.innerHTML = `<p>Email: ${user.email}</p>`;
+  } else {
+    window.location.href = 'login.html'; // Redirect if not logged in
+  }
+});
+
+// Logout functionality
+const logoutBtn = document.getElementById('logoutBtn');
+logoutBtn.addEventListener('click', () => {
+  firebase.auth().signOut().then(() => {
+    window.location.href = 'login.html';
+  });
+});
