@@ -240,7 +240,18 @@
     <h2>"DIVE INTO EXCELLENCE IN THE APP VERSION!"</h2>
     <p>Thank you for installing the Panni Academy of Water Sports app! Enjoy an exclusive in-app experience, including live updates, exclusive content, and the latest news from the academy.</p>
     <button class="cta-button">Start Your Journey</button>
-    <script src="app.js"></script>
+    <script>
+function openNav() {
+  document.getElementById("mySidebar").style.left = "0";
+  document.querySelector('.content').classList.add('opened');
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.left = "-250px";
+  document.querySelector('.content').classList.remove('opened');
+}
+
+</script>
   </div>
 </div>
 
