@@ -47,7 +47,7 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 
 // Register service worker for offline capabilities
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
+  navigator.serviceWorker.register('sw.js')
     .then(function(registration) {
       console.log('Service Worker Registered!', registration);
     }).catch(function(error) {
