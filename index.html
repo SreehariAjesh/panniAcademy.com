@@ -221,7 +221,7 @@
 <!-- PWA Content -->
 <div id="app-content">
   <header class="app-header">
-    <div class="sidebar" id="mySidebar">
+<div class="sidebar" id="appSidebar">
   <a href="Admission.HTML">Admission</a>
   <a href="shop.html">Shop</a>
   <a href="newsletter.html">Newsletter</a>
@@ -242,12 +242,12 @@
     <button class="cta-button">Start Your Journey</button>
     <script>
 function openNav() {
-  document.getElementById("mySidebar").style.left = "0";
+  document.getElementById("appSidebar").style.left = "0";
   document.querySelector('.content').classList.add('opened');
 }
 
 function closeNav() {
-  document.getElementById("mySidebar").style.left = "-250px";
+  document.getElementById("appSidebar").style.left = "-250px";
   document.querySelector('.content').classList.remove('opened');
 }
 
@@ -284,7 +284,6 @@ function closeNav() {
 <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 
 <script>
-  $npm install firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAvpSpCc2tKRhb9yJi11iYJW5P906fREU4",
   authDomain: "panni-app.firebaseapp.com",
