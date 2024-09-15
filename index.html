@@ -220,7 +220,7 @@
   </div>
 
   <div class="app-content">
-    <img src="Images/Official Panni Academy.webp" alt="Water Sports Banner" class="app-banner">
+    <img id="appBanner" src="Images/banner1.webp" alt="Water Sports Banner" class="app-banner">
     <h2>"DIVE INTO EXCELLENCE IN THE APP VERSION!"</h2>
     <p>Thank you for installing the Panni Academy of Water Sports app! Enjoy an exclusive in-app experience, including live updates, exclusive content, and the latest news from the academy.</p>
     <button class="cta-button">Start Your Journey</button>
@@ -240,6 +240,23 @@
     document.querySelector('.app-content').classList.remove('opened');
   }
 </script>
+  const images = [
+    'Images/banner1.webp',
+    'Images/banner2.webp',
+    'Images/banner3.webp',
+    'Images/banner4.webp'
+  ];
+
+  let currentIndex = 0;
+  const bannerElement = document.getElementById('appBanner');
+
+  setInterval(() => {
+    // Cycle to the next image
+    currentIndex = (currentIndex + 1) % images.length;
+    bannerElement.src = images[currentIndex];
+  }, 1000);
+  <script> 
+  </script>
 <div id="install-instructions" class="install-instructions">
   <h2>Install the Panni Academy App</h2>
   <p>To install the Panni Academy app on your device, follow these steps:</p>
