@@ -155,12 +155,8 @@
 <body>
 <div class="sidebar" id="mySidebar">
   <a href="Admission.HTML">Admission</a>
-  <a href="About Academy.HTML">About Academy</a>
-  <a href="images of academy.HTML">Images of Academy</a>
-  <a href="Achievements.html">Achievements</a>
   <a href="shop.html">Shop</a>
   <a href="PanniAI.html">Panni helper</a>
-  <a href="review.html">Reviews</a>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 </div>
 
@@ -199,6 +195,16 @@
       }
     });
   </script>
+<script>
+  function openNav() {
+  document.getElementById("mySidebar").style.left = "0";
+  document.querySelector('.content').classList.add('opened');
+}
 
+function closeNav() {
+  document.getElementById("mySidebar").style.left = "-250px";
+  document.querySelector('.content').classList.remove('opened');
+}
+</script>
 </body>
 </html>
