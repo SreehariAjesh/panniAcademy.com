@@ -13,6 +13,7 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
+    /* Styles for Web and App sidebar */
     body {
       margin: 0;
       padding: 0;
@@ -20,7 +21,6 @@
       color: #333;
       font-family: 'Helvetica Neue', sans-serif;
     }
-
     .container {
       background-color: #005f73;
       color: #fff;
@@ -42,11 +42,6 @@
       transition: background-color 0.3s ease;
       font-weight: bold;
     }
-
-    nav button:hover {
-      background-color: #ff8800;
-    }
-
     .sidebar {
       height: 100%;
       width: 250px;
@@ -87,17 +82,15 @@
       transition: margin-left 0.5s;
       padding: 16px;
     }
-
-    .content.opened {
-      margin-left: 250px;
-    }
-
     h1 {
       color: #ffdd57;
       font-size: 2.5em;
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     }
 
+    .content.opened {
+      margin-left: 250px;
+    }
     p {
       font-size: 1.1em;
       line-height: 1.8;
@@ -106,7 +99,6 @@
       padding: 0 15px;
       text-align: justify;
     }
-
     h3 {
       background-color: #fb8500;
       padding: 15px;
@@ -115,8 +107,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       font-size: 1.5em;
     }
-
-    /* App-specific styles */
     .app-header {
       background-color: #004d61;
       color: white;
@@ -125,13 +115,11 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-
     .app-content {
       max-width: 1000px;
       margin: 0 auto;
       text-align: center;
     }
-
     .app-banner {
       width: 100%;
       height: auto;
@@ -156,9 +144,7 @@
     .cta-button:hover {
       background-color: #ff8800;
     }
-
-    /* Footer */
-    .footer {
+.footer {
       background-color: #011627;
       color: #f0f0f0;
       padding: 20px;
@@ -179,11 +165,10 @@
       margin: 20px auto;
       max-width: 600px;
     }
-
   </style>
 </head>
 <body>
-    <div id="web-content">
+<div id="web-content">
 <!-- Sidebar -->
 <div class="sidebar" id="mySidebar">
   <a href="Admission.HTML">Admission</a>
@@ -218,44 +203,43 @@
     <h3>WHAT ARE YOU WAITING FOR? EMBARK ON AN AQUATIC ADVENTURE TODAY!</h3>
   </center>
 </div>
-<!-- PWA Content -->
+<!-- App Content -->
 <div id="app-content">
   <header class="app-header">
-<div class="sidebar" id="appSidebar">
-  <a href="Admission.HTML">Admission</a>
-  <a href="shop.html">Shop</a>
-  <a href="newsletter.html">Newsletter</a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-</div>
-
-<!-- Navigation -->
-<nav>
-  <button onclick="openNav()">☰ Menu</button>
-</nav>
-
+    <nav>
+      <button onclick="openAppNav()">☰ Menu</button>
+    </nav>
     <h1>PANNI ACADEMY OF WATER SPORTS (App)</h1>
   </header>
+  
+  <div class="sidebar" id="appSidebar">
+    <a href="Admission.HTML">Admission</a>
+    <a href="shop.html">Shop</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAppNav()">×</a>
+  </div>
+
   <div class="app-content">
     <img src="Images/Official Panni Academy.webp" alt="Water Sports Banner" class="app-banner">
     <h2>"DIVE INTO EXCELLENCE IN THE APP VERSION!"</h2>
     <p>Thank you for installing the Panni Academy of Water Sports app! Enjoy an exclusive in-app experience, including live updates, exclusive content, and the latest news from the academy.</p>
     <button class="cta-button">Start Your Journey</button>
-    <script>
-function openNav() {
-  document.getElementById("appSidebar").style.left = "0";
-  document.querySelector('.content').classList.add('opened');
-}
-
-function closeNav() {
-  document.getElementById("appSidebar").style.left = "-250px";
-  document.querySelector('.content').classList.remove('opened');
-}
-
-</script>
   </div>
 </div>
 
-<!-- Install Instructions Box -->
+<script>
+  // Function to open the app sidebar
+  function openAppNav() {
+    document.getElementById("appSidebar").style.left = "0";
+    document.querySelector('.app-content').classList.add('opened');
+  }
+
+  // Function to close the app sidebar
+  function closeAppNav() {
+    document.getElementById("appSidebar").style.left = "-250px";
+    document.querySelector('.app-content').classList.remove('opened');
+  }
+</script>
 <div id="install-instructions" class="install-instructions">
   <h2>Install the Panni Academy App</h2>
   <p>To install the Panni Academy app on your device, follow these steps:</p>
@@ -298,5 +282,7 @@ const firebaseConfig = {
   const analytics = firebase.analytics();
 </script>
 
+</body>
+</html>
 </body>
 </html>
