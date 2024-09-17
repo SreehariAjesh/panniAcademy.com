@@ -24,36 +24,30 @@
 
     /* Container for form */
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 50px auto;
-      padding: 20px;
+      padding: 30px;
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       text-align: center;
     }
 
     p {
       color: #666;
       line-height: 1.8;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      margin-bottom: 30px;
     }
 
     /* Form Styles */
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       margin-top: 20px;
-    }
-
-    input[type="email"] {
-      width: 80%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1.1em;
     }
 
     button {
@@ -66,6 +60,7 @@
       font-size: 1.1em;
       transition: background-color 0.3s ease;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
     }
 
     button:hover {
@@ -76,9 +71,9 @@
     .footer {
       background-color: #007991;
       color: white;
-      padding: 10px 20px;
+      padding: 20px;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 50px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
@@ -86,20 +81,23 @@
     .footer a {
       color: white;
       text-decoration: underline;
+      font-weight: bold;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
       .container {
-        width: 90%;
-        padding: 10px;
+        width: 95%;
+        padding: 20px;
       }
 
-      input[type="email"] {
-        width: 95%;
+      iframe {
+        height: 450px;
       }
     }
-        nav button {
+
+    /* Sidebar styles */
+    nav button {
       background-color: #ffb703;
       color: #333;
       padding: 10px 20px;
@@ -150,11 +148,12 @@
       transition: margin-left 0.5s;
       padding: 16px;
     }
+
   </style>
 </head>
 <body>
 <div class="sidebar" id="mySidebar">
-    <a href="index.html">Home</a>
+  <a href="index.html">Home</a>
   <a href="Admission.HTML">Admission</a>
   <a href="shop.html">Shop</a>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -164,38 +163,23 @@
 <nav>
   <button onclick="openNav()">☰</button>
 </nav>
+
   <!-- Newsletter Subscription Form -->
   <div class="container">
-    <h1>Subscribe to Our Newsletter</h1>
-    <p>Stay updated with the latest news, courses, and events from <b>PANNI ACADEMY OF WATER SPORTS</b>. Subscribe now and dive into our exclusive content delivered straight to your inbox!</p>
-<iframe src= "https://docs.google.com/forms/d/e/1FAIpQLSfHrnDEZB8NnB5sfAcklWNr87Rch9dVWBzeTbdJ0-n6kRkCXg/viewform?embedded=true" width="640" height="480" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <h1>Join Our Newsletter</h1>
+    <p>Stay updated with exclusive content, events, and offers from <strong>PANNI ACADEMY OF WATER SPORTS</strong>. Sign up to dive into exciting opportunities straight to your inbox!</p>
 
-    <form id="newsletterForm">
-      <input type="email" id="email" placeholder="Enter your email address" required>
-      <button type="submit">Subscribe</button>
-    </form>
+    <!-- Google Form Embed -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfHrnDEZB8NnB5sfAcklWNr87Rch9dVWBzeTbdJ0-n6kRkCXg/viewform?embedded=true">Loading…</iframe>
   </div>
 
   <!-- Footer Section -->
   <div class="footer">
-    <p>Follow us on social media for more updates! 
+    <p>Follow us for more updates! 
       <br><a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
     </p>
   </div>
 
-  <script>
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-
-      if (email) {
-        alert('Thank you for subscribing with ' + email + '!');
-        // You can integrate this part with your backend or Firebase to store the email
-      } else {
-        alert('Please enter a valid email address.');
-      }
-    });
-  </script>
 <script>
   function openNav() {
   document.getElementById("mySidebar").style.left = "0";
@@ -207,5 +191,6 @@ function closeNav() {
   document.querySelector('.content').classList.remove('opened');
 }
 </script>
+
 </body>
 </html>
