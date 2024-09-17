@@ -191,6 +191,15 @@ function closeNav() {
   document.querySelector('.content').classList.remove('opened');
 }
 </script>
-
+<script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('newsletter.html')
+    .then(function(registration) {
+      console.log('Service Worker Registered!', registration);
+    }).catch(function(error) {
+      console.log('Service Worker registration failed:', error);
+    });
+  }
+</script>
 </body>
 </html>
