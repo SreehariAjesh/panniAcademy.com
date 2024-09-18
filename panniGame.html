@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panni Water Adventure</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      color: #fff;
+    }
+
+    #gameCanvas {
+      display: block;
+      background-color: #1E90FF;
+      border: 5px solid #007991;
+      margin: 0 auto;
+    }
+
+    #score {
+      text-align: center;
+      color: #fff;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .game-over {
+      font-size: 30px;
+      color: red;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Panni Water Adventure</h1>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <div id="score">Score: 0</div>
+  <div id="game-over" class="game-over" style="display: none;">Game Over!</div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Game Variables
+    let swimmer = { x: 50, y: 300, width: 40, height: 40, speed: 5 };
+    let obstacles = [];
+    let waterDroplets = [];
+    let gameSpeed = 3;
+    let score = 0;
+    let isGameOver = false;
+
+    // Controls
+    let upPressed = false;
+    let downPressed = false;
+
+    // Add keydown and keyup event listeners for controls
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowUp') upPressed = true;
+      if (e.key === 'ArrowDown') downPressed = true;
+    });
+
+    document.addEventListener('keyup', function (e) {
+      if (e.key === 'ArrowUp') upPressed = false;
+      if (e.key === 'ArrowDown') downPressed = false;
+    });
+
+    // Function to draw the swimmer
+    function drawSwimmer() {
+      ctx.fillStyle = '#007991';
+      ctx.fillRect(swimmer.x, swimmer.y, swimmer.width, swimmer.height);
+    }
+
+    // Function to move the swimmer
+    function moveSwimmer() {
+      if (upPressed && swimmer.y > 0) swimmer.y -= swimmer.speed;
+      if (downPressed && swimmer.y + swimmer.height < canvas.height) swimmer.y += swimmer.speed;
+    }
+
+    // Function to spawn obstacles
+    function spawnObstacle() {
+      let obstacleHeight = Math.random() * 150 + 50;
+      obstacles.push({ x: canvas.width, y: Math.random() * (canvas.height - obstacleHeight), width: 30, height: obstacleHeight });
+    }
+
+    // Function to spawn water droplets
+    function spawnWaterDroplet() {
+      waterDroplets.push({ x: canvas.width, y: Math.random() * canvas.height, size: 20 });
+    }
+
+    // Function to move obstacles
+    function moveObstacles() {
+      obstacles.forEach((obstacle, index) => {
+        obstacle.x -= gameSpeed;
+        if (obstacle.x + obstacle.width < 0) {
+          obstacles.splice(index, 1); // Remove obstacle when it goes off-screen
+        }
+        ctx.fillStyle = '#DC143C';
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+      });
+    }
+
+    // Function to move water droplets
+    function moveWaterDroplets() {
+      waterDroplets.forEach((droplet, index) => {
+        droplet.x -= gameSpeed;
+        if (droplet.x + droplet.size < 0) {
+          waterDroplets.splice(index, 1); // Remove droplet when it goes off-screen
+        }
+        ctx.fillStyle = '#00BFFF';
+        ctx.beginPath();
+        ctx.arc(droplet.x, droplet.y, droplet.size / 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // Function to check collision with obstacles
+    function checkCollision() {
+      obstacles.forEach(obstacle => {
+        if (swimmer.x < obstacle.x + obstacle.width &&
+            swimmer.x + swimmer.width > obstacle.x &&
+            swimmer.y < obstacle.y + obstacle.height &&
+            swimmer.y + swimmer.height > obstacle.y) {
+          isGameOver = true;
+        }
+      });
+    }
+
+    // Function to collect water droplets
+    function collectDroplets() {
+      waterDroplets.forEach((droplet, index) => {
+        if (swimmer.x < droplet.x + droplet.size &&
+            swimmer.x + swimmer.width > droplet.x &&
+            swimmer.y < droplet.y + droplet.size &&
+            swimmer.y + swimmer.height > droplet.y) {
+          score += 10;
+          waterDroplets.splice(index, 1); // Remove droplet when collected
+        }
+      });
+    }
+
+    // Game loop
+    function gameLoop() {
+      if (isGameOver) {
+        document.getElementById('game-over').style.display = 'block';
+        return;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Move swimmer
+      moveSwimmer();
+
+      // Move obstacles and water droplets
+      moveObstacles();
+      moveWaterDroplets();
+
+      // Check collisions and collect droplets
+      checkCollision();
+      collectDroplets();
+
+      // Draw swimmer
+      drawSwimmer();
+
+      // Update score
+      document.getElementById('score').innerText = 'Score: ' + score;
+
+      // Repeat game loop
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Spawn obstacles and droplets at intervals
+    setInterval(spawnObstacle, 2000);
+    setInterval(spawnWaterDroplet, 3000);
+
+    // Start the game
+    gameLoop();
+  </script>
+</body>
+</html>
