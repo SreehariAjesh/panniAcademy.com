@@ -121,3 +121,18 @@ function requestNotificationPermission() {
 
 // Call this function when the app starts or when a user action happens
 requestNotificationPermission();
+function triggerNotification(title, options) {
+  if ('Notification' in window && navigator.serviceWorker) {
+    navigator.serviceWorker.ready.then(registration => {
+      registration.showNotification(title, options);
+    });
+  }
+}
+
+// Example: Show a notification when the game starts
+document.getElementById('startGameButton').addEventListener('click', () => {
+  triggerNotification('Panni Academy', {
+    body: 'Your game has started! Good luck!',
+    icon: 'Images/32x32.png', // Path to an icon for the notification
+  });
+});
