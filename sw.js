@@ -71,3 +71,17 @@ self.addEventListener('activate', event => {
 //     self.registration.showNotification('PANNI Academy Notification', options)
 //   );
 // });
+self.addEventListener('notificationclick', event => {
+  // Handle notification click event
+  event.notification.close(); // Close the notification
+
+  // Focus or open the app window
+  event.waitUntil(
+    clients.matchAll({ type: 'window' }).then(clientList => {
+      if (clientList.length > 0) {
+        return clientList[0].focus();
+      }
+      return clients.openWindow('/');
+    })
+  );
+});
