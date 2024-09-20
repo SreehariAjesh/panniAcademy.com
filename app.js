@@ -109,13 +109,13 @@ function requestNotificationPermission() {
   if ('Notification' in window && navigator.serviceWorker) {
     Notification.requestPermission(permission => {
       if (permission === 'granted') {
-        console.log('Notification permission granted.');
+        window.alert('Notification permission granted.');
       } else {
-        console.log('Notification permission denied.');
+        window.alert('Notification permission denied.');
       }
     });
   } else {
-    console.log('Notifications are not supported in this browser.');
+    window.aert('Notifications are not supported in this browser.');
   }
 }
 
