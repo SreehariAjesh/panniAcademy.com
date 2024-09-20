@@ -104,3 +104,20 @@ logoutBtn.addEventListener('click', () => {
     window.location.href = 'login.html';
   });
 });
+// Request notification permission
+function requestNotificationPermission() {
+  if ('Notification' in window && navigator.serviceWorker) {
+    Notification.requestPermission(permission => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+      } else {
+        console.log('Notification permission denied.');
+      }
+    });
+  } else {
+    console.log('Notifications are not supported in this browser.');
+  }
+}
+
+// Call this function when the app starts or when a user action happens
+requestNotificationPermission();
