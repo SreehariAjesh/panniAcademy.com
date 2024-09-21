@@ -7,7 +7,7 @@ const urlsToCache = [
   '/Images/16x16.png',
   '/Images/180x180.png',
   '/manifest.json',
-  '/offline.html',  // Optional offline fallback page
+  '/panniGame.html',  // Optional offline fallback page
 ];
 
 // Install event - Cache necessary files
