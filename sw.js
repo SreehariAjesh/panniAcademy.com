@@ -72,16 +72,14 @@ self.addEventListener('activate', event => {
 //   );
 // });
 self.addEventListener('notificationclick', event => {
-  // Handle notification click event
-  event.notification.close(); // Close the notification
+  event.notification.close(); // Close the notification when clicked
 
-  // Focus or open the app window
   event.waitUntil(
     clients.matchAll({ type: 'window' }).then(clientList => {
       if (clientList.length > 0) {
-        return clientList[0].focus();
+        return clientList[0].focus(); // Focus the window if it's open
       }
-      return clients.openWindow('/');
+      return clients.openWindow('/'); // Open a new window if not open
     })
   );
 });
