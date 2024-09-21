@@ -105,23 +105,29 @@ logoutBtn.addEventListener('click', () => {
   });
 });
 // Request notification permission
-// Request notification permission
 function requestNotificationPermission() {
-  if ('Notification' in window && navigator.serviceWorker) {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        console.log('Notification permission granted.');
-      } else {
-        console.log('Notification permission denied.');
-      }
-    });
+  if ('Notification' in window && 'serviceWorker' in navigator) {
+    // Check if notification permission has already been granted
+    if (Notification.permission === 'granted') {
+      console.log('Notification permission already granted.');
+    } else if (Notification.permission !== 'denied') {
+      // Request permission from the user
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          console.log('Notification permission granted.');
+        } else {
+          console.log('Notification permission denied.');
+        }
+      });
+    }
   } else {
     console.log('This browser does not support notifications or service workers.');
   }
 }
 
 // Call this function when the app starts or on a user action
-requestNotificationPermission();
+window.addEventListener('load', requestNotificationPermission);
+
 
 
 function triggerNotification(title, options) {
@@ -134,10 +140,11 @@ function triggerNotification(title, options) {
   }
 }
 
-// Example: Trigger a notification when the game starts
+// Example: Trigger a notification when the user clicks the 'start' button
 document.getElementById('startGameButton').addEventListener('click', () => {
   triggerNotification('Panni Academy', {
     body: 'Your game has started! Good luck!',
     icon: 'Images/32x32.png',
+    badge: 'Images/32x32.png',
   });
 });
