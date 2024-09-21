@@ -119,7 +119,7 @@ function requestNotificationPermission() {
     console.log('This browser does not support notifications or service workers.');
   }
 }
-
+window.addEventListener('beforeinstallprompt', (e) => {
 // Call this function when the app starts or on a user action
 requestNotificationPermission();
 
