@@ -6,10 +6,10 @@
   <title>Panni Academy - All You Need</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
+      background-color: #f3f4f6;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,38 +18,60 @@
 
     .container {
       text-align: center;
-      margin-top: 50px;
+      width: 100%;
     }
 
     h1 {
-      color: #4CAF50;
+      color: #1d4ed8;
+      font-size: 36px;
+      margin-bottom: 20px;
     }
 
     .box-container {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
       margin-top: 30px;
       flex-wrap: wrap;
+      gap: 30px;
     }
 
     .box {
-      width: 200px;
-      height: 200px;
-      background-color: #4CAF50;
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(135deg, #4CAF50, #1d4ed8);
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 10px;
+      border-radius: 20px;
       cursor: pointer;
-      margin: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .box:hover {
       transform: translateY(-10px);
-      background-color: #45a049;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .box:hover::before {
+      opacity: 1;
     }
 
     .subpage {
@@ -68,7 +90,7 @@
     }
 
     .pdf-list li a {
-      color: #4CAF50;
+      color: #1d4ed8;
       text-decoration: none;
       font-weight: bold;
     }
@@ -76,7 +98,7 @@
     .back-btn {
       margin-top: 20px;
       cursor: pointer;
-      color: #4CAF50;
+      color: #1d4ed8;
       text-decoration: underline;
     }
 
@@ -89,6 +111,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -98,74 +121,19 @@
     <h1>Panni Academy - Resources</h1>
 
     <div class="box-container">
-      <div class="box" onclick="showSubPage('homework')">Homework</div>
-      <div class="box" onclick="showSubPage('classwork')">Class Work</div>
-      <div class="box" onclick="showSubPage('projects')">Projects</div>
-      <div class="box" onclick="showSubPage('toppersnotes')">Topper's Notes</div>
-    </div>
-
-    <!-- Subpages for each section -->
-    <div id="homework" class="subpage">
-      <h2>Homework PDFs</h2>
-      <ul class="pdf-list">
-        <li><a href="homework1.pdf" target="_blank">Homework 1</a></li>
-        <li><a href="homework2.pdf" target="_blank">Homework 2</a></li>
-        <li><a href="homework3.pdf" target="_blank">Homework 3</a></li>
-      </ul>
-      <div class="back-btn" onclick="goBack()">Go Back</div>
-    </div>
-
-    <div id="classwork" class="subpage">
-      <h2>Class Work PDFs</h2>
-      <ul class="pdf-list">
-        <li><a href="classwork1.pdf" target="_blank">Class Work 1</a></li>
-        <li><a href="classwork2.pdf" target="_blank">Class Work 2</a></li>
-        <li><a href="classwork3.pdf" target="_blank">Class Work 3</a></li>
-      </ul>
-      <div class="back-btn" onclick="goBack()">Go Back</div>
-    </div>
-
-    <div id="projects" class="subpage">
-      <h2>Projects PDFs</h2>
-      <ul class="pdf-list">
-        <li><a href="project1.pdf" target="_blank">Project 1</a></li>
-        <li><a href="project2.pdf" target="_blank">Project 2</a></li>
-      </ul>
-      <div class="back-btn" onclick="goBack()">Go Back</div>
-    </div>
-
-    <div id="toppersnotes" class="subpage">
-      <h2>Topper's Notes PDFs</h2>
-      <ul class="pdf-list">
-        <li><a href="notes1.pdf" target="_blank">Topper's Notes 1</a></li>
-        <li><a href="notes2.pdf" target="_blank">Topper's Notes 2</a></li>
-      </ul>
-      <div class="back-btn" onclick="goBack()">Go Back</div>
+      <div class="box" onclick="window.location.href='homework.html'">Homework</div>
+      <div class="box" onclick="window.location.href='classwork.html'">Class Work</div>
+      <div class="box" onclick="window.location.href='projects.html'">Projects</div>
+      <div class="box" onclick="window.location.href='toppersnotes.html'">Topper's Notes</div>
     </div>
   </div>
 
   <div id="notification">New updates available!</div>
 
   <script>
-    // Function to show the sub-page for each section
-    function showSubPage(sectionId) {
-      // Hide all other sections
-      document.querySelectorAll('.subpage').forEach(subpage => subpage.style.display = 'none');
-      
-      // Show the selected section
-      document.getElementById(sectionId).style.display = 'block';
-    }
-
-    // Function to go back to the main menu
-    function goBack() {
-      document.querySelectorAll('.subpage').forEach(subpage => subpage.style.display = 'none');
-      document.querySelector('.box-container').style.display = 'flex';
-    }
-
     // Check for updates and show notification
     function checkForUpdates() {
-      // Here you would normally check for updates by fetching data from a server
-      // For demonstration purposes, we simulate an update check
+      // Simulate update check
       setTimeout(() => {
         document.getElementById('notification').style.display = 'block';
       }, 3000);
