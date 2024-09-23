@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Work - Panni Academy</title>
+  
+    <style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .section:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .section h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .pdf-list {
+    list-style: none;
+    padding-left: 15px;
+    display: none;
+    margin-top: 10px;
+  }
+
+  .pdf-list li {
+    margin: 10px 0;
+  }
+
+  .pdf-list li a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .pdf-list li a:hover {
+    color: #3e8e41;
+  }
+
+  .back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #4CAF50;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .section h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
+  
+</head>
+<body>
+
+  <h2>Class Work PDFs</h2>
+
+  <div class="section" onclick="togglePdfList('chapter1-classwork')">
+    <h3>Chapter 1: Class Work</h3>
+    <ul id="chapter1-classwork" class="pdf-list">
+      <li><a href="classwork1-chapter1.pdf" target="_blank">Class Work 1</a></li>
+      <li><a href="classwork2-chapter1.pdf" target="_blank">Class Work 2</a></li>
+    </ul>
+  </div>
+
+  <div class="section" onclick="togglePdfList('chapter2-classwork')">
+    <h3>Chapter 2: Class Work</h3>
+    <ul id="chapter2-classwork" class="pdf-list">
+      <li><a href="classwork1-chapter2.pdf" target="_blank">Class Work 1</a></li>
+      <li><a href="classwork2-chapter2.pdf" target="_blank">Class Work 2</a></li>
+    </ul>
+  </div>
+
+  <div class="section" onclick="togglePdfList('chapter3-classwork')">
+    <h3>Chapter 3: Class Work</h3>
+    <ul id="chapter3-classwork" class="pdf-list">
+      <li><a href="classwork1-chapter3.pdf" target="_blank">Class Work 1</a></li>
+      <li><a href="classwork2-chapter3.pdf" target="_blank">Class Work 2</a></li>
+    </ul>
+  </div>
+
+  <div class="back-btn" onclick="window.location.href='index.html'">Go Back</div>
+
+  
+    <script>
+  function togglePdfList(sectionId) {
+    const pdfList = document.getElementById(sectionId);
+    pdfList.style.display = pdfList.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+  
+</body>
+</html>
