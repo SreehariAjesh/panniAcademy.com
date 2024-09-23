@@ -5,9 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homework - Panni Academy</title>
   <link rel="stylesheet" href="styles.css"> <!-- Common styles -->
-  <style>
-    /* Add the common styles from above here */
-  </style>
+    <style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .section:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .section h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .pdf-list {
+    list-style: none;
+    padding-left: 15px;
+    display: none;
+    margin-top: 10px;
+  }
+
+  .pdf-list li {
+    margin: 10px 0;
+  }
+
+  .pdf-list li a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .pdf-list li a:hover {
+    color: #3e8e41;
+  }
+
+  .back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #4CAF50;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .section h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>
 </head>
 <body>
 
