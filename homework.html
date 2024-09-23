@@ -108,8 +108,12 @@
 
   <div class="back-btn" onclick="window.location.href='index.html'">Go Back</div>
 
-  <script>
-    // Add the common JavaScript from above here
+    <script>
+  function togglePdfList(sectionId) {
+    const pdfList = document.getElementById(sectionId);
+    pdfList.style.display = pdfList.style.display === 'block' ? 'none' : 'block';
+  }
+
   </script>
 </body>
 </html>
