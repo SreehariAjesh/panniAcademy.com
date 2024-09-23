@@ -55,31 +55,52 @@ self.addEventListener('activate', event => {
       );
     }).then(() => {
       return self.clients.claim(); // Take control of all clients immediately
+
+
+// Install service worker and cache resources
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('Opened cache');
+      return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Optional: Listen for push notifications (if needed)
-// self.addEventListener('push', function(event) {
-//   const options = {
-//     body: event.data.text(),
-//     icon: '/Images/180x180.png',
-//     badge: '/Images/32x32.png'
-//   };
+// Fetch cached resources or network
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+});
 
-//   event.waitUntil(
-//     self.registration.showNotification('PANNI Academy Notification', options)
-//   );
-// });
-self.addEventListener('notificationclick', event => {
-  event.notification.close(); // Close the notification
+// Activate service worker and manage old caches
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Show notification
+self.addEventListener('push', event => {
+  const title = 'Panni Academy';
+  const options = {
+    body: event.data ? event.data.text() : 'New updates available!',
+    icon: 'Images/32x32.png',
+  };
 
   event.waitUntil(
-    clients.matchAll({ type: 'window' }).then(clientList => {
-      if (clientList.length > 0) {
-        return clientList[0].focus(); // Focus the window if it's already open
-      }
-      return clients.openWindow('/'); // Open the app if it's not already open
-    })
+    self.registration.showNotification(title, options)
   );
 });
