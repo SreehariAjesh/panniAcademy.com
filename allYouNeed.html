@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panni Academy - All You Need</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #4CAF50;
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-10px);
+      background-color: #45a049;
+    }
+
+    .subpage {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .pdf-list {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .pdf-list li {
+      margin: 10px 0;
+    }
+
+    .pdf-list li a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      cursor: pointer;
+      color: #4CAF50;
+      text-decoration: underline;
+    }
+
+    #notification {
+      display: none;
+      background-color: yellow;
+      color: black;
+      padding: 10px;
+      border-radius: 5px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Panni Academy - Resources</h1>
+
+    <div class="box-container">
+      <div class="box" onclick="showSubPage('homework')">Homework</div>
+      <div class="box" onclick="showSubPage('classwork')">Class Work</div>
+      <div class="box" onclick="showSubPage('projects')">Projects</div>
+      <div class="box" onclick="showSubPage('toppersnotes')">Topper's Notes</div>
+    </div>
+
+    <!-- Subpages for each section -->
+    <div id="homework" class="subpage">
+      <h2>Homework PDFs</h2>
+      <ul class="pdf-list">
+        <li><a href="homework1.pdf" target="_blank">Homework 1</a></li>
+        <li><a href="homework2.pdf" target="_blank">Homework 2</a></li>
+        <li><a href="homework3.pdf" target="_blank">Homework 3</a></li>
+      </ul>
+      <div class="back-btn" onclick="goBack()">Go Back</div>
+    </div>
+
+    <div id="classwork" class="subpage">
+      <h2>Class Work PDFs</h2>
+      <ul class="pdf-list">
+        <li><a href="classwork1.pdf" target="_blank">Class Work 1</a></li>
+        <li><a href="classwork2.pdf" target="_blank">Class Work 2</a></li>
+        <li><a href="classwork3.pdf" target="_blank">Class Work 3</a></li>
+      </ul>
+      <div class="back-btn" onclick="goBack()">Go Back</div>
+    </div>
+
+    <div id="projects" class="subpage">
+      <h2>Projects PDFs</h2>
+      <ul class="pdf-list">
+        <li><a href="project1.pdf" target="_blank">Project 1</a></li>
+        <li><a href="project2.pdf" target="_blank">Project 2</a></li>
+      </ul>
+      <div class="back-btn" onclick="goBack()">Go Back</div>
+    </div>
+
+    <div id="toppersnotes" class="subpage">
+      <h2>Topper's Notes PDFs</h2>
+      <ul class="pdf-list">
+        <li><a href="notes1.pdf" target="_blank">Topper's Notes 1</a></li>
+        <li><a href="notes2.pdf" target="_blank">Topper's Notes 2</a></li>
+      </ul>
+      <div class="back-btn" onclick="goBack()">Go Back</div>
+    </div>
+  </div>
+
+  <div id="notification">New updates available!</div>
+
+  <script>
+    // Function to show the sub-page for each section
+    function showSubPage(sectionId) {
+      // Hide all other sections
+      document.querySelectorAll('.subpage').forEach(subpage => subpage.style.display = 'none');
+      
+      // Show the selected section
+      document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Function to go back to the main menu
+    function goBack() {
+      document.querySelectorAll('.subpage').forEach(subpage => subpage.style.display = 'none');
+      document.querySelector('.box-container').style.display = 'flex';
+    }
+
+    // Check for updates and show notification
+    function checkForUpdates() {
+      // Here you would normally check for updates by fetching data from a server
+      // For demonstration purposes, we simulate an update check
+      setTimeout(() => {
+        document.getElementById('notification').style.display = 'block';
+      }, 3000);
+    }
+
+    // Start the update check when the page loads
+    window.onload = function () {
+      checkForUpdates();
+    };
+  </script>
+</body>
+</html>
