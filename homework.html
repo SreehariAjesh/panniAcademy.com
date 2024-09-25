@@ -5,83 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homework - Panni Academy</title>
   <link rel="stylesheet" href="styles.css"> <!-- Common styles -->
-    <style>
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 20px;
-  }
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
 
-  h2 {
-    color: #4CAF50;
-    text-align: center;
-    margin-bottom: 20px;
-  }
+    h2 {
+      color: #4CAF50;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-  .section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
+    .section, .subsection {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
 
-  .section:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
+    .section:hover, .subsection:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
-  .section h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-  }
+    .section h3, .subsection h4 {
+      margin: 0;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+    }
 
-  .pdf-list {
-    list-style: none;
-    padding-left: 15px;
-    display: none;
-    margin-top: 10px;
-  }
+    .pdf-list {
+      list-style: none;
+      padding-left: 15px;
+      display: none;
+      margin-top: 10px;
+    }
 
-  .pdf-list li {
-    margin: 10px 0;
-  }
+    .pdf-list li {
+      margin: 10px 0;
+    }
 
-  .pdf-list li a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
+    .pdf-list li a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-  .pdf-list li a:hover {
-    color: #3e8e41;
-  }
+    .pdf-list li a:hover {
+      color: #3e8e41;
+    }
 
-  .back-btn {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-    color: #4CAF50;
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 768px) {
-    .section h3 {
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #4CAF50;
+      cursor: pointer;
+      text-decoration: underline;
       font-size: 1.2rem;
     }
-  }
-</style>
+
+    @media (max-width: 768px) {
+      .section h3, .subsection h4 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <h2>Homework PDFs</h2>
 
+  <!-- English Homework -->
   <div class="section" onclick="togglePdfList('chapter1-homework')">
     <h3>English Homework</h3>
     <ul id="chapter1-homework" class="pdf-list">
@@ -90,6 +91,7 @@
     </ul>
   </div>
 
+  <!-- Maths Homework -->
   <div class="section" onclick="togglePdfList('chapter2-homework')">
     <h3>Maths Homework</h3>
     <ul id="chapter2-homework" class="pdf-list">
@@ -98,65 +100,100 @@
     </ul>
   </div>
 
-  <div class="section" onclick="togglePdfList('chapter3-homework')">
+  <!-- Science Homework -->
+  <div class="section" onclick="togglePdfList('science-homework')">
     <h3>Science Homework</h3>
-       <ul id="chapter3. 1-homework" class="pdf-list">
-      <li><a href="homework1-phy.pdf" target="_blank">Homework 1</a></li>
-      <li><a href="homework2-chapter3.pdf" target="_blank">Homework 2</a></li>
+    <div id="science-homework" class="pdf-list">
+      <div class="subsection" onclick="togglePdfList('physics-homework')">
+        <h4>Physics Homework</h4>
+        <ul id="physics-homework" class="pdf-list">
+          <li><a href="homework1-phy.pdf" target="_blank">Physics Homework 1</a></li>
+          <li><a href="homework2-phy.pdf" target="_blank">Physics Homework 2</a></li>
         </ul>
-    <ul id="chapter3.2-homework" class="pdf-list">
-      <li><a href="homework1-bio.pdf" target="_blank">Homework 1</a></li>
-      <li><a href="homework2-chapter3.pdf" target="_blank">Homework 2</a></li>
-    </ul>
+      </div>
+
+      <div class="subsection" onclick="togglePdfList('chemistry-homework')">
+        <h4>Chemistry Homework</h4>
+        <ul id="chemistry-homework" class="pdf-list">
+          <li><a href="homework1-chem.pdf" target="_blank">Chemistry Homework 1</a></li>
+          <li><a href="homework2-chem.pdf" target="_blank">Chemistry Homework 2</a></li>
+        </ul>
+      </div>
+
+      <div class="subsection" onclick="togglePdfList('biology-homework')">
+        <h4>Biology Homework</h4>
+        <ul id="biology-homework" class="pdf-list">
+          <li><a href="homework1-bio.pdf" target="_blank">Biology Homework 1</a></li>
+          <li><a href="homework2-bio.pdf" target="_blank">Biology Homework 2</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
+  <!-- Sanskrit Homework -->
   <div class="section" onclick="togglePdfList('chapter4-homework')">
     <h3>Sanskrit Homework</h3>
     <ul id="chapter4-homework" class="pdf-list">
-      <li><a href="homework1-chapter2.pdf" target="_blank">Homework 1</a></li>
-      <li><a href="homework2-chapter2.pdf" target="_blank">Homework 2</a></li>
+      <li><a href="homework1-sanskrit.pdf" target="_blank">Homework 1</a></li>
+      <li><a href="homework2-sanskrit.pdf" target="_blank">Homework 2</a></li>
     </ul>
   </div>
 
-    <div class="section" onclick="togglePdfList('chapter5-homework')">
-    <h3>Marathi Homework</h3>
-    <ul id="chapter5-homework" class="pdf-list">
-      <li><a href="homework1-chapter2.pdf" target="_blank">Homework 1</a></li>
-      <li><a href="homework2-chapter2.pdf" target="_blank">Homework 2</a></li>
-    </ul>
+  <!-- Social Science Homework -->
+  <div class="section" onclick="togglePdfList('sst-homework')">
+    <h3>Social Science Homework</h3>
+    <div id="sst-homework" class="pdf-list">
+      <div class="subsection" onclick="togglePdfList('history-homework')">
+        <h4>History Homework</h4>
+        <ul id="history-homework" class="pdf-list">
+          <li><a href="homework1-history.pdf" target="_blank">History Homework 1</a></li>
+          <li><a href="homework2-history.pdf" target="_blank">History Homework 2</a></li>
+        </ul>
+      </div>
+
+      <div class="subsection" onclick="togglePdfList('geography-homework')">
+        <h4>Geography Homework</h4>
+        <ul id="geography-homework" class="pdf-list">
+          <li><a href="homework1-geography.pdf" target="_blank">Geography Homework 1</a></li>
+          <li><a href="homework2-geography.pdf" target="_blank">Geography Homework 2</a></li>
+        </ul>
+      </div>
+
+      <div class="subsection" onclick="togglePdfList('economics-homework')">
+        <h4>Economics Homework</h4>
+        <ul id="economics-homework" class="pdf-list">
+          <li><a href="homework1-economics.pdf" target="_blank">Economics Homework 1</a></li>
+          <li><a href="homework2-economics.pdf" target="_blank">Economics Homework 2</a></li>
+        </ul>
+      </div>
+
+      <div class="subsection" onclick="togglePdfList('civics-homework')">
+        <h4>Civics Homework</h4>
+        <ul id="civics-homework" class="pdf-list">
+          <li><a href="homework1-civics.pdf" target="_blank">Civics Homework 1</a></li>
+          <li><a href="homework2-civics.pdf" target="_blank">Civics Homework 2</a></li>
+        </ul>
+      </div>
     </div>
-
-  <div class="section" onclick="togglePdfList('chapter6-homework')">
-    <h3>Hindi Homework</h3>
-    <ul id="chapter6-homework" class="pdf-list">
-      <li><a href="homework1-chapter2.pdf" target="_blank">Homework 1</a></li>
-      <li><a href="homework2-chapter2.pdf" target="_blank">Homework 2</a></li>
-    </ul>
   </div>
 
-  <div class="section" onclick="togglePdfList('chapter7-homework')">
-    <h3>SST Homework</h3>
-    <ul id="chapter7-homework" class="pdf-list">
-      <li><a href="homework1-chapter2.pdf" target="_blank">SST Homework 1</a></li>
-      <li><a href="homework2-chapter2.pdf" target="_blank">Homework 2</a></li>
-    </ul>
-  </div>
-
+  <!-- IT Homework -->
   <div class="section" onclick="togglePdfList('chapter8-homework')">
     <h3>IT Homework</h3>
     <ul id="chapter8-homework" class="pdf-list">
-      <li><a href="homework1-chapter2.pdf" target="_blank">Homework 1</a></li>
-      <li><a href="homework2-chapter2.pdf" target="_blank">Homework 2</a></li>
+      <li><a href="homework1-it.pdf" target="_blank">Homework 1</a></li>
+      <li><a href="homework2-it.pdf" target="_blank">Homework 2</a></li>
     </ul>
   </div>
+
+  <!-- Back Button -->
   <div class="back-btn" onclick="window.location.href='index.html'">Go Back</div>
 
-    <script>
-  function togglePdfList(sectionId) {
-    const pdfList = document.getElementById(sectionId);
-    pdfList.style.display = pdfList.style.display === 'block' ? 'none' : 'block';
-  }
-
+  <script>
+    function togglePdfList(sectionId) {
+      const pdfList = document.getElementById(sectionId);
+      pdfList.style.display = pdfList.style.display === 'block' ? 'none' : 'block';
+    }
   </script>
 </body>
 </html>
