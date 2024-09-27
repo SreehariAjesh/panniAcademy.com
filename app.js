@@ -105,6 +105,7 @@ logoutBtn.addEventListener('click', () => {
   });
 });
 // Request notification permission
+// Request Notification Permission on Load
 function requestNotificationPermission() {
   if ('Notification' in window && 'serviceWorker' in navigator) {
     // Check if notification permission has already been granted
@@ -129,7 +130,7 @@ function requestNotificationPermission() {
 window.addEventListener('load', requestNotificationPermission);
 
 
-
+// Trigger notification manually when needed
 function triggerNotification(title, options) {
   if ('Notification' in window && 'serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
@@ -139,6 +140,19 @@ function triggerNotification(title, options) {
     console.log('Notifications are not supported in this browser.');
   }
 }
+
+// Adding a manual trigger
+document.getElementById('notifyButton').addEventListener('click', () => {
+  const title = 'Manual Notification';  // You can customize this title
+  const options = {
+    body: 'This is a manually triggered notification.',
+    icon: 'path-to-your-icon/icon.png' // You can set an icon for the notification
+  };
+  
+  // Trigger the notification
+  triggerNotification(title, options);
+});
+
 
 // Example: Trigger a notification when the user clicks the 'start' button
 document.getElementById('startGameButton').addEventListener('click', () => {
