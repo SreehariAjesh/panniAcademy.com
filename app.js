@@ -154,3 +154,56 @@ document.getElementById('startGameButton').addEventListener('click', () => {
     badge: 'Images/32x32.png',
   });
 });
+// Register Service Worker (if not registered)
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+    console.log('Service Worker registered with scope:', registration.scope);
+  }).catch(function(error) {
+    console.error('Service Worker registration failed:', error);
+  });
+}
+
+// Request Notification Permission on Load
+function requestNotificationPermission() {
+  if ('Notification' in window) {
+    if (Notification.permission === 'granted') {
+      console.log('Notification permission already granted.');
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          console.log('Notification permission granted.');
+        } else {
+          console.log('Notification permission denied.');
+        }
+      });
+    }
+  } else {
+    console.log('This browser does not support notifications.');
+  }
+}
+
+// Trigger notification manually when needed
+function triggerNotification(title, options) {
+  if ('Notification' in window && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.ready.then(registration => {
+      registration.showNotification(title, options);
+    }).catch(err => console.error('Service Worker not ready:', err));
+  } else {
+    console.log('Notifications are not supported in this browser.');
+  }
+}
+
+// Request permission when the page loads
+window.addEventListener('load', requestNotificationPermission);
+
+// Adding a manual trigger for notifications
+document.getElementById('notifyButton').addEventListener('click', () => {
+  const title = 'Manual Notification';  // Customize the title
+  const options = {
+    body: 'This is a manually triggered notification.',
+    icon: 'Images/32x32.png' // Add your icon path
+  };
+
+  // Trigger the notification
+  triggerNotification(title, options);
+});
