@@ -105,31 +105,23 @@ logoutBtn.addEventListener('click', () => {
   });
 });
 // Request notification permission
-// Request Notification Permission on Load
+// Inside your app.js or main JavaScript file
 function requestNotificationPermission() {
-  if ('Notification' in window && 'serviceWorker' in navigator) {
-    // Check if notification permission has already been granted
-    if (Notification.permission === 'granted') {
-      console.log('Notification permission already granted.');
-    } else if (Notification.permission !== 'denied') {
-      // Request permission from the user
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          console.log('Notification permission granted.');
-        } else {
-          console.log('Notification permission denied.');
-        }
-      });
-    }
+  if ('Notification' in window && navigator.serviceWorker) {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+      } else {
+        console.log('Notification permission denied.');
+      }
+    });
   } else {
     console.log('This browser does not support notifications or service workers.');
   }
 }
 
-// Call this function when the app starts or on a user action
-window.addEventListener('load', requestNotificationPermission);
-
-
+// Call this function when the user interacts with an element (e.g., a button)
+document.getElementById('requestNotificationBtn').addEventListener('click', requestNotificationPermission);
 // Trigger notification manually when needed
 function triggerNotification(title, options) {
   if ('Notification' in window && 'serviceWorker' in navigator) {
