@@ -92,54 +92,12 @@ self.addEventListener('activate', event => {
   );
 });
 
-
-function requestNotificationPermission() {
-  if ('Notification' in window && navigator.serviceWorker) {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        console.log('Notification permission granted.');
-      } else {
-        console.log('Notification permission denied.');
-      }
-    });
-  } else {
-    console.log('This browser does not support notifications or service workers.');
-  }
-}
-
-// Call this function when the user interacts with an element (e.g., a button)
-document.getElementById('requestNotificationBtn').addEventListener('click', requestNotificationPermission);
-// Trigger notification manually when needed
-function triggerNotification(title, options) {
-  if ('Notification' in window && 'serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => {
-      registration.showNotification(title, options);
-    }).catch(err => console.error('Service Worker not ready:', err));
-  } else {
-    console.log('Notifications are not supported in this browser.');
-  }
-}
-
-// Adding a manual trigger
-document.getElementById('notifyButton').addEventListener('click', () => {
-  const title = 'Manual Notification';  // You can customize this title
-  const options = {
-    body: 'This is a manually triggered notification.',
-    icon: 'Images/32x32.png' // You can set an icon for the notification
-  };
-  
-  // Trigger the notification
-  triggerNotification(title, options);
+// A simple service worker
+self.addEventListener('install', function(event) {
+  console.log('Service Worker installing.');
 });
-// Show notification
-self.addEventListener('push', event => {
-  const title = 'Panni Academy';
-  const options = {
-    body: event.data ? event.data.text() : 'New updates available!',
-    icon: 'Images/32x32.png',
-  };
 
-  event.waitUntil(
-    self.registration.showNotification(title, options)
-  );
+self.addEventListener('activate', function(event) {
+  console.log('Service Worker activating.');
 });
+
