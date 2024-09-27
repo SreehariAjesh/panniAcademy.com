@@ -146,7 +146,7 @@ document.getElementById('notifyButton').addEventListener('click', () => {
   const title = 'Manual Notification';  // You can customize this title
   const options = {
     body: 'This is a manually triggered notification.',
-    icon: 'path-to-your-icon/icon.png' // You can set an icon for the notification
+    icon: 'Images/32x32.png' // You can set an icon for the notification
   };
   
   // Trigger the notification
