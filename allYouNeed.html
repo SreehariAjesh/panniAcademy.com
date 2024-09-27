@@ -202,7 +202,6 @@
     </div>
   </div>
 
-  <div id="notification">New updates available!</div>
 <script> 
   function openNav() {
   document.getElementById("mySidebar").style.left = "0";
@@ -214,19 +213,5 @@ function closeNav() {
   document.querySelector('.content').classList.remove('opened');
 }
 </script>
-  <script>
-    // Check for updates and show notification
-    function checkForUpdates() {
-      // Simulate update check
-      setTimeout(() => {
-        document.getElementById('notification').style.display = 'block';
-      }, 3000);
-    }
-
-    // Start the update check when the page loads
-    window.onload = function () {
-      checkForUpdates();
-    };
-  </script>
 </body>
 </html>
