@@ -113,7 +113,8 @@
       right: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-        nav button {
+
+    nav button {
       background-color: #ffb703;
       color: #333;
       padding: 10px 20px;
@@ -123,7 +124,12 @@
       margin-left: 10px;
       transition: background-color 0.3s ease;
       font-weight: bold;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
     }
+
     .sidebar {
       height: 100%;
       width: 250px;
@@ -163,7 +169,9 @@
     .content {
       transition: margin-left 0.5s;
       padding: 16px;
+      width: 100%;
     }
+
     h1 {
       color: #ffdd57;
       font-size: 2.5em;
@@ -172,47 +180,50 @@
 
     .content.opened {
       margin-left: 250px;
-      }
+    }
+
   </style>
 </head>
 <body>
 
+  <nav>
+    <button onclick="openNav()">☰</button>
+  </nav>
+
   <div class="container">
     <h1>Panni Academy - Resources</h1>
-<div class="sidebar" id="mySidebar">
-  <a href="Admission.HTML">Admission</a>
-  <a href="About Academy.HTML">About Academy</a>
-  <a href="images of academy.HTML">Images of Academy</a>
-  <a href="Achievements.html">Achievements</a>
-  <a href="shop.html">Shop</a>
-  <a href="PanniAI.html">Panni helper</a>
-  <a href="review.html">Reviews</a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-</div>
+    <div class="sidebar" id="mySidebar">
+      <a href="Admission.HTML">Admission</a>
+      <a href="About Academy.HTML">About Academy</a>
+      <a href="images of academy.HTML">Images of Academy</a>
+      <a href="Achievements.html">Achievements</a>
+      <a href="shop.html">Shop</a>
+      <a href="PanniAI.html">Panni helper</a>
+      <a href="review.html">Reviews</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    </div>
 
-<!-- Navigation -->
-<nav>
-  <button onclick="openNav()">☰</button>
-</nav>
-    <br>
-    <div class="box-container">
-      <div class="box" onclick="window.location.href='homework.html'">Homework</div>
-      <div class="box" onclick="window.location.href='classwork.html'">Class Work</div>
-      <div class="box" onclick="window.location.href='projects.html'">Projects</div>
-      <div class="box" onclick="window.location.href='toppersnotes.html'">Topper's Notes</div>
+    <div class=".content">
+      <div class="box-container">
+        <div class="box" onclick="window.location.href='homework.html'">Homework</div>
+        <div class="box" onclick="window.location.href='classwork.html'">Class Work</div>
+        <div class="box" onclick="window.location.href='projects.html'">Projects</div>
+        <div class="box" onclick="window.location.href='toppersnotes.html'">Topper's Notes</div>
+      </div>
     </div>
   </div>
 
-<script> 
-  function openNav() {
-  document.getElementById("mySidebar").style.left = "0";
-  document.querySelector('.content').classList.add('opened');
-}
+  <script> 
+    function openNav() {
+      document.getElementById("mySidebar").style.left = "0";
+      document.querySelector('.content').classList.add('opened');
+    }
 
-function closeNav() {
-  document.getElementById("mySidebar").style.left = "-250px";
-  document.querySelector('.content').classList.remove('opened');
-}
-</script>
+    function closeNav() {
+      document.getElementById("mySidebar").style.left = "-250px";
+      document.querySelector('.content').classList.remove('opened');
+    }
+  </script>
+
 </body>
 </html>
