@@ -13,7 +13,6 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f4a261;
-      overflow: hidden;
     }
 
     h1 {
@@ -24,9 +23,11 @@
 
     #gameCanvas {
       display: block;
-      background-color: #f4a261; /* Desert background */
+      background-color: #f4a261;
       border: 5px solid #007991;
       margin: 0 auto;
+      max-width: 100%;
+      height: auto;
     }
 
     #score {
@@ -80,30 +81,107 @@
     .control-button:active {
       background-color: #005f73;
     }
+
+    nav button {
+      background-color: #ffb703;
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: #011627;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #f0f0f0;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #00a8e8;
+      color: #fff;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-size: 36px;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .button {
+        font-size: 16px;
+      }
+
+      #controls {
+        bottom: 10px;
+      }
+
+      .control-button {
+        padding: 10px;
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <button onclick="openNav()">☰</button>
+  </nav>
+  
   <a href="Admission.HTML">Admission</a>
-    <a href="About Academy.HTML">About Academy</a>
+  <a href="About Academy.HTML">About Academy</a>
   <a href="images of academy.HTML">Images of Academy</a>
   <a href="Achievements.html">Achievements</a>
   <a href="PanniAI.html">Panni helper</a>
   <a href="review.html">Reviews</a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeAppNav()">×</a>
-    <a href="shop.html">Shop</a>
-    <a href="newsletter.html">Newsletter</a>
-    <a href="allYouNeed.html"> All You Need</a>
-    <a href="submissionDates.html"> Submission Dates</a>
-    <a href="panniGame.html"> Panni Games </a>
+  <a href="shop.html">Shop</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="allYouNeed.html"> All You Need</a>
+  <a href="submissionDates.html"> Submission Dates</a>
+  <a href="panniGame.html"> Panni Games </a>
   
   <h1>Panni Desert Adventure</h1>
   <canvas id="gameCanvas" width="400" height="600"></canvas>
   <div id="score">Score: 0</div>
+
   <!-- Objective -->
   <div id="objective" class="objective">
     <p>Objective: Collect water droplets and avoid cacti.</p>
     <button class="button" onclick="startGame()">Start</button>
   </div>
+
   <!-- Game Over Menu -->
   <div id="game-over" class="game-over">
     Game Over!
@@ -112,7 +190,6 @@
       <button class="button" onclick="quitGame()">Quit</button>
     </div>
   </div>
-
 
   <!-- Pause Menu -->
   <div id="pause-menu" class="pause-menu">
@@ -130,199 +207,156 @@
     <button class="control-button" onclick="moveDown()">⬇️</button>
   </div>
 
-  <script>
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
+<script>
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
 
-    // Game Variables
-    let swimmer = { x: 50, y: 300, width: 40, height: 60, speed: 5 };
-    let obstacles = [];
-    let waterDroplets = [];
-    let gameSpeed = 3;
-    let score = 0;
-    let isGameOver = false;
-    let isPaused = false;
+  let swimmer = { x: 50, y: 300, width: 40, height: 60, speed: 5 };
+  let obstacles = [];
+  let waterDroplets = [];
+  let gameSpeed = 3;
+  let score = 0;
+  let isGameOver = false;
+  let isPaused = false;
 
-    // Controls
-    let upPressed = false;
-    let downPressed = false;
+  let upPressed = false;
+  let downPressed = false;
 
-    // Start screen
-    document.getElementById('objective').style.display = 'block';
+  document.getElementById('objective').style.display = 'block';
 
-    // Add keydown and keyup event listeners for controls
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowUp') upPressed = true;
-      if (e.key === 'ArrowDown') downPressed = true;
-    });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowUp') upPressed = true;
+    if (e.key === 'ArrowDown') downPressed = true;
+  });
 
-    document.addEventListener('keyup', function (e) {
-      if (e.key === 'ArrowUp') upPressed = false;
-      if (e.key === 'ArrowDown') downPressed = false;
-    });
+  document.addEventListener('keyup', function (e) {
+    if (e.key === 'ArrowUp') upPressed = false;
+    if (e.key === 'ArrowDown') downPressed = false;
+  });
 
-    // Mobile controls
-    function moveUp() {
-      upPressed = true;
-      setTimeout(() => upPressed = false, 100);
-    }
+  function moveUp() {
+    upPressed = true;
+    setTimeout(() => upPressed = false, 100);
+  }
 
-    function moveDown() {
-      downPressed = true;
-      setTimeout(() => downPressed = false, 100);
-    }
+  function moveDown() {
+    downPressed = true;
+    setTimeout(() => downPressed = false, 100);
+  }
 
-    // Pause game
-    function pauseGame() {
-      isPaused = true;
-      document.getElementById('pause-menu').style.display = 'block';
-    }
+  function pauseGame() {
+    isPaused = true;
+    document.getElementById('pause-menu').style.display = 'block';
+  }
 
-    function resumeGame() {
-      isPaused = false;
-      document.getElementById('pause-menu').style.display = 'none';
-      gameLoop();
-    }
+  function resumeGame() {
+    isPaused = false;
+    document.getElementById('pause-menu').style.display = 'none';
+    gameLoop();
+  }
 
-    function quitGame() {
-      window.location.href = 'index.html';
-    }
+  function quitGame() {
+    window.location.href = 'index.html';
+  }
 
-    // Restart game
-    function restartGame() {
-      isGameOver = false;
-      score = 0;
-      obstacles = [];
-      waterDroplets = [];
-      swimmer.y = 300;
-      document.getElementById('game-over').style.display = 'none';
-      gameLoop();
-    }
+  function restartGame() {
+    isGameOver = false;
+    score = 0;
+    obstacles = [];
+    waterDroplets = [];
+    swimmer.y = 300;
+    document.getElementById('game-over').style.display = 'none';
+    gameLoop();
+  }
 
-    // Start game
-    function startGame() {
-      document.getElementById('objective').style.display = 'none';
-      gameLoop();
-    }
+  function startGame() {
+    document.getElementById('objective').style.display = 'none';
+    gameLoop();
+  }
 
-    // Function to draw the swimmer (as a human)
-    function drawSwimmer() {
-      ctx.fillStyle = '#007991';
-      ctx.fillRect(swimmer.x, swimmer.y, swimmer.width, swimmer.height);
-      // Swimmer's head
-      ctx.fillStyle = '#FFE4B5';
-      ctx.beginPath();
-      ctx.arc(swimmer.x + swimmer.width / 2, swimmer.y + 10, 10, 0, Math.PI * 2);
-      ctx.fill();
-    }
+  function drawSwimmer() {
+    ctx.fillStyle = '#007991';
+    ctx.fillRect(swimmer.x, swimmer.y, swimmer.width, swimmer.height);
+    ctx.fillStyle = '#FFE4B5';
+    ctx.beginPath();
+    ctx.arc(swimmer.x + swimmer.width / 2, swimmer.y + 10, 10, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
-    // Function to draw the cactus obstacles
-    function drawCactus(x, y, width, height) {
-      ctx.fillStyle = '#228B22'; // Cactus color
-      ctx.fillRect(x, y, width, height);
-    }
+  function drawCactus(x, y, width, height) {
+    ctx.fillStyle = '#228B22';
+    ctx.fillRect(x, y, width, height);
+  }
 
-    // Function to draw water droplets
-    function drawWaterDroplet(x, y, size) {
-      ctx.fillStyle = '#00BFFF'; // Blue water droplet
-      ctx.beginPath();
-      ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-      ctx.fill();
-    }
+  function drawWaterDroplet(x, y, size) {
+    ctx.fillStyle = '#00BFFF';
+    ctx.beginPath();
+    ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
-    // Spawn obstacles
-    function spawnObstacle() {
-      let obstacleHeight = Math.random() * 100 + 50;
-      obstacles.push({ x: canvas.width, y: Math.random() * (canvas.height - obstacleHeight), width: 30, height: obstacleHeight });
-    }
+  function spawnObstacle() {
+    let obstacleHeight = Math.random() * 50 + 50;
+    let obstacleY = Math.random() * (canvas.height - obstacleHeight);
+    obstacles.push({ x: canvas.width, y: obstacleY, width: 30, height: obstacleHeight });
+  }
 
-    // Spawn water droplets
-    function spawnWaterDroplet() {
-      waterDroplets.push({ x: canvas.width, y: Math.random() * canvas.height, size: 20 });
-    }
+  function spawnWaterDroplet() {
+    let dropletY = Math.random() * (canvas.height - 20);
+    waterDroplets.push({ x: canvas.width, y: dropletY, size: 20 });
+  }
 
-    // Move obstacles and water droplets
-    function moveObstaclesAndDroplets() {
-      obstacles.forEach((obstacle, index) => {
-        obstacle.x -= gameSpeed;
-        if (obstacle.x + obstacle.width < 0) {
-          obstacles.splice(index, 1);
-        }
-        drawCactus(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-      });
+  function update() {
+    if (upPressed && swimmer.y > 0) swimmer.y -= swimmer.speed;
+    if (downPressed && swimmer.y + swimmer.height < canvas.height) swimmer.y += swimmer.speed;
 
-      waterDroplets.forEach((droplet, index) => {
-        droplet.x -= gameSpeed;
-        if (droplet.x + droplet.size < 0) {
-          waterDroplets.splice(index, 1);
-        }
-        drawWaterDroplet(droplet.x, droplet.y, droplet.size);
-      });
-    }
-
-    // Move swimmer
-    function moveSwimmer() {
-      if (upPressed && swimmer.y > 0) swimmer.y -= swimmer.speed;
-      if (downPressed && swimmer.y + swimmer.height < canvas.height) swimmer.y += swimmer.speed;
-    }
-
-    // Check for collisions with obstacles
-    function checkCollision() {
-      obstacles.forEach(obstacle => {
-        if (swimmer.x < obstacle.x + obstacle.width &&
-            swimmer.x + swimmer.width > obstacle.x &&
-            swimmer.y < obstacle.y + obstacle.height &&
-            swimmer.y + swimmer.height > obstacle.y) {
-          isGameOver = true;
-        }
-      });
-    }
-
-    // Collect water droplets
-    function collectDroplets() {
-      waterDroplets.forEach((droplet, index) => {
-        if (swimmer.x < droplet.x + droplet.size &&
-            swimmer.x + swimmer.width > droplet.x &&
-            swimmer.y < droplet.y + droplet.size &&
-            swimmer.y + swimmer.height > droplet.y) {
-          score += 10;
-          waterDroplets.splice(index, 1); // Remove droplet when collected
-        }
-      });
-    }
-
-    // Game loop
-    function gameLoop() {
-      if (isGameOver) {
-        document.getElementById('game-over').style.display = 'block';
-        return;
+    obstacles.forEach((obstacle, index) => {
+      obstacle.x -= gameSpeed;
+      if (obstacle.x + obstacle.width < 0) {
+        obstacles.splice(index, 1);
       }
 
-      if (isPaused) return;
+      if (swimmer.x < obstacle.x + obstacle.width &&
+        swimmer.x + swimmer.width > obstacle.x &&
+        swimmer.y < obstacle.y + obstacle.height &&
+        swimmer.y + swimmer.height > obstacle.y) {
+        isGameOver = true;
+        document.getElementById('game-over').style.display = 'block';
+      }
+    });
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    waterDroplets.forEach((droplet, index) => {
+      droplet.x -= gameSpeed;
+      if (droplet.x + droplet.size < 0) {
+        waterDroplets.splice(index, 1);
+      }
 
-      // Move swimmer, obstacles, and water droplets
-      moveSwimmer();
-      moveObstaclesAndDroplets();
+      if (swimmer.x < droplet.x + droplet.size &&
+        swimmer.x + swimmer.width > droplet.x &&
+        swimmer.y < droplet.y + droplet.size &&
+        swimmer.y + swimmer.height > droplet.y) {
+        score += 10;
+        waterDroplets.splice(index, 1);
+        document.getElementById('score').textContent = `Score: ${score}`;
+      }
+    });
 
-      // Check for collisions and collect water droplets
-      checkCollision();
-      collectDroplets();
+    if (Math.random() < 0.01) spawnObstacle();
+    if (Math.random() < 0.02) spawnWaterDroplet();
+  }
 
-      // Draw swimmer
-      drawSwimmer();
+  function gameLoop() {
+    if (isGameOver || isPaused) return;
 
-      // Update score
-      document.getElementById('score').innerText = 'Score: ' + score;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawSwimmer();
+    obstacles.forEach(obstacle => drawCactus(obstacle.x, obstacle.y, obstacle.width, obstacle.height));
+    waterDroplets.forEach(droplet => drawWaterDroplet(droplet.x, droplet.y, droplet.size));
+    update();
 
-      // Repeat game loop
-      requestAnimationFrame(gameLoop);
-    }
+    requestAnimationFrame(gameLoop);
+  }
+</script>
 
-    // Spawn obstacles and water droplets at intervals
-    setInterval(spawnObstacle, 2000);
-    setInterval(spawnWaterDroplet, 3000);
-  </script>
 </body>
 </html>
