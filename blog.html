@@ -98,10 +98,89 @@
         font-size: 1.1em;
       }
     }
+    nav button {
+      background-color: #ffb703;
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: #011627;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #f0f0f0;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #00a8e8;
+      color: #fff;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-size: 36px;
+      margin-right: 80px;
+    }
+
+    .content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+      width: 100%;
+    }
+
   </style>
 </head>
 <body>
+  <nav>
+    <button onclick="openNav()">☰</button>
+  </nav>
 
+  <div class="container">
+    <h1>Panni Academy - Resources</h1>
+    <div class="sidebar" id="mySidebar">
+
+      <a href="index.html"> Home</a>
+      <a href="Admission.HTML">Admission</a>
+      <a href="About Academy.HTML">About Academy</a>
+      <a href="images of academy.HTML">Images of Academy</a>
+      <a href="Achievements.html">Achievements</a>
+      <a href="shop.html">Shop</a>
+      <a href="allYouNeed.html">All You Need</a>
+      <a href="PanniAI.html">Panni helper</a>
+      <a href="review.html">Reviews</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="submissionDates.html"> Submission Dates</a>
+      <a href="panniGame.html"> Panni Games </a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    </div>
   <header>
     <h1>Panni Academy in the Desert</h1>
     <p>A story of perseverance, hope, and a tiny oasis.</p>
@@ -130,7 +209,17 @@
 
     <p>In the end, the academy stands as a testament to perseverance. It’s funny how things can feel grand in their ridiculousness, and yet so sad when you realize how fragile dreams can be. Still, in the middle of the desert, with only 3.5 cm of water to his name, Mr. Panni (Naman) pushes on, one grain of sand at a time.</p>
   </div>
+  <script> 
+    function openNav() {
+      document.getElementById("mySidebar").style.left = "0";
+      document.querySelector('.content').classList.add('opened');
+    }
 
+    function closeNav() {
+      document.getElementById("mySidebar").style.left = "-250px";
+      document.querySelector('.content').classList.remove('opened');
+    }
+  </script>
 
 
 </body>
