@@ -37,10 +37,86 @@
         height: 500px;
       }
     }
+        nav {
+      background-color: #3282B8;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav button {
+      background-color: #00BFA6;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    nav button:hover {
+      background-color: #028A72;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: #111;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1;
+    }
+
+    .sidebar a {
+      padding: 15px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #CADCFC;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+      color: white;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <button onclick="openNav()">☰</button>
+  </nav>
 
+  <div class="container">
+    <h1>Panni Academy - Resources</h1>
+    <div class="sidebar" id="mySidebar">
+      <a href="index.html"> Home </a>
+      <a href="Admission.HTML">Admission</a>
+      <a href="About Academy.HTML">About Academy</a>
+      <a href="images of academy.HTML">Images of Academy</a>
+      <a href="Achievements.html">Achievements</a>
+      <a href="shop.html">Shop</a>
+      <a href="PanniAI.html">Panni helper</a>
+      <a href="review.html">Reviews</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="panniGame.html"> Panni Games </a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    </div>
   <h2>Submission Dates</h2>
 
   <div class="calendar-container">
@@ -51,6 +127,16 @@
       scrolling="no">
     </iframe>
   </div>
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.left = "0";
+    document.querySelector('.content').classList.add('opened');
+  }
 
+  function closeNav() {
+    document.getElementById("mySidebar").style.left = "-250px";
+    document.querySelector('.content').classList.remove('opened');
+  }
+</script>
 </body>
 </html>
