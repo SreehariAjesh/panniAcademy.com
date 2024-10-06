@@ -166,6 +166,20 @@
       margin: 20px auto;
       max-width: 600px;
     }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* This maintains a 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe, .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
   </style>
 </head>
 <body>
@@ -194,10 +208,12 @@
       <h1>PANNI ACADEMY OF WATER SPORTS</h1>
     </div>
     <h1><b>"DIVE INTO EXCELLENCE: WHERE WAVES MEET MASTERY!"</b></h1>
-<video width="640" height="360" controls autoplay loop>
-  <source src="Images/PanniAcademt.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<div class="video-container">
+    <video autoplay loop muted playsinline>
+      <source src="your-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+</div>
 
     <p>Welcome to <b>PANNI ACADEMY OF WATER SPORTS</b>, located in the heart of Rajasthan! Our academy is the perfect fusion of skill and adventure, where every ripple in the water reflects passion and determination. Whether you're taking your first dive or mastering advanced techniques, this is the place for you. Join our academy to discover the thrill of water sports under the guidance of experts like Mr. Panni. We offer courses for all levels, from beginners to seasoned athletes!</p>
     
