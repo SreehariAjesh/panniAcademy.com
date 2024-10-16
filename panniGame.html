@@ -212,6 +212,8 @@
   const ctx = canvas.getContext('2d');
 
   let swimmer = { x: 50, y: 300, width: 40, height: 60, speed: 5 };
+  let swimmerImage = new Image();
+  swimmerImage.src = 'path_to_your_image.png'; // Change to your actual image path
   let obstacles = [];
   let waterDroplets = [];
   let gameSpeed = 3;
@@ -275,12 +277,7 @@
   }
 
   function drawSwimmer() {
-    ctx.fillStyle = '#007991';
-    ctx.fillRect(swimmer.x, swimmer.y, swimmer.width, swimmer.height);
-    ctx.fillStyle = '#FFE4B5';
-    ctx.beginPath();
-    ctx.arc(swimmer.x + swimmer.width / 2, swimmer.y + 10, 10, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.drawImage(swimmerImage, swimmer.x, swimmer.y, swimmer.width, swimmer.height);
   }
 
   function drawCactus(x, y, width, height) {
