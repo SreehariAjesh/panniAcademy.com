@@ -1,89 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PWA Chess Game</title>
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/chessboard-1.0.0.min.css">
     <style>
-        /* Chessboard CSS */
-        .white-1e1d7 { background-color: #f0d9b5; }
-        .black-3c85d { background-color: #b58863; }
-        #board { width: 90vw; max-width: 400px; margin: auto; }
+        #board { width: 400px; margin: auto; }
     </style>
 </head>
 <body>
     <h1>Play Chess</h1>
     <div id="board"></div>
-    
-    <!-- Chessboard.js -->
-    <script>
-        // Inline Chessboard.js code to render the board
-        (function(){
-            var Chessboard = function(container, cfg) {
-                // Basic board setup
-                var containerEl = document.getElementById(container);
-                containerEl.style.position = "relative";
-                var squares = {};
-                for (var i = 0; i < 64; i++) {
-                    var square = document.createElement("div");
-                    var row = Math.floor(i / 8), col = i % 8;
-                    square.className = ((row + col) % 2 === 0) ? "white-1e1d7" : "black-3c85d";
-                    square.style.width = square.style.height = "12.5%";
-                    square.style.position = "absolute";
-                    square.style.left = col * 12.5 + "%";
-                    square.style.top = row * 12.5 + "%";
-                    containerEl.appendChild(square);
-                    squares[String.fromCharCode(97 + col) + (8 - row)] = square;
-                }
-                return {
-                    position: function(fen) {
-                        // Draw the pieces according to FEN position (for simplicity, static layout)
-                    }
-                };
-            };
-            window.Chessboard = Chessboard;
-        })();
-    </script>
-
-    <!-- Chess.js -->
-    <script>
-        // Inline Chess.js code for move validation (simplified)
-        var Chess = function() {
-            return {
-                move: function(move) { return { from: move.from, to: move.to }; },
-                legal_moves: function() { return ["e2e4", "d2d4"]; },
-                fen: function() { return "start"; }
-            };
-        };
-    </script>
-
-    <!-- Chess game logic -->
-    <script>
-        const game = new Chess();
-        const board = Chessboard('board', { draggable: true, position: 'start' });
-
-        function handleMove(source, target) {
-            const move = game.move({ from: source, to: target, promotion: 'q' });
-            if (move === null) return 'snapback';
-            window.setTimeout(makeBotMove, 250);
-        }
-
-        function makeBotMove() {
-            const possibleMoves = game.legal_moves();
-            if (possibleMoves.length === 0) return;
-            const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
-            game.move(randomMove);
-            board.position(game.fen());
-        }
-    </script>
-
-    <!-- Service Worker -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('data:application/javascript;base64,Y29uc3Qgd2F0Y2hFcnI9ZXZlbnQ9PmV2ZW50LndhaXRVbnRpbChjYWNoZXMub3Blbig="chess-game").then(registration=>{
-                console.log("Service Worker registered with scope:", registration.scope)
-            }).catch(error=>{console.log("Service Worker registration failed:", error)
-        }
-    </script>
+    <script src="https://unpkg.com/chessboardjs@1.0.0/chessboard-1.0.0.min.js"></script>
+    <script src="https://unpkg.com/chess.js/chess.js"></script>
+    <script src="chess-game.js"></script>
 </body>
 </html>
