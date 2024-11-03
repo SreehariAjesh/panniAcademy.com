@@ -4,22 +4,17 @@
     <title>Chess Game</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chrisoakman/chessboardjs@latest/dist/chessboard-1.0.0.min.css">
     <style>
-        
-        #board {
-    width: 90vw;
-    max-width: 400px;
-}
-
+        #board { width: 90vw; max-width: 400px; }
     </style>
 </head>
 <body>
     <h1>Play Chess</h1>
     <div id="board"></div>
     <script src="https://cdn.jsdelivr.net/npm/@chrisoakman/chessboardjs@latest/dist/chessboard-1.0.0.min.js"></script>
-    <script>
-  var board = ChessBoard('board', 'start');
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.12.0/chess.min.js"></script>
     <script src="chess-game.js"></script>
+    <script>
+        var board = ChessBoard('board', 'start'); // Use ID 'board'
+    </script>
 </body>
 </html>
