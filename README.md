@@ -1,1 +1,1 @@
-# PANNI-ACADEMY-OF-WATER-SPORTS
+# panniAcademy
