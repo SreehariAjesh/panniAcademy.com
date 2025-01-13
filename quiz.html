@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #6200ea;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background: #6200ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #3700b3;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-size: 18px;
+        }
+        .answers {
+            margin-bottom: 20px;
+        }
+        .score {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Class 10 Quiz Portal</h1>
+        <p>Choose a subject to test your knowledge!</p>
+    </header>
+    <main>
+        <div class="quiz-container" id="quiz-container">
+            <div id="subject-selection">
+                <p>Select a subject:</p>
+                <button onclick="startQuiz('science')">Science</button>
+                <button onclick="startQuiz('maths')">Maths</button>
+                <button onclick="startQuiz('english')">English</button>
+                <button onclick="startQuiz('sst')">Social Science</button>
+                <button onclick="startQuiz('sanskrit')">Sanskrit</button>
+                <button onclick="startQuiz('it')">IT</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        const quizzes = {
+            science: [
+                { question: "What is the SI unit of force?", options: ["Newton", "Pascal", "Joule", "Watt"], answer: "Newton" },
+                { question: "Which organelle is known as the powerhouse of the cell?", options: ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"], answer: "Mitochondria" },
+                // Add 8 more Science questions...
+            ],
+            maths: [
+                { question: "What is the value of π?", options: ["3.14", "2.71", "1.61", "1.41"], answer: "3.14" },
+                { question: "Solve: 2x + 3 = 7. What is x?", options: ["2", "3", "1", "4"], answer: "2" },
+                // Add 8 more Maths questions...
+            ],
+            english: [
+                { question: "Who wrote 'The Road Not Taken'?", options: ["Robert Frost", "William Wordsworth", "Shakespeare", "John Keats"], answer: "Robert Frost" },
+                { question: "What is the antonym of 'Genuine'?", options: ["Real", "Fake", "True", "Authentic"], answer: "Fake" },
+                // Add 8 more English questions...
+            ],
+            sst: [
+                { question: "Who is known as the Father of the Indian Constitution?", options: ["Mahatma Gandhi", "Dr. B.R. Ambedkar", "Jawaharlal Nehru", "Sardar Patel"], answer: "Dr. B.R. Ambedkar" },
+                { question: "Which is the longest river in India?", options: ["Ganga", "Yamuna", "Brahmaputra", "Godavari"], answer: "Ganga" },
+                // Add 8 more SST questions...
+            ],
+            sanskrit: [
+                { question: "What is the Sanskrit word for 'knowledge'?", options: ["Vidya", "Shiksha", "Gyaan", "Adhyayan"], answer: "Vidya" },
+                { question: "What is the meaning of 'Aham'?", options: ["You", "He", "I", "We"], answer: "I" },
+                // Add 8 more Sanskrit questions...
+            ],
+            it: [
+                { question: "What does HTML stand for?", options: ["HyperText Markup Language", "HyperTransfer Machine Language", "HighText Machine Language", "None"], answer: "HyperText Markup Language" },
+                { question: "Which language is used to style web pages?", options: ["HTML", "CSS", "JavaScript", "Python"], answer: "CSS" },
+                // Add 8 more IT questions...
+            ]
+        };
+
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startQuiz(subject) {
+            currentQuiz = quizzes[subject];
+            currentQuestionIndex = 0;
+            score = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const quizContainer = document.getElementById("quiz-container");
+            const questionObj = currentQuiz[currentQuestionIndex];
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <p>Q${currentQuestionIndex + 1}. ${questionObj.question}</p>
+                </div>
+                <div class="answers">
+                    ${questionObj.options
+                        .map((option, index) => 
+                            `<button onclick="checkAnswer('${option}')">${index + 1}. ${option}</button>`
+                        )
+                        .join("")}
+                </div>
+            `;
+        }
+
+        function checkAnswer(selectedOption) {
+            if (selectedOption === currentQuiz[currentQuestionIndex].answer) {
+                score++;
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentQuiz.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const quizContainer = document.getElementById("quiz-container");
+            const feedback = score >= 7 
+                ? "Great job! You have a strong grasp of the subject." 
+                : "Keep practicing! Review the areas you found challenging.";
+            quizContainer.innerHTML = `
+                <div class="score">
+                    <h2>Quiz Completed!</h2>
+                    <p>Your Score: ${score} / ${currentQuiz.length}</p>
+                    <p>${feedback}</p>
+                    <button onclick="location.reload()">Take Another Quiz</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
