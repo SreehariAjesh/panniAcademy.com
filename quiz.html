@@ -7,9 +7,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            transition: background-color 0.5s ease;
         }
         header {
             background: #6200ea;
@@ -43,15 +43,24 @@
         .question {
             margin-bottom: 20px;
         }
-        .question p {
-            font-size: 18px;
-        }
-        .answers {
-            margin-bottom: 20px;
+        .answers button {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
         }
         .score {
             text-align: center;
             margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 15px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
@@ -73,8 +82,10 @@
             </div>
         </div>
     </main>
+    <audio id="correct-sound" src="correct.mp3"></audio>
+    <audio id="wrong-sound" src="wrong.mp3"></audio>
     <script>
-        const quizzes = {
+                const quizzes = {
             science: [
                 { question: "What is the SI unit of force?", options: ["Newton", "Pascal", "Joule", "Watt"], answer: "Newton" },
                 { question: "Which organelle is known as the powerhouse of the cell?", options: ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"], answer: "Mitochondria" },
@@ -112,11 +123,13 @@
         let currentQuiz = [];
         let currentQuestionIndex = 0;
         let score = 0;
+        let wrongAnswers = [];
 
         function startQuiz(subject) {
             currentQuiz = quizzes[subject];
             currentQuestionIndex = 0;
             score = 0;
+            wrongAnswers = [];
             showQuestion();
         }
 
@@ -129,7 +142,7 @@
                 </div>
                 <div class="answers">
                     ${questionObj.options
-                        .map((option, index) => 
+                        .map((option, index) =>
                             `<button onclick="checkAnswer('${option}')">${index + 1}. ${option}</button>`
                         )
                         .join("")}
@@ -138,27 +151,45 @@
         }
 
         function checkAnswer(selectedOption) {
+            const correctSound = document.getElementById("correct-sound");
+            const wrongSound = document.getElementById("wrong-sound");
+
             if (selectedOption === currentQuiz[currentQuestionIndex].answer) {
+                document.body.style.backgroundColor = "lightgreen";
+                correctSound.play();
                 score++;
-            }
-            currentQuestionIndex++;
-            if (currentQuestionIndex < currentQuiz.length) {
-                showQuestion();
             } else {
-                showResults();
+                document.body.style.backgroundColor = "lightcoral";
+                wrongSound.play();
+                wrongAnswers.push(currentQuiz[currentQuestionIndex]);
             }
+
+            setTimeout(() => {
+                document.body.style.backgroundColor = "";
+                currentQuestionIndex++;
+                if (currentQuestionIndex < currentQuiz.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }, 1000);
         }
 
         function showResults() {
             const quizContainer = document.getElementById("quiz-container");
-            const feedback = score >= 7 
-                ? "Great job! You have a strong grasp of the subject." 
-                : "Keep practicing! Review the areas you found challenging.";
             quizContainer.innerHTML = `
                 <div class="score">
                     <h2>Quiz Completed!</h2>
                     <p>Your Score: ${score} / ${currentQuiz.length}</p>
-                    <p>${feedback}</p>
+                    <h3>Review Your Mistakes:</h3>
+                    <ul>
+                        ${wrongAnswers
+                            .map(
+                                (q) =>
+                                    `<li>${q.question} <br> Correct Answer: ${q.answer}</li>`
+                            )
+                            .join("")}
+                    </ul>
                     <button onclick="location.reload()">Take Another Quiz</button>
                 </div>
             `;
