@@ -169,3 +169,52 @@ if (startGameButton) {
     });
   });
 }
+// Register a Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+      console.log('Service Worker registered successfully:', registration);
+    })
+    .catch(function(error) {
+      console.error('Service Worker registration failed:', error);
+    });
+}
+
+// Request Permission for Notifications
+function requestNotificationPermission() {
+  if ('Notification' in window) {
+    Notification.requestPermission()
+      .then(function(permission) {
+        if (permission === 'granted') {
+          console.log('Notification permission granted.');
+          // Send a test notification
+          sendTestNotification();
+        } else {
+          console.error('Notification permission denied.');
+        }
+      });
+  }
+}
+
+// Send a Test Notification
+function sendTestNotification() {
+  if (Notification.permission === 'granted') {
+    var notification = new Notification('Test Notification', {
+      body: 'This is a test notification from your PWA.',
+      icon: '/path/to/your/icon.png' 
+    });
+  }
+}
+
+// Example: Send a Notification when a new message arrives
+function handleNewMessage(message) {
+  if (Notification.permission === 'granted') {
+    var notification = new Notification('New Message', {
+      body: message,
+      icon: '/path/to/your/icon.png' 
+    });
+  }
+}
+
+// Call the functions to initiate the process
+requestNotificationPermission(); 
