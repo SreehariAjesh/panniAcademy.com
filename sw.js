@@ -102,3 +102,14 @@ self.addEventListener('activate', function(event) {
   console.log('Service Worker activating.');
 });
 
+self.addEventListener('push', function(event) {
+  const data = event.data.json(); 
+  console.log('Received push message:', data);
+
+  // Show a notification
+  const notificationOptions = {
+    body: data.message,
+    icon: '/path/to/your/icon.png'
+  };
+  self.registration.showNotification(data.title, notificationOptions);
+});
