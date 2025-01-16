@@ -13,6 +13,30 @@
   <link rel="icon" type="image/png" sizes="16x16" href="Images/16x16.png">
   <link rel="manifest" href="manifest.json">
 
+  <!-- New firebase for notification --> 
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCV4ObQSMFZ2TgdLY1YqgarpmuUOQmvJGg",
+    authDomain: "panni-2bdd6.firebaseapp.com",
+    projectId: "panni-2bdd6",
+    storageBucket: "panni-2bdd6.firebasestorage.app",
+    messagingSenderId: "987197050153",
+    appId: "1:987197050153:web:fd1ebd9d99527bfb40fb38",
+    measurementId: "G-QKPKDNL9PD"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   <style>
     /* Styles for Web and App sidebar */
     body {
