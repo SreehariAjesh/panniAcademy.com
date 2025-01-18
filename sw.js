@@ -8,7 +8,7 @@ const urlsToCache = [
   '/Images/180x180.png',
   '/manifest.json',
   '/panniGame.html', 
-  '/chess.html', // Optional offline fallback page
+  '/chess.html'
 ];
 
 // Install event - Cache necessary files
@@ -30,9 +30,8 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
-      // Return cached response if found, otherwise fetch from the network
       return cachedResponse || fetch(event.request).catch(() => {
-        // If both cache and network fail, show a fallback offline page (optional)
+        // Optional: If an offline page exists, return it.
         return caches.match('/offline.html');
       });
     })
@@ -48,7 +47,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
+          if (!cacheWhitelist.includes(cacheName)) {
             console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
@@ -56,67 +55,24 @@ self.addEventListener('activate', event => {
       );
     }).then(() => {
       return self.clients.claim(); // Take control of all clients immediately
-
-
-// Install service worker and cache resources
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Fetch cached resources or network
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
-  );
-});
-
-// Activate service worker and manage old caches
-self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
-
-// A simple service worker
-self.addEventListener('install', function(event) {
-  console.log('Service Worker installing.');
-});
-
-self.addEventListener('activate', function(event) {
-  console.log('Service Worker activating.');
-});
-
+// Push Notification Event
 self.addEventListener('push', function(event) {
   const data = event.data.json(); 
   console.log('Received push message:', data);
 
-  // Show a notification
   const notificationOptions = {
     body: data.message,
     icon: '/path/to/your/icon.png'
   };
   self.registration.showNotification(data.title, notificationOptions);
 });
+
 // Firebase Messaging Service Worker
-
 self.addEventListener("push", (event) => {
-
     const notif = event.data.json().notification;
 
     event.waitUntil(self.registration.showNotification(notif.title , {
@@ -126,11 +82,8 @@ self.addEventListener("push", (event) => {
             url: notif.click_action
         }
     }));
-
 });
 
 self.addEventListener("notificationclick", (event) => {
-
     event.waitUntil(clients.openWindow(event.notification.data.url));
-
 });
