@@ -14,51 +14,7 @@
   <link rel="manifest" href="manifest.json">
 
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyCV4ObQSMFZ2TgdLY1YqgarpmuUOQmvJGg",
-            authDomain: "panni-2bdd6.firebaseapp.com",
-            projectId: "panni-2bdd6",
-            storageBucket: "panni-2bdd6.firebasestorage.app",
-            messagingSenderId: "987197050153",
-            appId: "1:987197050153:web:85744ce40318a3de40fb38",
-            measurementId: "G-RXC45WCBNG"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const messaging = getMessaging(app);
-
-        navigator.serviceWorker.register("sw.js").then(registration => {
-            getToken(messaging, {
-                serviceWorkerRegistration: registration,
-                vapidKey: 'BEvNfAHngb0nSlIPh3QDD7ScJ9YIM1u97FhdLAQmoWj6LHpVRNuYAgE1YOaia5M-mrpQ_PJkncGfsaWNwRTXng0' }).then((currentToken) => {
-                if (currentToken) {
-                    window.alert("Token is: "+currentToken);
-                    // Send the token to your server and update the UI if necessary
-                    // ...
-                } else {
-                    // Show permission request UI
-                    window.alert('No registration token available. Request permission to generate one.');
-                    // ...
-                }
-            }).catch((err) => {
-                console.log('An error occurred while retrieving token. ', err);
-                // ...
-            });
-        });
-
-
-
-    </script>
+    
   <style>
     /* Styles for Web and App sidebar */
     body {
@@ -229,6 +185,51 @@
   </style>
 </head>
 <body>
+  <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCV4ObQSMFZ2TgdLY1YqgarpmuUOQmvJGg",
+            authDomain: "panni-2bdd6.firebaseapp.com",
+            projectId: "panni-2bdd6",
+            storageBucket: "panni-2bdd6.firebasestorage.app",
+            messagingSenderId: "987197050153",
+            appId: "1:987197050153:web:85744ce40318a3de40fb38",
+            measurementId: "G-RXC45WCBNG"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const messaging = getMessaging(app);
+
+        navigator.serviceWorker.register("sw.js").then(registration => {
+            getToken(messaging, {
+                serviceWorkerRegistration: registration,
+                vapidKey: 'BEvNfAHngb0nSlIPh3QDD7ScJ9YIM1u97FhdLAQmoWj6LHpVRNuYAgE1YOaia5M-mrpQ_PJkncGfsaWNwRTXng0' }).then((currentToken) => {
+                if (currentToken) {
+                    window.alert("Token is: "+currentToken);
+                    // Send the token to your server and update the UI if necessary
+                    // ...
+                } else {
+                    // Show permission request UI
+                    window.alert('No registration token available. Request permission to generate one.');
+                    // ...
+                }
+            }).catch((err) => {
+                console.log('An error occurred while retrieving token. ', err);
+                // ...
+            });
+        });
+
+
+
+  </script>
 <div id="web-content">
 <!-- Sidebar -->
 <div class="sidebar" id="mySidebar">
