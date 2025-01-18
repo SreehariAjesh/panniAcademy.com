@@ -12,6 +12,66 @@
   <link rel="icon" type="image/png" sizes="32x32" href="Images/32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="Images/16x16.png">
   <link rel="manifest" href="manifest.json">
+
+  <script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyAvpSpCc2tKRhb9yJi11iYJW5P906fREU4",
+  authDomain: "panni-app.firebaseapp.com",
+  projectId: "panni-app",
+  storageBucket: "panni-app.appspot.com",
+  messagingSenderId: "285070837759",
+  appId: "1:285070837759:web:5c7c1eab1c7aa50ffcc9ca",
+  measurementId: "G-E4Y0D47QY7"
+};
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const analytics = firebase.analytics();
+</script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCV4ObQSMFZ2TgdLY1YqgarpmuUOQmvJGg",
+            authDomain: "panni-2bdd6.firebaseapp.com",
+            projectId: "panni-2bdd6",
+            storageBucket: "panni-2bdd6.firebasestorage.app",
+            messagingSenderId: "987197050153",
+            appId: "1:987197050153:web:85744ce40318a3de40fb38",
+            measurementId: "G-RXC45WCBNG"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const messaging = getMessaging(app);
+
+        navigator.serviceWorker.register("sw.js").then(registration => {
+            getToken(messaging, {
+                serviceWorkerRegistration: registration,
+                vapidKey: 'BEvNfAHngb0nSlIPh3QDD7ScJ9YIM1u97FhdLAQmoWj6LHpVRNuYAgE1YOaia5M-mrpQ_PJkncGfsaWNwRTXng0' }).then((currentToken) => {
+                if (currentToken) {
+                    window.alert("Token is: "+currentToken);
+                    // Send the token to your server and update the UI if necessary
+                    // ...
+                } else {
+                    // Show permission request UI
+                    window.alert('No registration token available. Request permission to generate one.');
+                    // ...
+                }
+            }).catch((err) => {
+                console.log('An error occurred while retrieving token. ', err);
+                // ...
+            });
+        });
+
+
+
+    </script>
   <style>
     /* Styles for Web and App sidebar */
     body {
@@ -317,65 +377,8 @@
 <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyAvpSpCc2tKRhb9yJi11iYJW5P906fREU4",
-  authDomain: "panni-app.firebaseapp.com",
-  projectId: "panni-app",
-  storageBucket: "panni-app.appspot.com",
-  messagingSenderId: "285070837759",
-  appId: "1:285070837759:web:5c7c1eab1c7aa50ffcc9ca",
-  measurementId: "G-E4Y0D47QY7"
-};
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const analytics = firebase.analytics();
-</script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyCV4ObQSMFZ2TgdLY1YqgarpmuUOQmvJGg",
-            authDomain: "panni-2bdd6.firebaseapp.com",
-            projectId: "panni-2bdd6",
-            storageBucket: "panni-2bdd6.firebasestorage.app",
-            messagingSenderId: "987197050153",
-            appId: "1:987197050153:web:85744ce40318a3de40fb38",
-            measurementId: "G-RXC45WCBNG"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const messaging = getMessaging(app);
-
-        navigator.serviceWorker.register("sw.js").then(registration => {
-            getToken(messaging, {
-                serviceWorkerRegistration: registration,
-                vapidKey: 'BEvNfAHngb0nSlIPh3QDD7ScJ9YIM1u97FhdLAQmoWj6LHpVRNuYAgE1YOaia5M-mrpQ_PJkncGfsaWNwRTXng0' }).then((currentToken) => {
-                if (currentToken) {
-                    window.alert("Token is: "+currentToken);
-                    // Send the token to your server and update the UI if necessary
-                    // ...
-                } else {
-                    // Show permission request UI
-                    window.alert('No registration token available. Request permission to generate one.');
-                    // ...
-                }
-            }).catch((err) => {
-                console.log('An error occurred while retrieving token. ', err);
-                // ...
-            });
-        });
 
 
-
-    </script>
 </body>
 </html>
 </body>
