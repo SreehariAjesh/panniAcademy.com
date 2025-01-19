@@ -212,26 +212,36 @@
         const db = getFirestore(app);
 
 navigator.serviceWorker.register("sw.js").then(async (registration) => {
-    const currentToken = await getToken(messaging, {
-        serviceWorkerRegistration: registration,
-        vapidKey: 'BEvNfAHngb0nSlIPh3QDD7ScJ9YIM1u97FhdLAQmoWj6LHpVRNuYAgE1YOaia5M-mrpQ_PJkncGfsaWNwRTXng0'
-    });
+    try {
+        const currentToken = await getToken(messaging, {
+            serviceWorkerRegistration: registration,
+            vapidKey: 'BEvNfAHngb0nSlIPh3QDD7ScJ9YIM1u97FhdLAQmoWj6LHpVRNuYAgE1YOaia5M-mrpQ_PJkncGfsaWNwRTXng0'
+        });
 
-    if (currentToken) {
-        document.getElementById("tokenDisplay").innerText = "Token: " + currentToken;
-        window.alert("Token is: " + currentToken);
-        // Send the token to your server and update the UI if necessary
-        try {
-            await addDoc(collection(db, "fcm_tokens"), { token: currentToken });
-            window.alert("Token saved to Firestore");
-        } catch (error) {
-            console.error("Error saving token: ", error);
+        if (currentToken) {
+            document.getElementById("tokenDisplay").innerText = "Token: " + currentToken;
+            console.log("FCM Token:", currentToken);
+
+            // Store Token in Firestore
+            try {
+                await addDoc(collection(db, "fcm_tokens"), { token: currentToken });
+                console.log("Token saved to Firestore ✅");
+                window.alert("Token saved successfully!");
+            } catch (error) {
+                console.error("❌ Error saving token to Firestore:", error);
+                window.alert("Error saving token: " + error.message);
+            }
+        } else {
+            console.log("No FCM Token available. Request permission first.");
+            window.alert("No FCM Token available. Please allow notifications.");
         }
-    } else {
-        console.log('No registration token available. Request permission to generate one.');
+    } catch (err) {
+        console.error("❌ Error retrieving FCM Token:", err);
+        window.alert("Error retrieving FCM Token: " + err.message);
     }
 }).catch((err) => {
-    console.log('An error occurred while retrieving token: ', err);
+    console.error("❌ Service Worker registration failed:", err);
+    window.alert("Service Worker registration failed: " + err.message);
 });
 
       
