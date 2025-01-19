@@ -220,6 +220,12 @@
                     window.alert("Token is: "+currentToken);
                     // Send the token to your server and update the UI if necessary
                     // ...
+                  try {
+                    await addDoc(collection(db, "fcm_tokens"), { token: currentToken });
+                    window.alert("Token saved to Firestore");
+                } catch (error) {
+                    console.error("Error saving token: ", error);
+                  }
                 } else {
                     // Show permission request UI
                     console.log('No registration token available. Request permission to generate one.');
