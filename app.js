@@ -1,3 +1,21 @@
+let deferredPrompt;
+const installButton = document.getElementById("installButton");
+
+window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    installButton.style.display = "block";
+
+    installButton.addEventListener("click", () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+                console.log("User installed PWA");
+            }
+        });
+    });
+});
+
 // Global variable to store the deferred install prompt
 let deferredPrompt;
 
