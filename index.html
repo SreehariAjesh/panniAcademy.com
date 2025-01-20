@@ -186,6 +186,13 @@
 </head>
 <body>
   <div id="recaptcha-container"></div>
+  <input type="text" id="phoneNumber" placeholder="Enter Phone Number">
+<button onclick="sendOTP()">Send OTP</button>
+<br>
+<input type="text" id="otpCode" placeholder="Enter OTP">
+<button onclick="verifyOTP()">Verify OTP</button>
+<p id="otpResult"></p>
+
 
   <!--<p id="tokenDisplay">Fetching token...</p>-->
     <script type="module">
