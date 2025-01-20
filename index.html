@@ -226,22 +226,22 @@ navigator.serviceWorker.register("sw.js").then(async (registration) => {
             try {
                 await addDoc(collection(db, "fcm_tokens"), { token: currentToken });
                 console.log("Token saved to Firestore ✅");
-                window.alert("Token saved successfully!");
+                console.log("Token saved successfully!");
             } catch (error) {
                 console.error("❌ Error saving token to Firestore:", error);
-                window.alert("Error saving token: " + error.message);
+                console.log("Error saving token: " + error.message);
             }
         } else {
             console.log("No FCM Token available. Request permission first.");
-            window.alert("No FCM Token available. Please allow notifications.");
+            console.log("No FCM Token available. Please allow notifications.");
         }
     } catch (err) {
         console.error("❌ Error retrieving FCM Token:", err);
-        window.alert("Error retrieving FCM Token: " + err.message);
+        console.log("Error retrieving FCM Token: " + err.message);
     }
 }).catch((err) => {
     console.error("❌ Service Worker registration failed:", err);
-    window.alert("Service Worker registration failed: " + err.message);
+    console.log("Service Worker registration failed: " + err.message);
 });
 
       
