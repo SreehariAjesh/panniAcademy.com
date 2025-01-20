@@ -219,7 +219,7 @@ navigator.serviceWorker.register("sw.js").then(async (registration) => {
         });
 
         if (currentToken) {
-            document.getElementById("tokenDisplay").innerText = "Token: " + currentToken;
+            //document.getElementById("tokenDisplay").innerText = "Token: " + currentToken;
             console.log("FCM Token:", currentToken);
 
             // Store Token in Firestore
