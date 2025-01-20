@@ -265,8 +265,27 @@ navigator.serviceWorker.register("sw.js").then(async (registration) => {
 function saveToken(phoneNumber, token) {
     addDoc(collection(db, "users"), { phone: phoneNumber, fcmToken: token });
 }
+async function verifyOTP() {
+    const otpCode = document.getElementById("otpCode").value;
+    window.confirmationResult.confirm(otpCode)
+        .then(async (result) => {
+            const user = result.user;
+            const phoneNumber = user.phoneNumber;
 
-      
+            document.getElementById("otpResult").innerText = "Phone Verified!";
+            console.log("User verified:", user);
+
+            // Retrieve FCM token
+            const token = await getToken(messaging);
+
+            // Store in Firestore
+            await addDoc(collection(db, "users"), { phone: phoneNumber, fcmToken: token });
+            console.log("Phone + Token saved to Firestore ✅");
+        }).catch((error) => {
+            document.getElementById("otpResult").innerText = "Error: " + error.message;
+        });
+}
+     
 
 
 
