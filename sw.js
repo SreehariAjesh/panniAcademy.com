@@ -4,7 +4,7 @@ self.addEventListener("push", (event) => {
 
     event.waitUntil(self.registration.showNotification(notif.title , {
         body: notif.body,
-        icon: notif.icon || https://sreehariajesh.github.io/panniAcademy.com/Images/32x32.png
+        icon: notif.icon || https://sreehariajesh.github.io/panniAcademy.com/Images/32x32.png/
         data: {
             url: notif.click_action || https://sreehariajesh.github.io/panniAcademy.com/
         }
