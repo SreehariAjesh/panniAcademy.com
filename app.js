@@ -54,12 +54,12 @@ function closeNav() {
 
 // Detect if app is running as a PWA
 if (window.matchMedia('(display-mode: standalone)').matches) {
-  document.getElementById('app-content').style.display = 'block';
-  document.getElementById('web-content').style.display = 'none';
+  document.getElementById('.app-content').style.display = 'block';
+  document.getElementById('.web-content').style.display = 'none';
   console.log('App is running in standalone mode');
 } else {
-  document.getElementById('app-content').style.display = 'none';
-  document.getElementById('web-content').style.display = 'block';
+  document.getElementById('.app-content').style.display = 'none';
+  document.getElementById('.web-content').style.display = 'block';
   console.log('App is running in a web browser');
 }
 
